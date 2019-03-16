@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="MyCtrl as ctrl">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/jquery/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/css/jquery/jquery-ui-custom.min.css">
+
+    <script src="/assets/js/jquery/jquery-1.11.0.min.js"></script>
+    <script src="/assets/js/angularjs/angular.js"></script>
+    <script src="/assets/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/js/others/js.cookie.min.js"></script>
+    <script src="/assets/js/jquery/jquery-ui.min.js"></script>
+    <script src="/assets/js/jquery/jqueryui-touch-punch.js"></script>
+    <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="/assets/js/cropImage/transform.js"></script>
+    <script src="/assets/js/cropImage/alloy-finger.js"></script>
+    <script src="/assets/js/cropImage/alloy-crop.js"></script>
+
+
+    <!--程序应用引用文件-->
+    <script src="module.js"></script>
+    <script src="serviceData.js"></script>
+    <script src="serviceGeneral.js"></script>
+    <script src="service.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body>
+
+
+<div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;">
+    <div style="padding: 0 0 50px 0;border: 1px solid #d3d3d3;border-width: 0 0 1px 0;">
+        <div style="padding: 5px 10px;width: 100%">
+            <!--<div id="crop_result" style="text-align: right; width: 100%; height:auto;line-height: 110%;"></div>-->
+            <div>
+                <div id="crop_result" class="ui-state-default" style="border: 1px solid #dadada;padding: 5px;position: relative;display: inline-block; width: 235px;height: 100px;margin: 2px 5px 5px 5px;background: white url({{ctrl.overallData['images']['coverUrl']}}) no-repeat center center; background-size: 235px 100px;">
+               </div>
+                <!--图片添加-->
+                <div ng-click="ctrl.getPhoneImg()" style="position: relative; border: 1px solid #dadada;display: inline-block; width: 50px;height: 50px;margin: 2px 5px 5px 5px;background: url(/assets/img/dynamicinfo/add_pic.png) no-repeat no-repeat center center; background-size: 35px 35px;">
+                    <!--<input file-proxy type="file" style="position: absolute;height: 0;width: 0; font-size: 0; opacity: 0">-->
+                </div>
+            </div>
+            <!--<img src = {{ctrl.overallData['imgBase']}} style="width: 235px;height: 100px">-->
+
+            <!--<button class="btn" id="crop_btn" style="margin: 10px">Crop Rect</button>-->
+       </div>
+  </div>
+</div>
+<!--数据加载中loading展示-->
+<div ng-if="ctrl.overallData['loadData']"
+     style="width: 100%;text-align: center; position: absolute; top:0; left: 0; right: 0; bottom: 0; height: 100%">
+    <div style="vertical-align: middle ;display: inline-block; background: #e8e8e8; width: 120px; height: 100px; text-align: center">
+        <img style="margin: 30px 30px 0 30px;width: 32px !important;height: 32px !important;" src="/assets/img/dynamicinfo/loading3.gif">
+        <div style=";font-size: 12px; text-align: center;margin-top: 10px">{{ctrl.overallData['loadDataText']}}</div>
+    </div>
+    <div style="display: inline-block; vertical-align: middle; width: 0; height: 100%"></div>
+</div>
+
+</body>
+</html>

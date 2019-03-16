@@ -1,0 +1,45 @@
+/**
+ * 微信API接口调用数据
+ */
+var wxMeunJson = {
+    "button":[
+        {
+            "name":"茶话会",
+            "sub_button":[
+                {
+                    "type":"click",
+                    "name":"简介",
+                    "key":"WX_00001"
+                },
+                {
+                    "type":"click",
+                    "name":"见识闻趣",
+                    "key":"WX_00002"
+                },
+                {
+                    "type":"click",
+                    "name":"联系我们",
+                    "key":"WX_00003"
+                },
+                {
+                    "type":"click",
+                    "name":"加入我们",
+                    "key":"WX_00004"
+                }]
+        },
+        {
+            "type":"view",
+            "name":"研究所",
+            "url":"http://gntqant.com:80/src/officialPages/phone/test/index.html",
+        },
+        {
+            "type":"view",
+            "name":"微网站",
+            "url":"http://www.baidu.com/",
+        }]
+
+};
+
+module.exports = {
+    wxMeunJson: wxMeunJson,
+};

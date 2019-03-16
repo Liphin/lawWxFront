@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="MyCtrl as ctrl">
+<head>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <!--<link rel="stylesheet" href="http://gntqant.com:80/assets/css/bootstrap/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="http://gntqant.com:80/assets/css/font-awesome/font-awesome.min.css">-->
+    <link rel="stylesheet" href="http://127.0.0.1:80/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="http://127.0.0.1:80/assets/css/font-awesome/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>__TITLE__</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+        img {
+            width: 100% !important;
+            height: auto !important;
+            display: inherit;
+            margin-top: 15px;
+            text-indent: 0;
+        }
+        mark {
+            background: white;
+            border: none;
+        }
+        iframe, embed {
+            width: 100%;
+            height: auto;
+        }
+        p {
+            text-align: left;
+            padding: 0 10px;
+            font-size: 17px;
+            width: 100%;
+            text-indent: 2em;
+            letter-spacing: 1px;
+            line-height: 150%;
+            color: #4b4b4b;
+        }
+    </style>
+</head>
+<body>
+
+<div ng-if="ctrl.overallData['showPageInfo']" style="width: 100%; position: relative;display: inline-block">
+    <!--新闻标题数据-->
+    <div style="width: 100%; text-align: left; font-size: 20px;padding: 15px 15px 5px 15px;font-weight: bold;color: #585858">
+        <span>__TITLE__</span>
+    </div>
+
+    <!--新闻发送人和发送时间-->
+    <div style="width: 100%; text-align: left; padding: 5px 15px 0 15px; font-size: 12px">
+        <span>__NAME__</span>
+        <span style="margin-left: 10px">__DATE__</span>
+    </div>
+
+    <!--新闻数据展示-->
+    <div id="content" style="padding: 0 0 55px 0;width: 100%;text-align: left;font: 15px/1.5 Microsoft YaHei,arial,SimSun,宋体;margin-top: -20px">
+        <mark>

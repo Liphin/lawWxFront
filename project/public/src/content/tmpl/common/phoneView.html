@@ -1,0 +1,33 @@
+<!--手机预览展示区-->
+<div ng-if="content.overallData['phoneView']['status']" style="background: rgba(93,93,94,0.55);position: fixed;top: -20px;left: 0; right: 0; bottom: 0; width: 100%;z-index: 1000;min-height: 670px" align="center">
+
+    <!--{{content.overallData['phoneView']['height']}}-->
+    <div style="height: 670px;position: relative; top: {{(overallData['screen']['height']-overallData['targetHeight'])/2}}; width: 330px; display: block">
+        <!--手机框框标识区-->
+        <div style="position: absolute;top: 0;bottom: 0;background: #efefef;width: 330px;border: 2px solid rgba(212, 165, 107, 0.82);border-radius: 50px;padding: 10px 5px;box-shadow: 0 0 5px rgba(183, 145, 77, 0.83)" >
+
+            <!--手机图标头部标识-->
+            <div style="position: absolute;top: 10px;width: 310px; text-align: center">
+                <div style="width: 7px; height: 7px; border: 1px solid grey;border-radius: 7px;display: inline-block;"></div>
+                <div style="width: 50px; height: 5px; border: 1px solid grey;border-radius: 7px;display: inline-block;margin-left: 10px;background: grey"></div>
+            </div>
+
+            <!--关闭按钮-->
+            <div style="cursor: pointer;position: absolute;top: 10px;left: -120px;width: 90px;height: 30px;border: 1px solid #C4CEDC; font-size: 14px;padding: 4px 0 0 0 ;background: white; border-radius: 5px;"
+                 ng-click="content.overallData['phoneView']['status']=false">
+                <span>关闭</span>
+            </div>
+
+            <!--展示预览HTML界面-->
+            <div view-phone-html class="scrollBar-8" style="background: white;text-align: left;overflow-y: scroll;overflow-x: hidden;position: absolute; top: 50px;width: 320px;bottom: 67px;display: block;border: 1px solid #C4CEDC;border-width: 1px 0 1px 0"></div>
+
+            <!--手机图标尾部标识-->
+            <div style="position: absolute;bottom: 10px;;left: 5px;width: 310px; text-align: center">
+                <div style="width: 40px; height: 40px; border: 2px solid grey;border-radius: 25px;display: inline-block;position: relative;left: 7px"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,61 @@
+<!--大模态框-->
+<div class="modal fade" id="modal_info_lg" tabindex="-1" role="dialog" style="overflow: auto;text-align: left;z-index: {{zIndexHelper['info']}};" >
+    <div class="modal-dialog modal-lg" role="document">
+
+        <!--管理员填写视频url添加视频等操作  ng-if="modalSetting['lg']['videoUrl']"-->
+        <div  class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请填写视频的分享地址</h4>
+            </div>
+            <div class="modal-body" style="width: 80%; margin: 60px;">
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">视频URL</span>
+                    <input type="text" class="form-control" placeholder="请输入视频分享地址" aria-describedby="sizing-addon2"
+                           ng-model="content.newsData['editData']['videoUrl']">
+                </div>
+                <a style="float: right;margin-top: 10px" target="_blank" href="https://jingyan.baidu.com/article/0bc808fc494ba01bd485b90b.html">如何获取视频url</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="width: 62px; margin-right: 20px"
+                        ng-click="content.addVideoUrlToEditor()">确定
+                </button>
+                <button type="button" class="btn" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<!-- 小模态框 -->
+<div class="modal fade" id="modal_info_sm" tabindex="-1" role="dialog" style="overflow: auto;text-align: left;z-index: {{basic.zIndexHelper['info']}};">
+    <div class="modal-dialog" role="document">
+
+        <!--模态框上内容-->
+        <!--<div ng-if="ctrl.modalSetting['sm']['overall']['rename_project']" class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span-->
+                        <!--aria-hidden="true">&times;</span></button>-->
+                <!--<h4 class="modal-title">项目重命名操作</h4>-->
+            <!--</div>-->
+            <!--<div class="modal-body" style="width: 80%; margin: 40px;">-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon" id="basic-addon1">项目名称：</span>-->
+                    <!--<input type="text" class="form-control" placeholder="请输入项目名称" aria-describedby="basic-addon1"-->
+                           <!--ng-model="basic.projectData['new_project_name']">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-primary" data-dismiss="modal" style="width: 62px; margin-right: 20px"-->
+                        <!--ng-click="basic.renameProject()">OK-->
+                <!--</button>-->
+                <!--<button type="button" class="btn" data-dismiss="modal">Close</button>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+    </div>
+</div>

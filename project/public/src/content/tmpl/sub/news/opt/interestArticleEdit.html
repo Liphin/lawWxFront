@@ -1,0 +1,80 @@
+<div  ng-if="content.navigation['interestArticle']['interestEdit']" style="width: 100%;min-width: 1316px;text-align: center;line-height: normal; white-space:normal; background: rgba(255,255,255,1);" align="center">
+    <!--<button class="btn btn-info" ng-click="content.test()" style="z-index: 10000000; background: yellow; position: absolute; top: 100px; left: 100px">testddddddddddd</button>-->
+    <!-----------响应式布局----------->
+    <div style="position: relative">
+        <!-- 图片 -->
+        <div id="2" name="Image_2" style="position: fixed;top: 3px; z-index:2; left: 0;right: 0;bottom: 0; background: url(/assets/img/bg/bg1.jpg) no-repeat center center; background-size: cover; "></div>
+    </div>
+
+    <!-----------非响应式布局----------->
+    <div align="center" style="position: relative; display: inline-block;width:1316px;height:1080px;">
+        <!-- 图片 -->
+        <div id="57" name="Image_57" style="position: absolute;top: 187px; height: 148px; z-index:57; left: 1022px; width: 233px; background: url({{content.interestData['editData']['data']['coverImageSrc']}}) no-repeat ; background-size: cover;"></div>
+        <!--左侧导航栏-->
+        <!--见识闻趣-->
+        <span id="34" name="Text_34" style="cursor: pointer;position: absolute;top: 164px; height: 42px; z-index:34; left: 16px; width: 157px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0.16); ">见识闻趣</span>
+        <!--研究所-->
+        <span ng-click="content.chooseProjectPanel('content/studyArticle','studyList')" id="51" name="Text_51" style="cursor: pointer;position: absolute;top: 216px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">研究所</span>
+        <!--律所资讯-->
+        <span ng-click="content.chooseProjectPanel('content/lawfirmDynamic','dynamicList')" id="52" name="Text_52" style="cursor: pointer;position: absolute;top: 267px; height: 42px; z-index:52; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">律所资讯</span>
+        <!--团队管理-->
+        <span ng-click="content.chooseProjectPanel('content/team','teamList')" id="61" name="Text_61" style="cursor: pointer;position: absolute;top: 318px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">团队管理</span>
+        <!--留言代办-->
+        <span ng-click="content.chooseProjectPanel('content/msg','msgList')" id="64" name="Text_64" style="cursor: pointer;position: absolute;top: 369px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">留言代办</span>
+
+        <!-- 文本 -->
+        <span id="44" name="Text_44" style="position: absolute;top: 20px; height: 25px; z-index:44; left: 251px; width: 71px; font-size: 16px; color: rgba(255,255,255,1.0); background:rgba(255,255,255,0); ">内容管理</span>
+        <!-- 文本 -->
+        <!--<span id="45" name="Text_45" style="position: absolute;top: 21px; height: 25px; z-index:45; left: 374px; width: 83px; font-size: 16px; color: rgba(255,255,255,1.0); background:rgba(255,255,255,0); ">通讯录管理</span>-->
+        <!-- 文本 -->
+        <span id="512" name="Text_51" style="position: absolute;top: 119px; height: 23px; z-index:51; left: 235px; width: 726px; color: rgba(181,181,181,1); background:rgba(255,255,255,0); ">———————————————————————————————————————————————————</span>
+        <!-- 文本 -->
+        <span id="53" name="Text_53" style="position: absolute;top: 110px; height: 31px; z-index:53; left: 1018px; width: 80px; font-size: 15px; color: rgba(83,41,125,1); background:rgba(255,255,255,0); ">封面预览</span>
+        <!-- 文本 -->
+        <span id="54" name="Text_54" style="position: absolute;top: 111px; height: 27px; z-index:54; left: 1095px; width: 129px; font-size: 13px; color: rgba(83,41,125,1); background:rgba(255,255,255,0); ">(尺寸建议 640*320)</span>
+        <!-- 文本 -->
+        <span id="58" name="Text_58" style="text-align: left;position: absolute;top: 157px; height: 27px; z-index:58; left: 1025px; width: 226px; color: rgba(83,41,125,1); background:rgba(255,255,255,0); ">{{content.interestData['editData']['data']['title']}}</span>
+        <!-- 文本 -->
+        <span id="60" name="Text_60" style="position: absolute;top: 166px; height: 31px; z-index:60; left: 241px; width: 80px; color: rgba(50,36,64,1); background:rgba(255,255,255,0); ">文章类型：</span>
+        <!-- 文本 -->
+        <span id="62" name="Text_62" style="position: absolute;top: 166px; height: 24px; z-index:62; left: 569px; width: 80px; color: rgba(50,36,64,1); background:rgba(255,255,255,0); ">文章标题：</span>
+        <!-- 背景 -->
+        <div id="3" name="Bg_3" style="position: absolute;top: 73px; height: 1006px; z-index:3; left: 184px; width: 1101px; border-radius: 20px 0 0px 0px; background:rgba(255,255,255,1); "></div>
+        <!-- 背景 -->
+        <div id="46" name="Bg_46" style="position: absolute;top: 52px; height: 4px; z-index:46; left: 252px; width: 66px; border-radius: 5px 5px 5px 5px; background:rgba(255,255,255,1); "></div>
+        <!-- 背景 -->
+        <div id="522" name="Bg_52" style="position: absolute;top: 73px; height: 1007px; z-index:52; left: 995px; width: 290px; border-width: 0px 0px 0px 1px; border-style: solid; border-color: rgba(83,41,125,0.35); border-radius: 0px 20px 0px 0px; background:rgba(255,255,255,0.29); "></div>
+        <!-- 背景 -->
+        <div id="55" name="Bg_55" style="position: absolute;top: 147px; height: 201px; z-index:55; left: 1009px; width: 262px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 10px 10px 10px 10px; background:rgba(255,255,255,1); "></div>
+        <!-- 按钮 -->
+        <button id="43" ng-click="content.chooseProjectSubPage('interestList')" name="Btn_43" style="position: absolute;top: 90px; height: 29px; z-index:43; left: 234px; width: 109px; padding: 3px 12px 4px 12px; border-width: 0; border-style: solid; border-color: rgba(83,41,125,0.35); border-radius: 5px 5px 5px 5px; background:rgba(153,112,194,1);; font-size: 12px; color: white; text-align: center; ">返回上一页</button>
+        <!-- 按钮 -->
+        <button ng-click="content.viewInterest()" id="67" name="Btn_67" style="position: absolute;top: 963px; height: 35px; z-index:67; left: 668px; width: 101px; padding: 3px 12px 4px 12px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(83,41,125,0.35); border-radius: 5px 5px 5px 5px; background:rgba(255,255,255,1); color: rgba(83,41,125,1); text-align: center; ">预览</button>
+        <!-- 按钮 -->
+        <button ng-click="content.saveInterest()" id="68" name="Btn_68" style="position: absolute;top: 963px; height: 35px; z-index:68; left: 836px; width: 129px; padding: 3px 12px 4px 12px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(83,41,125,0.35); border-radius: 5px 5px 5px 5px; background:rgba(153,112,194,1); color: rgba(255,255,255,1); text-align: center; ">保存并发布</button>
+        <!-- 文本框 -->
+        <input ng-model="content.interestData['editData']['data']['title']" type="text" class="form-control" placeholder="请输入新闻标题" id="63" name="Input_63" style="position: absolute;top: 161px; height: 33px; z-index:63; left: 655px; width: 305px; padding: 6px 12px 6px 12px; background:rgba(255,255,255,1); color: rgba(0,0,0,1.0); border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 5px 5px 5px 5px; ">
+
+        <!--点击上传封面-->
+        <!-- 文本 -->
+        <input type="file" file-model class="btn btn-default" id="48" name="File_48" style="cursor: pointer;opacity: 0;position: absolute;top: 351px; left: 1080px;;height: 34px; z-index:98; width: 150px; padding: 4px 12px 2px 12px; background:rgba(255,255,255,1); border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 5px 5px 5px 5px; font-size: 0; color: rgba(0,0,0,1.0);  ">
+        <span id="56" name="Text_56" style="position: absolute;top: 359px; height: 27px; z-index:56; left: 1091px; width: 110px; color: rgba(83,41,125,1); text-decoration: underline; background:rgba(255,255,255,0); ">点击上传封面图</span>
+
+        <!-- 富文本框编辑器 -->
+        <div id="49" name="Bg_49" style="text-align: left;position: absolute;top: 225px; height: 589px; z-index:49; left: 237px; width: 726px; " ng-keydown="content.checkRichEditorKeyDown($event)" ng-keyup="content.checkRichEditorKeyUp($event)">
+            <div id="newsEditor" rich-text-editor editor-height="528"></div>
+        </div>
+
+        <!-- 背景 -->
+        <!--<div ng-if="content.interestData['editData']['data']['dept_target_radio']==1" id="50" name="Bg_50" style="position: absolute;top: 888px; height: 170px; z-index:80; left: 235px; width: 299px; border: 1px solid rgba(83,41,125,0.35); "></div>-->
+
+        <!-- 下拉框 -->
+        <select class="form-control" id="42" name="Select_42" style="padding-top: 4px; position: absolute;top: 160px; height: 32px; z-index:92; left: 325px; width: 153px; background:rgba(255,255,255,1); color: rgba(0,0,0,1.0); border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 5px 5px 5px 5px; "
+                ng-model="content.interestData['editData']['data']['subtype']" convert-to-number>
+            <option ng-repeat="(key, value) in content.interestData['mapData']['subtype']"  value="{{key}}">{{value}}</option>
+        </select>
+
+        <!--下载图片按钮-->
+        <button ng-click="content.downloadInterestImages()" style="font-size: 13px;position: absolute;top: 89px; height: 30px; z-index:67; left: 400px; width: 115px; padding: 3px 12px 4px 12px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(83,41,125,0.35); border-radius: 5px 5px 5px 5px; background:rgba(255,255,255,1); color: rgba(83,41,125,1); text-align: center;"><i class="fa fa-download"></i><span style="margin-left: 5px">下载图片</span></button>
+    </div>
+</div>
