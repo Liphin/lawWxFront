@@ -20,7 +20,7 @@ if (global.env == 'dev') {
     port = 80;
 }
 projectPath = basePath + "/project"; //公共目录文件
-loadFilePath = basePath + "/dynamicinfo/coverimg";
+loadFilePath = basePath + "/dynamicinfo/";
 
 /**服务器http请求容量配置
  *

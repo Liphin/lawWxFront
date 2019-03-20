@@ -305,6 +305,7 @@ contentModule.factory('InterestListSer', function ($http, $window, $timeout, Con
             }
             case 'top': {
                 topInterest(index);
+                break;
             }
             default: {
                 break;

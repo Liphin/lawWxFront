@@ -305,6 +305,7 @@ contentModule.factory('DynamicListSer', function ($http, $window, $timeout, Cont
             }
             case 'top': {
                 topDynamic(index);
+                break;
             }
             default: {
                 break;

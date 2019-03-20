@@ -11,6 +11,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
     var getPhoneHtmlHead = OverallDataSer.urlData['backEndHttp']['getPhoneHtmlHead'];
 
 
+
     // var copyFriend = OverallDataSer.urlData['backEndHttp']['copyFriend'];
     //
     // var deleteFriend = OverallDataSer.urlData['backEndHttp']['deleteFriend'];
@@ -47,9 +48,28 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
     var copyDynamic = OverallDataSer.urlData['backEndHttp']['copyDynamic'];
     var saveDynamicData = OverallDataSer.urlData['backEndHttp']['saveDynamicData'];
 
+    //团队成员api
+    var getRangeTeamListToBg = OverallDataSer.urlData['backEndHttp']['getRangeTeamListToBg'];
+    var deleteTeam = OverallDataSer.urlData['backEndHttp']['deleteTeam'];
+    var deleteBatchTeam = OverallDataSer.urlData['backEndHttp']['deleteBatchTeam'];
+    var searchTeamData = OverallDataSer.urlData['backEndHttp']['searchTeamData'];
+    var saveTeamData = OverallDataSer.urlData['backEndHttp']['saveTeamData'];
+
+    //留言api
+    var getRangeMsgListToBg = OverallDataSer.urlData['backEndHttp']['getRangeMsgListToBg'];
+    var deleteMsg = OverallDataSer.urlData['backEndHttp']['deleteMsg'];
+    var deleteBatchMsg = OverallDataSer.urlData['backEndHttp']['deleteBatchMsg'];
+    var searchMsgData = OverallDataSer.urlData['backEndHttp']['searchMsgData'];
+    var setupMsg = OverallDataSer.urlData['backEndHttp']['setupMsg'];
+    var setupBatchMsg = OverallDataSer.urlData['backEndHttp']['setupBatchMsg'];
+
+
     //公用api
     var uploadResource = OverallDataSer.urlData['backEndHttp']['uploadResource'];
     var getDynamicResource = OverallDataSer.urlData['frontEndHttp']['getDynamicResource'];
+    var saveCoverImage = OverallDataSer.urlData['frontEndHttp']['saveCoverImage'];
+    var getCoverImage = OverallDataSer.urlData['frontEndHttp']['getCoverImage'];
+    var fileUrl = "coverimg";
 
     //全局数据
     var overallData = {
@@ -118,11 +138,10 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
                 'next': true, //是否可选择下一批次
             },
 
-            'teamStatusType': {
+            'statusType': {
                 99: '全部',
-                0: '草稿',
                 1: '在职',
-                2: '离职',
+                0: '离职',
             },
         },
 
@@ -150,7 +169,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
                 'next': true, //是否可选择下一批次
             },
 
-            'msgStatusType': {
+            'statusType': {
                 99: '全部',
                 0: '待办',
                 1: '已办',
@@ -225,6 +244,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'org_status_cd': 0,
             'htmlStyle': '<p><span style="font-size: 16px;">﻿</span><br></p>', //初始化数据
             'data': {
+                'id':'',
                 'title': '',
                 'type': 1,
                 'subtype':10,
@@ -259,6 +279,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'org_status_cd': 0,
             'htmlStyle': '<p><span style="font-size: 16px;">﻿</span><br></p>', //初始化数据
             'data': {
+                'id':'',
                 'title': '',
                 'type': 2,
                 'subtype': 20,
@@ -292,6 +313,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'org_status_cd': 0,
             'htmlStyle': '<p><span style="font-size: 16px;">﻿</span><br></p>', //初始化数据
             'data': {
+                'id':'',
                 'title': '',
                 'type': 3,
                 'subtype':30,
@@ -330,15 +352,21 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
                 13: '三农权益',
                 14: '法律顾问',
             },
-
+            'subType': {
+                1: '在职',
+                2: '离职',
+            }
         },
         'editData': {
             'optType': 2, //1为创建人员操作，2为更新人员操作
             'editIndex': '',
-            'org_status_cd': 0,
             'data': {
+                'id':'',
+                'wx_user_id': '',
+                'wx_user_name': '',
+                'imgUrl': '',
                 'name': '',
-                'type': 1,
+                'lvl_cd': '',
                 'phone': '',
                 'mail': '',
                 'content': '',
@@ -347,7 +375,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
                 'timestamp': '',
                 'create_time': '',
                 'update_time': '',
-                'image': '',
+                'coverImage': '',
             },
         },
         'list': [],
@@ -373,6 +401,10 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
                 13: '三农权益',
                 14: '法律顾问',
             },
+            'subType':{
+                0: '待办',
+                1: '已办',
+            }
 
         },
         'editData': {
@@ -380,8 +412,11 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'editIndex': '',
             'org_status_cd': 0,
             'data': {
+                'id':'',
                 'name': '',
                 'phone': '',
+                'mail':'',
+                'type': '',
                 'content': '',
                 'status_cd': '',
                 'timestamp': '',
@@ -424,8 +459,25 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         copyDynamic: copyDynamic,
         saveDynamicData: saveDynamicData,
 
+        //团队成员api
+        getRangeTeamListToBg: getRangeTeamListToBg,
+        deleteTeam: deleteTeam,
+        deleteBatchTeam: deleteBatchTeam,
+        searchTeamData: searchTeamData,
+        saveTeamData: saveTeamData,
+
+        //留言api
+        getRangeMsgListToBg: getRangeMsgListToBg,
+        deleteMsg: deleteMsg,
+        deleteBatchMsg: deleteBatchMsg,
+        searchMsgData: searchMsgData,
+        setupMsg: setupMsg,
+        setupBatchMsg: setupBatchMsg,
+
         //公用api
         uploadResource: uploadResource,
+        saveCoverImage: saveCoverImage,
+        getCoverImage:getCoverImage,
 
         //数据定义
         interestData: interestData,
@@ -435,5 +487,6 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         msgData: msgData,
         overallData: overallData,
         navigation: navigation,
+        fileUrl: fileUrl,
     }
 });

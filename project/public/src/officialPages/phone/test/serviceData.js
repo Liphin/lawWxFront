@@ -26,6 +26,7 @@ app.factory('MyData',function () {
     var copyTempResourceToLocal = frontHttpUrl + 'copyTempResourceToLocal';
     var resourceUrl = frontHttpUrl + "dynamicinfo/resource/";
     var coverImgUrl = frontHttpUrl + "dynamicinfo/coverimg/";
+    var fileUrl = "coverimg";
     var saveCoverImage = frontHttpUrl + "saveCoverImage";
 
     return {
@@ -35,5 +36,6 @@ app.factory('MyData',function () {
         resourceUrl:resourceUrl,
         coverImgUrl:coverImgUrl,
         saveCoverImage:saveCoverImage,
+        fileUrl:fileUrl,
     };
 });

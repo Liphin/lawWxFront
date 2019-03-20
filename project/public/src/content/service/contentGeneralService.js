@@ -44,21 +44,58 @@ contentModule.factory('ContentGeneralSer', function ($http, ContentDataSer, $win
      * 装填分页展示信息
      */
     var loadPageInfo = function () {
-        //清空之前分页number数据
-        ContentDataSer.overallData['listShow']['pagination']['num'].length = 0;
-        //装填分页展示信息
-        for (var j = ContentDataSer.overallData['listShow']['pagination']['beginPageNum'], i = 1;
-             j <= ContentDataSer.overallData['listShow']['totalPage'] &&
-             i <= ContentDataSer.overallData['listShow']['maxShowPage']; j++, i++) {
-            ContentDataSer.overallData['listShow']['pagination']['num'].push(j);
+        if(ContentDataSer.overallData['pageType']==4){
+            //清空之前分页number数据
+            ContentDataSer.overallData['teamListShow']['pagination']['num'].length = 0;
+            //装填分页展示信息
+            for (var j = ContentDataSer.overallData['teamListShow']['pagination']['beginPageNum'], i = 1;
+                 j <= ContentDataSer.overallData['teamListShow']['totalPage'] &&
+                 i <= ContentDataSer.overallData['teamListShow']['maxShowPage']; j++, i++) {
+                ContentDataSer.overallData['teamListShow']['pagination']['num'].push(j);
+            }
+
+            //记录当前最大的已获取分页数
+            var paginationNum = ContentDataSer.overallData['teamListShow']['pagination']['num'];
+            var lastPaginationNum = paginationNum[paginationNum.length - 1];
+            if (ContentDataSer.overallData['teamListShow']['pagination']['loadedMaxPageNum'] < lastPaginationNum) {
+                ContentDataSer.overallData['teamListShow']['pagination']['loadedMaxPageNum'] = lastPaginationNum;
+            }
+        }
+        else if (ContentDataSer.overallData['pageType']==5) {
+            //清空之前分页number数据
+            ContentDataSer.overallData['msgListShow']['pagination']['num'].length = 0;
+            //装填分页展示信息
+            for (var j = ContentDataSer.overallData['msgListShow']['pagination']['beginPageNum'], i = 1;
+                 j <= ContentDataSer.overallData['msgListShow']['totalPage'] &&
+                 i <= ContentDataSer.overallData['msgListShow']['maxShowPage']; j++, i++) {
+                ContentDataSer.overallData['msgListShow']['pagination']['num'].push(j);
+            }
+
+            //记录当前最大的已获取分页数
+            var paginationNum = ContentDataSer.overallData['msgListShow']['pagination']['num'];
+            var lastPaginationNum = paginationNum[paginationNum.length - 1];
+            if (ContentDataSer.overallData['msgListShow']['pagination']['loadedMaxPageNum'] < lastPaginationNum) {
+                ContentDataSer.overallData['msgListShow']['pagination']['loadedMaxPageNum'] = lastPaginationNum;
+            }
+        }
+        else {
+            //清空之前分页number数据
+            ContentDataSer.overallData['listShow']['pagination']['num'].length = 0;
+            //装填分页展示信息
+            for (var j = ContentDataSer.overallData['listShow']['pagination']['beginPageNum'], i = 1;
+                 j <= ContentDataSer.overallData['listShow']['totalPage'] &&
+                 i <= ContentDataSer.overallData['listShow']['maxShowPage']; j++, i++) {
+                ContentDataSer.overallData['listShow']['pagination']['num'].push(j);
+            }
+
+            //记录当前最大的已获取分页数
+            var paginationNum = ContentDataSer.overallData['listShow']['pagination']['num'];
+            var lastPaginationNum = paginationNum[paginationNum.length - 1];
+            if (ContentDataSer.overallData['listShow']['pagination']['loadedMaxPageNum'] < lastPaginationNum) {
+                ContentDataSer.overallData['listShow']['pagination']['loadedMaxPageNum'] = lastPaginationNum;
+            }
         }
 
-        //记录当前最大的已获取分页数
-        var paginationNum = ContentDataSer.overallData['listShow']['pagination']['num'];
-        var lastPaginationNum = paginationNum[paginationNum.length - 1];
-        if (ContentDataSer.overallData['listShow']['pagination']['loadedMaxPageNum'] < lastPaginationNum) {
-            ContentDataSer.overallData['listShow']['pagination']['loadedMaxPageNum'] = lastPaginationNum;
-        }
     };
 
 
@@ -66,25 +103,70 @@ contentModule.factory('ContentGeneralSer', function ($http, ContentDataSer, $win
      *  设置是否允许获取上一批次和下一批次数据
      */
     var setPreNextLoadBatchData = function () {
-        //分别获取当前最大和最小页面page数值
-        var paginationNum = ContentDataSer.overallData['listShow']['pagination']['num'];
-        var lastPaginationNum = paginationNum[paginationNum.length - 1];
-        var firstPaginationNum = paginationNum[0];
+        if(ContentDataSer.overallData['pageType']==4){
+            //分别获取当前最大和最小页面page数值
+            var paginationNum = ContentDataSer.overallData['teamListShow']['pagination']['num'];
+            var lastPaginationNum = paginationNum[paginationNum.length - 1];
+            var firstPaginationNum = paginationNum[0];
 
-        //如果展示区已有最后一页，则设置允许获取下一批次数据为false
-        if (ContentDataSer.overallData['listShow']['totalPage'] <= lastPaginationNum) {
-            ContentDataSer.overallData['listShow']['pagination']['next'] = false;
+            //如果展示区已有最后一页，则设置允许获取下一批次数据为false
+            if (ContentDataSer.overallData['teamListShow']['totalPage'] <= lastPaginationNum) {
+                ContentDataSer.overallData['teamListShow']['pagination']['next'] = false;
 
-        } else {
-            ContentDataSer.overallData['listShow']['pagination']['next'] = true;
+            } else {
+                ContentDataSer.overallData['teamListShow']['pagination']['next'] = true;
+            }
+            //如果展示区已有第一页数据，则设置允许获取上一批次数据为false
+            if (firstPaginationNum == 1) {
+                ContentDataSer.overallData['teamListShow']['pagination']['pre'] = false;
+
+            } else {
+                ContentDataSer.overallData['teamListShow']['pagination']['pre'] = true;
+            }
         }
-        //如果展示区已有第一页数据，则设置允许获取上一批次数据为false
-        if (firstPaginationNum == 1) {
-            ContentDataSer.overallData['listShow']['pagination']['pre'] = false;
+        else if(ContentDataSer.overallData['pageType']==5){
+            //分别获取当前最大和最小页面page数值
+            var paginationNum = ContentDataSer.overallData['msgListShow']['pagination']['num'];
+            var lastPaginationNum = paginationNum[paginationNum.length - 1];
+            var firstPaginationNum = paginationNum[0];
 
-        } else {
-            ContentDataSer.overallData['listShow']['pagination']['pre'] = true;
+            //如果展示区已有最后一页，则设置允许获取下一批次数据为false
+            if (ContentDataSer.overallData['msgListShow']['totalPage'] <= lastPaginationNum) {
+                ContentDataSer.overallData['msgListShow']['pagination']['next'] = false;
+
+            } else {
+                ContentDataSer.overallData['msgListShow']['pagination']['next'] = true;
+            }
+            //如果展示区已有第一页数据，则设置允许获取上一批次数据为false
+            if (firstPaginationNum == 1) {
+                ContentDataSer.overallData['msgListShow']['pagination']['pre'] = false;
+
+            } else {
+                ContentDataSer.overallData['msgListShow']['pagination']['pre'] = true;
+            }
         }
+        else {
+            //分别获取当前最大和最小页面page数值
+            var paginationNum = ContentDataSer.overallData['listShow']['pagination']['num'];
+            var lastPaginationNum = paginationNum[paginationNum.length - 1];
+            var firstPaginationNum = paginationNum[0];
+
+            //如果展示区已有最后一页，则设置允许获取下一批次数据为false
+            if (ContentDataSer.overallData['listShow']['totalPage'] <= lastPaginationNum) {
+                ContentDataSer.overallData['listShow']['pagination']['next'] = false;
+
+            } else {
+                ContentDataSer.overallData['listShow']['pagination']['next'] = true;
+            }
+            //如果展示区已有第一页数据，则设置允许获取上一批次数据为false
+            if (firstPaginationNum == 1) {
+                ContentDataSer.overallData['listShow']['pagination']['pre'] = false;
+
+            } else {
+                ContentDataSer.overallData['listShow']['pagination']['pre'] = true;
+            }
+        }
+
     };
 
 
@@ -92,11 +174,28 @@ contentModule.factory('ContentGeneralSer', function ($http, ContentDataSer, $win
      * 鼠标点击选择展示某目标页面的新闻列表数据
      */
     var showTargetNumNewsList = function (index, pageNum) {
-        //设置该页的选择状态为active
-        ContentDataSer.overallData['listShow']['pagination']['activeIndex'] = index;
-        //设置该页的起始展示index是，页面(pageNum-1) * 每页展示数目
-        ContentDataSer.overallData['listShow']['pagination']['beginListIndex'] =
-            (pageNum - 1) * ContentDataSer.overallData['listShow']['screenNum'];
+        if(ContentDataSer.overallData['pageType']==4) {
+            //设置该页的选择状态为active
+            ContentDataSer.overallData['teamListShow']['pagination']['activeIndex'] = index;
+            //设置该页的起始展示index是，页面(pageNum-1) * 每页展示数目
+            ContentDataSer.overallData['teamListShow']['pagination']['beginListIndex'] =
+                (pageNum - 1) * ContentDataSer.overallData['teamListShow']['screenNum'];
+        }
+        else if(ContentDataSer.overallData['pageType']==5) {
+            //设置该页的选择状态为active
+            ContentDataSer.overallData['msgListShow']['pagination']['activeIndex'] = index;
+            //设置该页的起始展示index是，页面(pageNum-1) * 每页展示数目
+            ContentDataSer.overallData['msgListShow']['pagination']['beginListIndex'] =
+                (pageNum - 1) * ContentDataSer.overallData['msgListShow']['screenNum'];
+        }
+        else {
+            //设置该页的选择状态为active
+            ContentDataSer.overallData['listShow']['pagination']['activeIndex'] = index;
+            //设置该页的起始展示index是，页面(pageNum-1) * 每页展示数目
+            ContentDataSer.overallData['listShow']['pagination']['beginListIndex'] =
+                (pageNum - 1) * ContentDataSer.overallData['listShow']['screenNum'];
+        }
+
         //滚动到页面最顶端
         $window.scrollTo(0, 0);
     };

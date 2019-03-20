@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div ng-if="content.navigation['msg']['msgEdit']" style="display: flex;align-items: center;justify-content: center;position:fixed; top: 0; left: 0; bottom: 0; right: 0;background: rgba(0,0,0,0.47); z-index: 10000">
 
-</body>
-</html>
+    <!--编辑面板框上方-->
+    <div style="padding: 20px;background: white; border-radius: 20px; width: 80%; min-height: 0;height: 95%; max-width: 1300px; max-height: 1000px">
+        <!--顶部关闭按钮-->
+        <div style="margin-top: -20px;height: 32px;text-align: center">
+            <span style="font-size: 18px;text-align: center; position: relative; top: 10px;">留言查阅</span>
+            <span ng-click="content.navigation['msg']['msgEdit']=false" style="float: right; font-size: 35px; cursor: pointer;">&times;</span>
+        </div>
+
+
+        <div style="margin-top: 20px">
+            <span style="margin-left: 220px">客户称呼</span>
+            <input class="inputStyle" readOnly="true" style="margin-left: 10px; width: 242px" type="text" ng-model="content.msgData['editData']['data']['name']" maxlength="50"
+                   placeholder="">
+        </div>
+        <div style="margin-top: 20px">
+            <span style="margin-left: 220px">电话：</span>
+            <input class="inputStyle" readOnly="true" style="margin-left: 10px; width: 242px" type="text" ng-model="content.msgData['editData']['data']['phone']" maxlength="50"
+                   placeholder="">
+        </div>
+        <div style="margin-top: 20px">
+            <span style="margin-left: 220px">邮件：</span>
+            <input class="inputStyle" readOnly="true" style="margin-left: 10px; width: 242px" type="text" ng-model="content.msgData['editData']['data']['mail']" maxlength="50"
+                   placeholder="">
+        </div>
+
+        <div style="margin-top: 20px;margin-left: 220px">
+            <span>留言状态：</span>
+            <label class="radio-inline">
+                <input type="radio" ng-model="content.msgData['editData']['data']['status_name']" name="status_name{{$index}}" value="已办"> 已办
+            </label>
+            <label class="radio-inline">
+                <input type="radio" ng-model="content.msgData['editData']['data']['status_name']" name="status_name{{$index}}" value="代办"> 代办
+            </label>
+        </div>
+
+        <!--业务描述-->
+        <div style="margin-top: 20px;margin-left: 220px">
+            <span>业务描述：</span>
+            <textarea class="textAreaStyle" readOnly="true" style="width: 600px; height: 200px" ng-model="content.msgData['editData']['data']['content']" maxlength="2000"
+                      placeholder=""></textarea>
+        </div>
+
+
+        <!--保存按钮-->
+        <div style="width: 100%; height: 50px;text-align: center;padding-top: 17px; border: 1px solid lightgrey; border-width: 1px 0 0 0; margin-top: 30px">
+            <button class="btn btn-info" style="width: 100px" ng-click="content.saveMsg()">保存</button>
+        </div>
+    </div>
+
+</div>

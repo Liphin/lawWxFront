@@ -1,10 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div ng-if="content.navigation['team']['teamList']" style="width: 100%;min-width: 1316px;text-align: center;line-height: normal; white-space:normal; background: rgba(255,255,255,1);" align="center">
+    <!-----------响应式布局----------->
+    <div style="position: relative">
+        <!-- 图片 -->
+        <div id="2" name="Image_2" style="position: fixed;top: 3px; z-index:2; left: 0;right: 0;bottom: 0; background: url(/assets/img/bg/bg1.jpg) no-repeat center center; background-size: cover; "></div>
+    </div>
 
-</body>
-</html>
+    <!-----------非响应式布局----------->
+    <div align="center" style="position: relative; display: inline-block;width:1316px;height: 100%">
+        <!--左侧导航栏-->
+        <!--见识闻趣管理-->
+        <span ng-click="content.chooseProjectPanel('content/interestArticle','interestList')" id="50" name="Text_51" style="cursor: pointer;position: absolute;top: 164px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">见识闻趣</span>
+        <!--研究所-->
+        <span ng-click="content.chooseProjectPanel('content/studyArticle','studyList')" id="51" name="Text_51" style="cursor: pointer;position: absolute;top: 216px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">研究所</span>
+        <!--律所资讯-->
+        <span ng-click="content.chooseProjectPanel('content/lawfirmDynamic','dynamicList')" id="52" name="Text_52" style="cursor: pointer;position: absolute;top: 267px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">律所资讯</span>
+        <!--团队管理-->
+        <span id="53" name="Text_34" style="cursor: pointer;position: absolute;top: 318px; height: 42px; z-index:34; left: 16px; width: 157px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0.16); ">团队管理</span>
+        <!--留言代办-->
+        <span ng-click="content.chooseProjectPanel('content/msg','msgList')" id="54" name="Text_54" style="cursor: pointer;position: absolute;top: 369px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">留言代办</span>
+
+        <!-- 文本 -->
+        <span id="44" name="Text_44" style="position: absolute;top: 20px; height: 25px; z-index:44; left: 251px; width: 71px; font-size: 16px; color: rgba(255,255,255,1.0); background:rgba(255,255,255,0); ">内容管理</span>
+        <!-- 文本 -->
+        <!--<span id="45" name="Text_45" style="position: absolute;top: 21px; height: 25px; z-index:45; left: 374px; width: 83px; font-size: 16px; color: rgba(255,255,255,1.0); background:rgba(255,255,255,0); ">通讯录管理</span>-->
+        <!-- 背景 -->
+        <div id="3" name="Bg_3" style="position: absolute;top: 75px;bottom: 0; z-index:3; left: 183px; right: 30px; border-radius: 20px 0px 0px 0px; background:rgba(255,255,255,0.77);"></div>
+        <!-- 背景 -->
+        <div id="46" name="Bg_46" style="position: absolute;top: 52px; height: 4px; z-index:46; left: 252px; width: 66px; border-radius: 5px 5px 5px 5px; background:rgba(255,255,255,1); "></div>
+        <!-- 按钮 -->
+        <button ng-click="content.createNewTeam()" id="40" name="Btn_40" style="position: absolute;top: 100px; height: 34px; z-index:40; left: 238px; width: 96px; padding: 6px 12px 6px 12px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(153,112,194,1); border-radius: 5px 5px 5px 5px; background:rgba(153,112,194,1); color: rgba(255,255,255,1.0); text-align: center; ">新增</button>
+        <!-- 按钮 -->
+        <button ng-click="content.deleteBatchTeam()" id="43" name="Btn_43" style="position: absolute;top: 100px; height: 34px; z-index:43; left: 369px; width: 96px; padding: 6px 12px 6px 12px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(83,41,125,0.35); border-radius: 5px 5px 5px 5px; background:rgba(255,255,255,1); color: rgba(83,41,125,1); text-align: center; ">删除</button>
+
+        <!--下拉框-->
+        <span id="60" name="Text_60" style="position: absolute;top: 106px; height: 34px; z-index:43; left: 500px; width: 96px; color: rgba(50,36,64,1); background:rgba(255,255,255,0); ">人员状态：</span>
+        <select class="form-control" id="42" name="Select_42" style="padding-top: 4px; position: absolute;top: 100px; height: 34px; z-index:43; left: 600px; width: 153px; background:rgba(255,255,255,1); color: rgba(0,0,0,1.0); border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 5px 5px 5px 5px; "
+                ng-model="content.overallData['teamListShow']['status_cd']" convert-to-number>
+            <option ng-repeat="(key, value) in content.overallData['teamListShow']['statusType']"  value="{{key}}">{{value}}</option>
+        </select>
+
+        <!-- 按钮 -->
+        <button id="48" ng-click="content.searchTeam()" name="Btn_48" style="position: absolute;top: 99px; height: 34px; z-index:48; left: 1172px; width: 52px; padding: 6px 12px 6px 12px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(153,112,194,1); border-radius: 5px 5px 5px 5px; background:rgba(153,112,194,1); font-size: 12px; color: rgba(255,255,255,1.0); text-align: center; ">搜索</button>
+        <!-- 文本框 -->
+        <input type="text" ng-keydown="content.searchTeamKeyDown($event)" ng-model="content.overallData['teamListShow']['search']" class="form-control" placeholder="请输入搜索人名" id="47" name="Input_47" style="position: absolute;top: 99px; height: 34px; z-index:47; left: 911px; width: 248px; padding: 6px 22px 6px 22px; background:rgba(255,255,255,1); color: rgba(0,0,0,1.0); border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 20px 20px 20px 20px; ">
+
+        <!-- 表格 -->
+        <div align="center" id="60NewsList" name="Table_60" style="border-radius: 5px 0 0 0;background: white;position: absolute;top: 160px; bottom: 0; padding: 15px 20px 0 10px; z-index:60; left: 230px; right: 30px;overflow-y: scroll;" class="scrollBar-7">
+            <table class="table table-hover table-condensed table-fixed" style="border: 0;background: white">
+                <!--&lt;!&ndash;标题名 title name&ndash;&gt;-->
+                <!--<caption style="text-align: center;font-weight: bold; font-size: 0px; height:0px; padding-top:0px;">高校学生个人信息表</caption>-->
+                <thead>
+                <!--列名 columns name-->
+                <tr>
+                    <th style="text-align: center; width: 60px;">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">选择</span>
+                    </th>
+                    <th style="text-align: center; width: 700px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">人员介绍</span>
+                    </th>
+                    <th style="text-align: center; width: 78px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">操作</span>
+                    </th>
+                </tr>
+                </thead>
+                <!--表格内容 table content-->
+                <tbody>
+                <tr ng-repeat="news in content['teamData']['list'] | limitTo:content['overallData']['teamListShow']['screenNum']:content['overallData']['teamListShow']['pagination']['beginListIndex'] track by $index" style="height:300px;">
+                    <th style=" width: 60px;text-align: center">
+                        <input style="margin-top: 12px" type="checkbox" ng-model="news['toDelete']">
+                    </th>
+                    <td style="padding: 15px 0 0 0;width: 700px;">
+                        <img src={{news['coverImage']}} style="height: 290px;width: 180px">
+                        <span style="margin-left: 20px;font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">姓名： {{news['name']}}</span>
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">状态：{{news['status_cd_name']}}</span>
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">职能：{{news['content']}}</span>
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">电话：{{news['phone']}}</span>
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">邮件：{{news['mail']}}</span>
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">时间：{{news['create_time']}}</span>
+                    </td>
+
+                    <td style="padding: 15px 0 0 0;text-align: center; width: 78px;">
+                        <div ng-mouseleave="news['menu']=false" style="position: relative">
+                            <!--置顶标识小图标-->
+                            <img title="已置顶" ng-if="news['stick_cd']==1" src="/assets/img/content/topSet.png" style="width: 15px !important;position: absolute; top: 7px;right: 0;opacity: 0.8">
+                            <!--鼠标放上去时调出操作菜单面板-->
+                            <div ng-if="news['menu']" id="62" name="Text_62" class="listOptMenu" style="box-shadow: 0px 0 7px rgba(74,136,181,1);position: absolute;left: {{content.stickLeftOffset(news['stick_cd'])}};top: -10px;font-size: 13px;height: 31px; z-index:62; padding: 7px 3px ; color: rgba(255,255,255,1); border-radius: 5px 5px 5px 5px; background:rgba(74,136,181,1); ">
+                                <span style="padding: 9px 15px;" ng-click="content.teamOpt('top', news['id'], $index)">
+                                    <span ng-if="news['stick_cd']==1">取消置顶</span>
+                                    <span ng-if="news['stick_cd']==0">置顶</span>
+                                </span>
+                                <span style="padding: 9px 15px;" ng-click="content.teamOpt('delete', news['id'], $index)">删除</span>
+                                <span style="padding: 9px 15px;" ng-click="content.teamOpt('edit', news['id'], $index)">编辑</span>
+                            </div>
+                            <div ng-mouseenter="news['menu']=true" style="cursor: pointer;width: 80px; border: 1px solid gainsboro; border-radius: 5px;height: 28px;padding: 2px 0 0 0;position: relative; top: -5px">
+                                <span style="padding: 0;;font-size: 12px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">操作</span>
+                                <span class="glyphicon glyphicon-menu-hamburger" style="padding: 0;font-size: 12px;" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--导航操作-->
+            <nav ng-if="content.overallData['teamListShow']['totalNum']>0" aria-label="Page navigation" style="margin-bottom: 50px">
+                <!--共页数-->
+                <div style="display: inline-block;position: relative; top: -32px; left: -30px">总计{{content.overallData['teamListShow']['totalNum']}}条</div>
+                <ul class="pagination listPagination">
+                    <li title="上一批数据" ng-class="{'disabled':!content.overallData['teamListShow']['pagination']['pre']}"
+                        ng-click="content.getBatchRangeTeamInfo(-1)">
+                        <a aria-label="Previous" style="padding: 6px 20px">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li ng-repeat="num in content.overallData['teamListShow']['pagination']['num'] track by $index"
+                        ng-class="{'active': $index==content.overallData['teamListShow']['pagination']['activeIndex']}"
+                        ng-click="content.showTargetNumNewsList($index, num)" >
+                        <a>{{num}}</a>
+                    </li>
+                    <li title="下一批数据" ng-class="{'disabled':!content.overallData['teamListShow']['pagination']['next']}"
+                        ng-click="content.getBatchRangeTeamInfo(1)">
+                        <a aria-label="Next" style="padding: 6px 20px">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+                <div style="display: inline-block;position: relative; top: -32px; left: 30px">共{{content.overallData['teamListShow']['totalPage']}}页</div>
+            </nav>
+        </div>
+
+    </div>
+</div>

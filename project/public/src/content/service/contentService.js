@@ -7,7 +7,8 @@
 var contentModule = angular.module('Angular.content');
 contentModule.factory('ContentSer',function ($http, $window, $routeParams, $timeout, $location, ContentDataSer, OverallGeneralSer,
                                              OverallDataSer, ContentGeneralSer, OverallSer,InterestListSer,InterestEditSer,
-                                             StudyListSer,StudyEditSer,DynamicListSer,DynamicEditSer) {
+                                             StudyListSer,StudyEditSer,DynamicListSer,DynamicEditSer,
+                                             TeamListSer,MsgListSer) {
 
     /**
      * 数据初始化操作
@@ -49,10 +50,10 @@ contentModule.factory('ContentSer',function ($http, $window, $routeParams, $time
                 ContentDataSer.navigation[i][j] = false;
             }
         }
-        console.log(targetType,targetSubPage);
         //单独设置目标页面显示
         ContentDataSer.navigation[targetType]['status'] = true;
         ContentDataSer.navigation[targetType][targetSubPage] = true;
+        console.log(targetSubPage);
 
         //根据目标页面和需求进行设置
         switch (targetSubPage) {
@@ -93,6 +94,18 @@ contentModule.factory('ContentSer',function ($http, $window, $routeParams, $time
                 DynamicEditSer.validateDynamicEdit();
                 break;
             }
+            case 'teamList' : {
+                ContentDataSer.teamData['list'].length = 0; //清空之前数据，下次进入方法会重新获取数据
+                ContentDataSer.overallData['pageType']=4;
+                TeamListSer.getRangeTeamInfo();//获取一定范围内的新闻数据
+                break;
+            }
+            case 'msgList' : {
+                ContentDataSer.msgData['list'].length = 0; //清空之前数据，下次进入方法会重新获取数据
+                ContentDataSer.overallData['pageType']=5;
+                MsgListSer.getRangeMsgInfo();//获取一定范围内的新闻数据
+                break;
+            }
             default: {
                 break;
             }
@@ -131,29 +144,6 @@ contentModule.factory('ContentSer',function ($http, $window, $routeParams, $time
         }
     };
 
-    /**
-     * 上传资源文件信息
-     * 用于提交文件操作，并开放callback函数接口
-     */
-    var uploadResource = function (file, timestamp, callback) {
-        var fd = new FormData();
-        fd.append('new_resource', file);
-        fd.append('timestamp', timestamp);
-        //提交表单数据
-        $http.post(ContentDataSer.uploadResource, fd, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined},
-        }).success(function (response) {
-            if (response['status_code'] == 200) {
-                callback(response['data']);
-
-            } else {
-                OverallGeneralSer.alertHttpRequestError("uploadResource", response['exception_code'], response['exception']);
-            }
-        }).error(function (err) {
-            OverallGeneralSer.alertHttpRequestError("uploadResource", 600, err);
-        })
-    };
 
     /**
      * 下载目标图片资源

@@ -99,7 +99,7 @@ app.post('/copyTempResourceToLocal',function (req, res) {
 var storage = multer.diskStorage({
     //指定保存的文件夹
     destination: function (req, file, cb) {
-        cb(null, serverSerData.loadFilePath)
+        cb(null, serverSerData.loadFilePath+req['body']['fileUrl'])
     },
     //指定保存的文件名
     filename: function (req, file, cb) {

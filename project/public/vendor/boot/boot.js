@@ -70,6 +70,10 @@ head.load(
     'src/content/service/sub/news/studyEditService.js',
     'src/content/service/sub/news/dynamicListService.js',
     'src/content/service/sub/news/dynamicEditService.js',
+    'src/content/service/sub/team/teamListService.js',
+    'src/content/service/sub/team/teamEditService.js',
+    'src/content/service/sub/msg/msgListService.js',
+    'src/content/service/sub/msg/msgEditService.js',
 
     'src/content/directive/contentDirective.js',
     'src/content/directive/richTextEditorDirective.js',

@@ -69,6 +69,71 @@ contentModule.directive('fileModel', ['$parse', 'ContentDataSer', 'OverallSer', 
     };
 }]);
 
+/**
+ * 头像上传
+ */
+contentModule.directive('imgModel', ['$parse', 'ContentDataSer', 'OverallSer', 'TeamEditSer', function ($parse, ContentDataSer, OverallSer,TeamEditSer) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.bind('change', function (evt) {
+
+                //压缩图片操作
+                var canvas = document.createElement("canvas");
+                var img = document.createElement("img");
+                var reader = new FileReader();
+                var IMG_MAX_WIDTH = 800;
+
+                reader.readAsDataURL(element[0].files[0]);
+                //添加reader的load事件，在捕获阶段进行设置portrait_url
+                reader.addEventListener("load", function () {
+                    //赋值数据
+                    img.src = reader.result;
+                    img.addEventListener('load', function () {
+                        var width = img.width;
+                        var height = img.height;
+                        if (width > IMG_MAX_WIDTH) {
+                            height = height * IMG_MAX_WIDTH / width;
+                            width = IMG_MAX_WIDTH;
+                        }
+                        //在画布上画东西
+                        canvas.width = width;
+                        canvas.height = height;
+                        var ctx = canvas.getContext("2d");
+                        ctx.drawImage(this, 0, 0, width, height);
+                        var dataUrl = canvas.toDataURL();
+                        var blob = OverallSer.dataURItoBlob(dataUrl);
+
+                        var fileName = ContentDataSer.teamData['editData']['data']['timestamp']+".png";
+                        var fileUrl = ContentDataSer.fileUrl;
+
+                        var formData = {
+                            'fileUrl': fileUrl,
+                            'fileName': fileName,
+                            'fileBlob': blob
+                        };
+                        TeamEditSer.saveCoverImage(formData,function (response) {
+                            console.log(response);
+
+                        });
+
+                        //强制渲染操作才可现实在前端
+                        scope.$apply(function () {
+                            if(ContentDataSer.overallData['pageType']==4) {
+                                //生成blob数据到前端url
+                                ContentDataSer.teamData['editData']['data']['imgUrl'] = fileName;
+                                ContentDataSer.teamData['editData']['data']['coverImage'] = ContentDataSer.getCoverImage+fileName;
+                            }
+                        })
+                    });
+                }, true);
+                //清空该target file则下次选择相同的file也可以上传
+                evt.target.value = "";
+            });
+        }
+    };
+}]);
+
 
 
 /**

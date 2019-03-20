@@ -5,9 +5,10 @@
 //content 模块控制器
 
 var contentModule = angular.module('Angular.content');
-contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window, $location,ContentSer,ContentDataSer,
+contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window, $location,ContentSer,ContentDataSer,ContentGeneralSer,
                                                   OverallDataSer, OverallGeneralSer,InterestListSer,InterestEditSer,
-                                                  StudyListSer,StudyEditSer,DynamicListSer,DynamicEditSer) {
+                                                  StudyListSer,StudyEditSer,DynamicListSer,DynamicEditSer,
+                                                  TeamListSer,TeamEditSer,MsgListSer,MsgEditSer) {
     //检查是否登录状态
     if(!check) return;
     var content = this;
@@ -16,6 +17,8 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
     content.interestData = ContentDataSer.interestData;
     content.studyData = ContentDataSer.studyData;
     content.dynamicData = ContentDataSer.dynamicData;
+    content.teamData = ContentDataSer.teamData;
+    content.msgData = ContentDataSer.msgData;
 
     ContentSer.parsePath(); //解析路径操作
     ContentSer.dataInit(); //数据初始化操作
@@ -344,5 +347,136 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
     content.downloadDynamicImages = function () {
         DynamicEditSer.downloadDynamicImages();
     };
+
+
+    /************************ 团员列表List设置 *****************************/
+    /**
+     * pagination分页中， 获取上一批次或下一批次数据
+     * @see TeamListSer.getBatchRangeTeamInfo
+     */
+    content.getBatchRangeTeamInfo = function (changeBatch) {
+        TeamListSer.getBatchRangeTeamInfo(changeBatch);
+    };
+
+    /**
+     * 新创建团队成员数据
+     * @see TeamListSer.createNewTeam
+     */
+    content.createNewTeam = function () {
+        TeamListSer.createNewTeam();
+    };
+
+    /**
+     * 批量删除团队成员操作
+     * @see TeamListSer.deleteBatchTeam
+     */
+    content.deleteBatchTeam = function () {
+        TeamListSer.deleteBatchTeam();
+    };
+
+    /**
+     * 搜索团队成员数据
+     * @see TeamListSer.searchTeam
+     */
+    content.searchTeam = function () {
+        //点击搜素按钮的操作都视为第一次搜索
+        ContentDataSer.overallData['teamListShow']['search_first_flag'] = 0;
+        TeamListSer.searchTeam();
+    };
+
+    /**
+     * 按下enter进行搜索
+     * @see TeamListSer.searchTeamKeyDown()
+     */
+    content.searchTeamKeyDown = function (event) {
+        var keyObj = event.key.toLowerCase();
+        if (keyObj == 'enter') TeamListSer.searchTeam();
+    };
+
+    /**
+     * 文章列表中针对每条成员信息的操作：如编辑等
+     * @see TeamListSer.teamOpt
+     */
+    content.teamOpt = function (optType, teamId, index) {
+        TeamListSer.teamOpt(optType, teamId, index);
+    };
+
+    /************************ 成员编辑Edit设置 ******************************/
+
+    /**
+     * 保存成员数据
+     * @see MsgListSer.saveTeam
+     */
+    content.saveTeam = function () {
+        MsgListSer.saveTeam();
+    };
+
+
+    /************************ 留言列表List设置 *****************************/
+    /**
+     * pagination分页中， 获取上一批次或下一批次数据
+     * @see MsgListSer.getBatchRangeTeamInfo
+     */
+    content.getBatchRangeMsgInfo = function (changeBatch) {
+        MsgListSer.getBatchRangeMsgInfo(changeBatch);
+    };
+
+
+    /**
+     * 批量删除留言操作
+     * @see MsgListSer.deleteBatchMsg
+     */
+    content.deleteBatchMsg = function () {
+        MsgListSer.deleteBatchMsg();
+    };
+
+    /**
+     * 批量置办留言操作
+     * @see MsgListSer.setUpBatchMsg
+     */
+    content.setupBatchMsg = function () {
+        MsgListSer.setupBatchMsg();
+    };
+
+
+    /**
+     * 搜索团队成员数据
+     * @see MsgListSer.searchMsg
+     */
+    content.searchMsg = function () {
+        //点击搜素按钮的操作都视为第一次搜索
+        ContentDataSer.overallData['msgListShow']['search_first_flag'] = 0;
+        MsgListSer.searchMsg();
+    };
+
+    /**
+     * 按下enter进行搜索
+     * @see MsgListSer.searchMsgKeyDown()
+     */
+    content.searchMsgKeyDown = function (event) {
+        var keyObj = event.key.toLowerCase();
+        if (keyObj == 'enter') MsgListSer.searchMsg();
+    };
+
+    /**
+     * 文章列表中针对每条留言信息的操作：如编辑等
+     * @see MsgListSer.msgOpt
+     */
+    content.msgOpt = function (optType, msgId, index) {
+        MsgListSer.msgOpt(optType, msgId, index);
+    };
+
+    /************************ 成员编辑Edit设置 ******************************/
+
+    /**
+     * 保存成员数据
+     * @see MsgEditSer.saveMsg
+     */
+    content.saveMsg = function () {
+        MsgEditSer.saveMsg();
+    };
+
+
+
 
 });

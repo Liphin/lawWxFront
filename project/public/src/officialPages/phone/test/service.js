@@ -67,8 +67,10 @@ app.factory('MySer',function ($http, $rootScope,$window, $timeout, $location, My
 
                             var blob = MyGeneralSer.dataURItoBlob(base64);
                             var fileName = MyData.overallData['timestamp']+MyGeneralSer.generateUUID()+".png";
+                            var fileUrl = MyData.fileUrl;
 
                             var formData = {
+                                'fileUrl': fileUrl,
                                 'fileName': fileName,
                                 'fileBlob': blob
                             };

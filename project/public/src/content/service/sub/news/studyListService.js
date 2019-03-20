@@ -305,6 +305,7 @@ contentModule.factory('StudyListSer', function ($http, $window, $timeout, Conten
             }
             case 'top': {
                 topStudy(index);
+                break;
             }
             default: {
                 break;
