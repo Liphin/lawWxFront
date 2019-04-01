@@ -70,13 +70,18 @@
                         <input style="margin-top: 12px" type="checkbox" ng-model="news['toDelete']">
                     </th>
                     <td style="padding: 15px 0 0 0;width: 700px;">
-                        <img src={{news['coverImage']}} style="height: 290px;width: 180px">
-                        <span style="margin-left: 20px;font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">姓名： {{news['name']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">状态：{{news['status_cd_name']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">职能：{{news['content']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">电话：{{news['phone']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">邮件：{{news['mail']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">时间：{{news['create_time']}}</span>
+                        <div style="display: inline-block">
+                            <img src={{news['coverImage']}} style="height: 290px;width: 180px">
+                        </div>
+                        <div style="display: inline-block">
+                            <div style="margin-left: 20px;font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">姓名： {{news['name']}}</div>
+                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">状态：{{news['status_cd_name']}}</div>
+                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">职能：{{news['content']}}</div>
+                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">电话：{{news['phone']}}</div>
+                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">邮件：{{news['mail']}}</div>
+                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">时间：{{news['create_time']}}</div>
+                        </div>
+
                     </td>
 
                     <td style="padding: 15px 0 0 0;text-align: center; width: 78px;">

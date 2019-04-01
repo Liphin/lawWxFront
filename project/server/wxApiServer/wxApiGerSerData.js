@@ -12,9 +12,9 @@ var wxMeunJson = {
                     "key":"WX_00001"
                 },
                 {
-                    "type":"click",
+                    "type":"view",
                     "name":"见识闻趣",
-                    "key":"WX_00002"
+                    "url":"http://gntqant.com:80/src/officialPages/phone/interest/index.html",
                 },
                 {
                     "type":"click",
@@ -25,17 +25,22 @@ var wxMeunJson = {
                     "type":"click",
                     "name":"加入我们",
                     "key":"WX_00004"
+                },
+                {
+                    "type":"view",
+                    "name":"测试",
+                    "url":"http://gntqant.com:80/src/officialPages/phone/test/index.html",
                 }]
         },
         {
             "type":"view",
             "name":"研究所",
-            "url":"http://gntqant.com:80/src/officialPages/phone/test/index.html",
+            "url":"http://gntqant.com:80/src/officialPages/phone/study/index.html",
         },
         {
             "type":"view",
             "name":"微网站",
-            "url":"http://www.baidu.com/",
+            "url":"http://gntqant.com:80/src/officialPages/phone/mini/index.html",
         }]
 
 };

@@ -2,9 +2,220 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>首页</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+
+<style>
+    .navigation div{
+        width: 100px;
+        height: 46px;
+        padding-top: 10px;
+        cursor: pointer;
+    }
+    .navigation div:hover{
+        background: #e52f22;
+    }
+
+    .region{
+        border: 2px solid #346889;
+        color: #346889;
+        cursor: pointer;
+    }
+    .region:hover{
+        background: #346889;
+        color: white;
+    }
+</style>
+<body  style="font-family: 微软雅黑">
+
+<div id="main" style="overflow-x: auto" align="center">
+        <!--头部-->
+        <div style="width: 1230px; margin-top: 30px; position: relative" align="center">
+            <!--企业信息logo和铭牌-->
+            <img width="277" height="100" style="position: absolute; left: 20px" src="http://www.gzenciw.com/Uploads/Banner/original_img/20180504162912.jpg"/>
+
+            <!--搜索框-->
+            <div style="height: 42px;display: inline-block; border: 2px solid #346889;background: #346889;position: relative; top: 20px;">
+                <i class="fa fa-search" style="width:34px;font-size: 23px;color: white; position: relative; left:2px;top: 3px; "></i>
+                <input class="" style="width: 268px; height: 36px; border: none; outline: none; box-shadow: none; padding: 6px;position: relative; top: 1px;" />
+                <div style="color: white; width: 80px; display: inline-block; text-align: center; font-size: 16px;cursor: pointer">搜索</div>
+            </div>
+
+            <!--电话-->
+            <div style="display: inline-block;position: absolute;right: 20px">
+                <i class="fa fa-volume-control-phone" style="color: #346889; font-size: 37px;"></i>
+                <h2 style="color: #003851; font-size: 35px; display: inline-block; margin-left: 20px">400-024-1868</h2>
+            </div>
+        </div>
+
+    <!--导航及轮播-->
+    <div style="margin-top: 80px;background: #346889;" align="center">
+        <!--导航栏-->
+        <div style="width: 1230px; height: 46px;">
+            <div class="navigation" style="margin-left: 30px;display: flex; flex-direction: row;color: white; font-size: 17px">
+                <div onclick="window.location='./index.html#main'">首页</div>
+                <div onclick="window.location='./about.html'">关于我们</div>
+                <div onclick="window.location='./index.html#regions'">业务领域</div>
+                <div onclick="window.location='./contact.html'">联系我们</div>
+            </div>
+        </div>
+
+        <!--轮播-->
+        <div>
+            <div id="myCarousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="http://www.gzenciw.com/Uploads/Banner/original_img/20190215180251.png" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img src="http://www.gzenciw.com/Uploads/Banner/original_img/20190215184228.png" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="http://www.gzenciw.com/Uploads/Banner/original_img/20190215181129.png" alt="Third slide">
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--业务领域-->
+    <div id="regions" style="margin-top: 40px;background: white">
+        <!--业务领域-->
+        <div align="center" style="font-size: 30px;font-weight: 600; color:#346889;">
+            <div>SERVICES AVAILABLE</div>
+            <div style="font-size: 35px">业务领域</div>
+        </div>
+
+        <!--业务领域分类-->
+        <div style="width: 1230px;margin-top: 40px; display: flex; flex-direction: row; flex-wrap: wrap;justify-content: center;">
+            <div onclick="window.location='./regions/re_1.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-gratipay" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">婚姻继承</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">帮助客户解决婚姻中的合法权益、离婚后的财产纠纷、遗产纠纷等家庭事务上的烦恼。</div>
+            </div>
+            <div onclick="window.location='./regions/re_2.html'" class="region" style="width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-balance-scale" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">刑事辩护</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">主要针对被指控的罪行进行无罪、罪轻，减轻或者免除处罚的辩解，尽可能为客户做利益做大化的策略。</div>
+            </div>
+            <div onclick="window.location='./regions/re_3.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-newspaper-o" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">合同债务</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">规范合法保护资源，整合优化债权债务资源，以客户为中心，提供精准服务。</div>
+            </div>
+            <div onclick="window.location='./regions/re_4.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-car" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">交通事故</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">了解事故发生全过程，分析利弊，对案情各种可能性进行分析，帮助客户争取最好的结果和应有的权益。</div>
+            </div>
+            <div onclick="window.location='./regions/re_5.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-odnoklassniki" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">劳动工伤</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">处理当下劳动环境的各种劳动争议纠纷，切实保障广大劳动者的合法权益。</div>
+            </div>
+            <div onclick="window.location='./regions/re_6.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-font-awesome" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">行政诉讼</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">了解客户需求，不畏强权，维护公平正义，依法保护客户的合法权益。</div>
+            </div>
+            <div onclick="window.location='./regions/re_7.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-envira" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">商标专利</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">多途径对侵权行为进行调查，收集证据，守护客户的无形资产。</div>
+            </div>
+            <div onclick="window.location='./regions/re_8.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-building" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">房产拆迁</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">针对当下政策，帮助客户争取应得的安置与补偿，争取利益的最大化。</div>
+            </div>
+            <div onclick="window.location='./regions/re_9.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-university" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">建设工程</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">深入了解客户在建设工程纠纷中遇到的各种问题，通过全面梳理，运用法律适用的论述分析，维护权益。</div>
+            </div>
+            <div onclick="window.location='./regions/re_10.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-external-link" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">医疗事故</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">把脉案件疑难杂症，找准维权方向，为客户定制维权方案。</div>
+            </div>
+            <div onclick="window.location='./regions/re_11.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-registered" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">清算破产</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">调查取证，保证清理破产财产工作的真实性，控制风险，保障破产程序依法进行。</div>
+            </div>
+            <div onclick="window.location='./regions/re_12.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-money" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">金融财税</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">谙熟商业模式及商业实质，帮助公司实施税收筹划方案，规避商业风险、金融陷阱，避免损失。</div>
+            </div>
+            <div onclick="window.location='./regions/re_13.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-plane" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">海商外贸</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">熟知中外法律，协调利益均衡，规避外贸法律风险，依规依法保护客户权益。</div>
+            </div>
+            <div onclick="window.location='./regions/re_14.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-tree" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">三农权益</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">熟知国家三农政策法规，分析当地政策，结合客户需求，争取更多权益。</div>
+            </div>
+            <div onclick="window.location='./regions/re_15.html'" class="region" style="border: 2px solid #346889;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-male" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">法律顾问</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">度身量造最佳法律服务方案，高瞻远目，规避法律风险，为客户排忧解难。</div>
+            </div>
+        </div>
+    </div>
+
+    <!--尾部-->
+    <div style="width: 100%; height: 200px;background: #346889;" align="center">
+        <div style="width: 1230px;margin-top: 30px; color: white; position: relative;text-align: left">
+            <div style="padding-top: 40px">
+                <span>首页</span>
+                <span style="margin-left: 20px">关于我们</span>
+                <span style="margin-left: 20px">联系我们</span>
+            </div>
+            <div style="margin-top: 20px">
+                <span>广东期待师事务所 律师咨询热线:400-024-1868</span>
+                <span style="position: absolute; right: 20px">地址：广州市天河区珠江东路6号周大福金融中心1106房</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

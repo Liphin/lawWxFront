@@ -36,8 +36,10 @@
         <div style="padding: 5px 10px;width: 100%">
             <!--<div id="crop_result" style="text-align: right; width: 100%; height:auto;line-height: 110%;"></div>-->
             <div>
-                <div id="crop_result" class="ui-state-default" style="border: 1px solid #dadada;padding: 5px;position: relative;display: inline-block; width: 235px;height: 100px;margin: 2px 5px 5px 5px;background: white url({{ctrl.overallData['images']['coverUrl']}}) no-repeat center center; background-size: 235px 100px;">
-               </div>
+                <div class="ui-state-default" style="border: 1px solid #dadada;width: 255px;height: 120px;margin: 2px 5px 5px 5px;display: inline-block; ">
+                   <!--{{ctrl.overallData['images']['coverUrl']}}-->
+                    <div id="crop_result"  style="width: 235px;height: 100px;position: relative;left: 10px; top: 10px; background: white url({{ctrl.overallData['images']['coverUrl']}}) no-repeat center center; background-size: cover;"></div>
+                </div>
                 <!--图片添加-->
                 <div ng-click="ctrl.getPhoneImg()" style="position: relative; border: 1px solid #dadada;display: inline-block; width: 50px;height: 50px;margin: 2px 5px 5px 5px;background: url(/assets/img/dynamicinfo/add_pic.png) no-repeat no-repeat center center; background-size: 35px 35px;">
                     <!--<input file-proxy type="file" style="position: absolute;height: 0;width: 0; font-size: 0; opacity: 0">-->

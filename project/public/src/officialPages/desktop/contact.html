@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联系我们</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    .navigation div{
+        width: 100px;
+        height: 46px;
+        padding-top: 10px;
+        cursor: pointer;
+    }
+    .navigation div:hover{
+        background: #e52f22;
+    }
+
+    .region{
+        border: 2px solid #346889;
+        color: #346889;
+        cursor: pointer;
+    }
+    .region:hover{
+        background: #346889;
+        color: white;
+    }
+</style>
+<body  style="font-family: 微软雅黑">
+
+<div id="main" style="overflow-x: auto" align="center">
+        <!--头部-->
+        <div style="width: 1230px; margin-top: 30px; position: relative" align="center">
+            <!--企业信息logo和铭牌-->
+            <img width="277" height="100" style="position: absolute; left: 20px" src="http://www.gzenciw.com/Uploads/Banner/original_img/20180504162912.jpg"/>
+
+            <!--搜索框-->
+            <div style="height: 42px;display: inline-block; border: 2px solid #346889;background: #346889;position: relative; top: 20px;">
+                <i class="fa fa-search" style="width:34px;font-size: 23px;color: white; position: relative; left:2px;top: 3px; "></i>
+                <input class="" style="width: 268px; height: 36px; border: none; outline: none; box-shadow: none; padding: 6px;position: relative; top: 1px;" />
+                <div style="color: white; width: 80px; display: inline-block; text-align: center; font-size: 16px;cursor: pointer">搜索</div>
+            </div>
+
+            <!--电话-->
+            <div style="display: inline-block;position: absolute;right: 20px">
+                <i class="fa fa-volume-control-phone" style="color: #346889; font-size: 37px;"></i>
+                <h2 style="color: #003851; font-size: 35px; display: inline-block; margin-left: 20px">400-024-1868</h2>
+            </div>
+        </div>
+
+    <!--导航及轮播-->
+    <div style="margin-top: 80px;background: #346889;" align="center">
+        <!--导航栏-->
+        <div style="width: 1230px; height: 46px;">
+            <div class="navigation" style="margin-left: 30px;display: flex; flex-direction: row;color: white; font-size: 17px">
+                <div onclick="window.location='./index.html#main'">首页</div>
+                <div onclick="window.location='./about.html'">关于我们</div>
+                <div onclick="window.location='./index.html#regions'">业务领域</div>
+                <div onclick="window.location='./contact.html'">联系我们</div>
+            </div>
+        </div>
+
+        <!--地图-->
+        <div style="width: 100%;background: white" align="center">
+            <iframe src="baidumap.html" style="width: 1200px; height: 550px; overflow: hidden"></iframe>
+        </div>
+    </div>
+
+    <!--表单填写-->
+    <div style="margin-top: 40px;background: white">
+        <div style="width: 100%;min-width: 1230px; min-height: 500px; background: url(http://www.gzenciw.com/Public/Home/images/bg10.png) no-repeat center center; background-size: cover; padding-top: 50px;padding-bottom: 60px ">
+            <!--联系我们文字说明-->
+            <div style="font-size: 32px;font-weight: bold;">Contact US</div>
+            <div style="font-size: 42px;font-weight: bold; color: #346889">联系我们</div>
+            <div style="width: 100%;" align="center">
+                <div style="width: 1230px;margin-top: 70px;min-height: 400px;background:  white;font-size: 17px; text-align: left; padding: 30px;box-shadow: 0 0 10px #858585; border-radius: 20px">
+                    <!--这里填入联系我们的表单-->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--尾部-->
+    <div style="width: 100%; height: 200px;background: #346889;" align="center">
+        <div style="width: 1230px;margin-top: 30px; color: white; position: relative;text-align: left">
+            <div style="padding-top: 40px">
+                <span>首页</span>
+                <span style="margin-left: 20px">关于我们</span>
+                <span style="margin-left: 20px">联系我们</span>
+            </div>
+            <div style="margin-top: 20px">
+                <span>广东期待师事务所 律师咨询热线:400-024-1868</span>
+                <span style="position: absolute; right: 20px">地址：广州市天河区珠江东路6号周大福金融中心1106房</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

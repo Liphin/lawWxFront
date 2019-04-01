@@ -15,352 +15,355 @@
     </div>
 </div>
 </div>
-<script>
-    var app = angular.module('myApp', []);
-    //重置HTML的url即，可以无需hash情况使用$location
-    app.config(function ($locationProvider) {
-        $locationProvider.html5Mode({
-            enabled: true,
-            rewriteLinks: false,
-            requireBase: false
+    <script>
+        var app = angular.module('myApp', []);
+        //重置HTML的url即，可以无需hash情况使用$location
+        app.config(function ($locationProvider) {
+            $locationProvider.html5Mode({
+                enabled: true,
+                rewriteLinks: false,
+                requireBase: false
+            });
         });
-    });
-    /*控制器*/
-    app.controller('MyCtrl', function ($scope, $http, $window, $location, MyData, MySer) {
-        //数据初始化操作
-        var ctrl = this;
-        ctrl.overallData = MyData.overallData;
-        ctrl.dynamicDetail = MyData.dynamicDetail;
-        ctrl.userDynamic = MyData.userDynamic;
-        MySer.initData();
+        /*控制器*/
+        app.controller('MyCtrl', function ($scope, $http, $window, $location, MyData, MySer) {
+            //数据初始化操作
+            var ctrl = this;
+            ctrl.overallData = MyData.overallData;
+            ctrl.dynamicDetail = MyData.dynamicDetail;
+            ctrl.userDynamic = MyData.userDynamic;
+            MySer.initData();
 
-        /**
-         * 点赞操作
-         */
-        ctrl.updatePitchCount = function () {
-            MySer.updatePitchCount();
-        }
-    });
-
-
-    /*数据集*/
-    app.factory('MyData', function () {
-        //var serverHost = 'http://gntqant.com';
-        var serverHost = 'http://127.0.0.1';
-        var frontSerPort = 80;
-        var backSerPort = 8085;
-        var requestDataErrorMsg = "尊敬的客户，服务器异常，请稍后分享";
-
-        var userInfo = {
-            'openid':'';
-        };
-        var userDynamic = {}; //用户_新闻行为表
-        var dynamicDetail = {}; //进入新闻详情页面后，记录新闻详细信息
-        var getUserDynamicInfo = serverHost + ":" + backSerPort + "/getUserDynamicInfo"; //获取某条新闻详情
-        var updatePitchCount = serverHost + ":" + backSerPort + "/updatePitchCount"; //更新用户点赞数
-        var getWxOauthToken = serverHost + ":" + frontSerPort + "/getWxOauthToken";
-        var getJsSign = serverHost + ":" + frontSerPort + '/getJsSign';
-        var coverImgUrl = serverHost + ":" + frontSerPort + "/dynamicinfo/coverimg/";
-        var getUserDynamicInfoHq = serverHost + ":" + backSerPort + "/getUserDynamicInfoHq"; //获取某条后勤服务详情
-        var updatePitchCountHq = serverHost + ":" + backSerPort + "/updatePitchCountHq"; //更新后勤服务用户点赞数
+            /**
+             * 点赞操作
+             */
+            ctrl.updatePitchCount = function () {
+                MySer.updatePitchCount();
+            }
+        });
 
 
-        var viewNewsDetailSetting = {
-            'appid': 'wxf52fc57535c3d13b',
-            'redirect_uri': '',
-            'response_type': 'code',
-            'scope': 'snsapi_base',
-        };
+        /*数据集*/
+        app.factory('MyData', function () {
+            var serverHost = 'http://gntqant.com';
+            //var serverHost = 'http://127.0.0.1';
+            var frontSerPort = 80;
+            var backSerPort = 8085;
+            var requestDataErrorMsg = "尊敬的客户，服务器异常，请稍后分享";
 
-        //设置对象数据
-        var overallData = {
-            param: '', //记录类型
-            showPageInfo: false, //是否允许查看本消息体的开关
-        };
-
-        return {
-            userInfo: userInfo,
-            getJsSign: getJsSign,
-            userDynamic: userDynamic,
-            dynamicDetail: dynamicDetail,
-            coverImgUrl: coverImgUrl,
-            overallData: overallData,
-            updatePitchCount: updatePitchCount,
-            getWxOauthToken: getWxOauthToken,
-            getUserDynamicInfo: getUserDynamicInfo,
-            viewNewsDetailSetting: viewNewsDetailSetting,
-            requestDataErrorMsg: requestDataErrorMsg,
-            getUserDynamicInfoHq: getUserDynamicInfoHq,
-            updatePitchCountHq: updatePitchCountHq,
-        }
-    });
+            var userInfo = {};
+            var userDynamic = {}; //用户_新闻行为表
+            var dynamicDetail = {}; //进入新闻详情页面后，记录新闻详细信息
+            var getUserDynamicInfo = serverHost + ":" + backSerPort + "/getUserDynamicInfo"; //获取某条新闻详情
+            var updatePitchCount = serverHost + ":" + backSerPort + "/updatePitchCount"; //更新用户点赞数
+            var getWxOauthToken = serverHost + ":" + frontSerPort + "/getWxOauthToken";
+            var getJsSign = serverHost + ":" + frontSerPort + '/getJsSign';
+            var coverImgUrl = serverHost + ":" + frontSerPort + "/dynamicinfo/coverimg/";
 
 
-    app.factory('MySer', function ($window, $document, $http, MyData, $location) {
-        /**
-         * 初始化页面数据操作
-         */
-        var initData = function () {
-            //设置标题数据
-            var parameters = $location.search();
-            MyData.overallData['param'] = parameters; //装载参数数据
+            var viewNewsDetailSetting = {
+                'appid': 'wxf52fc57535c3d13b',
+                'redirect_uri': '',
+                'response_type': 'code',
+                'scope': 'snsapi_base',
+            };
 
-            //获取用户数据，从本地的cookie中读取数据
-            var userInfo = Cookies.getJSON('userInfo');
-            //alert(JSON.stringify(userInfo));
-            if (checkDataNotEmpty(userInfo['openid'])) {
-                //装载openid
-                MyData.userInfo['openid'] = userInfo['openid'];
-                //获取用户和消息相关数据
-                getUserDynamicInfo();
+            //设置对象数据
+            var overallData = {
+                param: '', //记录类型
+                showPageInfo: false, //是否允许查看本消息体的开关
+            };
 
-            } else {
-                //根据url是否有code参数逻辑处理
-                if (checkDataNotEmpty(parameters['code'])) {
-                    //如果有code则进行code请求user数据
-                    getUserInfo(parameters);
+            return {
+                userInfo: userInfo,
+                getJsSign: getJsSign,
+                userDynamic: userDynamic,
+                dynamicDetail: dynamicDetail,
+                coverImgUrl: coverImgUrl,
+                overallData: overallData,
+                updatePitchCount: updatePitchCount,
+                getWxOauthToken: getWxOauthToken,
+                getUserDynamicInfo: getUserDynamicInfo,
+                viewNewsDetailSetting: viewNewsDetailSetting,
+                requestDataErrorMsg: requestDataErrorMsg,
+            }
+        });
+
+
+        app.factory('MySer', function ($window, $document, $http, MyData, $location) {
+            /**
+             * 初始化页面数据操作
+             */
+            var initData = function () {
+                //设置标题数据
+                var parameters = $location.search();
+                MyData.overallData['param'] = parameters; //装载参数数据
+
+                //获取用户数据，从本地的cookie中读取数据
+                var userInfo = Cookies.getJSON('userInfo');
+                console.log('userInfo: ',userInfo);
+                if (checkDataNotEmpty(userInfo)) {
+                    //装载openid
+                    for (var i in userInfo) {
+                        MyData.userInfo[i] = userInfo[i];
+                    }
+                    //获取新闻相关数据
+                    getUserDynamicInfo();
 
                 } else {
-                    //如果无code则进行code请求，并redirect回该页面
-                    reloadPageAndGetCompanyCode();
-                }
-            }
-        };
-
-
-        /**
-         * 先获取用户信息，如果该用户是本公司员工则允许查看消息，否则不允许查看消息
-         */
-        var getUserInfo = function (parameters) {
-            //http请求获取user信息数据
-            var url = MyData.getWxOauthToken + '?code=' + parameters['code'];
-            $http({method: 'GET', url: url}).then(function successCallback(response) {
-                if (response['status'] == 200) {
-                    var data = response['data'];
-                    if (data == '400') {
-                        alert('很抱歉，微信服务有异常，请稍后再试');
+                    //根据url是否有code参数逻辑处理
+                    if (checkDataNotEmpty(parameters['code'])) {
+                        //如果有code则进行code请求user数据
+                        getUserInfo(parameters);
 
                     } else {
-                        //装载每个user info数据
-                        MyData.userInfo['openid'] = response['data'];
-                        //装载userInfo数据到cookies
-                        Cookies.set('userInfo', data, {expires: 1});
-                        //获取用户和消息相关数据
-                        getUserDynamicInfo();
+                        //如果无code则进行code请求，并redirect回该页面
+                        reloadPageAndGetCompanyCode();
                     }
                 }
-            }, function errorCallback(err) {
-                alert("尊敬的客户，微信服务有异常，请稍后重试.,")
-            });
-        };
+            };
 
 
-        /**
-         * 进入预览新闻数据
-         */
-        var reloadPageAndGetCompanyCode = function () {
-            MyData.viewNewsDetailSetting['redirect_uri'] = $location.absUrl();
-            location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?" + jQuery.param(MyData.viewNewsDetailSetting) + "#wechat_redirect"
-        };
+            /**
+             * 先获取用户信息，如果该用户是本公司员工则允许查看消息，否则不允许查看消息
+             */
+            var getUserInfo = function (parameters) {
+                console.log(parameters);
+                //http请求获取user信息数据
+                var url = MyData.getWxOauthToken + '?code=' + parameters['code'];
+                $http({method: 'GET', url: url}).then(function successCallback(response) {
+                    console.log('response: ',response);
+                    if (response['status'] == 200) {
+                        var data = response['data'];
+                        if (data == '400') {
+                            alert('很抱歉，微信服务有异常，请稍后再试--');
 
-
-        /**
-         * 进入新闻详情页面后，获取新闻详细信息和该用户操作新闻的行为数据
-         */
-        var getUserDynamicInfo = function () {
-            //允许用户查看该消息体
-            MyData.overallData['showPageInfo'] = true;
-
-            //装载表单数据
-            var fd = new FormData();
-            fd.append('wx_user_id', MyData.userInfo['openid']);
-            fd.append('dynamic_timestamp', MyData.overallData['param']['timestamp']);
-            var url = MyData.getUserDynamicInfo;
-            //http请求数据
-            $http.post(url, fd, {
-                transformRequest: angular.identity,
-                headers: {'Content-Type': undefined},
-            }).success(function (response) {
-                if (response['status_code'] == 200) {
-
-                    //initWxConfig();
-
-                    //装载每个用户操作新闻表数据
-                    for (var i in response['data']['user_dynamic']) {
-                        MyData.userDynamic[i] = response['data']['user_dynamic'][i];
-                    }
-                    //装载每个动态消息数据
-                    for (var i in response['data']['dynamicinfo']) {
-                        MyData.dynamicDetail[i] = response['data']['dynamicinfo'][i];
-                    }
-
-                } else {
-                    alert("尊敬的客户，服务器异常，请稍后重试,.")
-                }
-            }).error(function (err) {
-                alert("尊敬的客户，服务器异常，请稍后重试.")
-            })
-        };
-
-        /**
-         * 调用企业微信JS Api需满足config需求
-         */
-        var initWxConfig = function () {
-
-            var url = MyData.getJsSign + "?type=" + MyData.overallData['param']['type'] + "&webUrl=" + encodeURIComponent($location.absUrl());
-            var title = document.title;
-            if (MyData.overallData['param']['type']==7) {
-                var imgurl = $('img').eq(0).attr('src');
-            }
-            else {
-                var imgurl = MyData.coverImgUrl + MyData.overallData['param']['timestamp'] + ".png";
-            }
-
-
-            var htmlurl = $location.absUrl();
-
-            httpGetFiles(url, function (data) {
-                //配置签名信息
-                wx.config({
-                    beta: true,// 必须这么写，否则wx.invoke调用形式的jsapi会有问题
-                    debug: false, //关闭debug模式，调试信息不弹出
-                    appId: data['appId'],
-                    timestamp: data['timestamp'],
-                    nonceStr: data['noncestr'],
-                    signature: data['signature'],
-                    jsApiList: [
-                        'onMenuShareAppMessage',
-                    ]
-                });
-                wx.ready(function(){
-                    wx.onMenuShareAppMessage({
-                        title: title, // 分享标题
-                        desc: '', // 分享描述
-                        link: htmlurl, // 分享链接
-                        imgUrl: imgurl, // 分享图标
-                        success: function () {
-                            // 用户确认分享后执行的回调函数
-                        },
-                        cancel: function () {
-                            // 用户取消分享后执行的回调函数
+                        } else {
+                            //装载每个user info数据
+                            for (var i in response['data']) {
+                                MyData.userInfo[i] = response['data'][i];
+                            }
+                            //装载userInfo数据到cookies
+                            Cookies.set('userInfo', data, {expires: 1});
+                            //获取用户和消息相关数据
+                            getUserDynamicInfo();
                         }
-                    });
+                    }
+                }, function errorCallback(err) {
+                    alert("尊敬的客户，微信服务有异常，请稍后重试.,")
                 });
-            });
-        };
-
-        /**
-         * http get获取资源数据
-         */
-        var httpGetFiles = function (url, callback) {
-            //设置loading状态
-            //MyData.overallData['loadData'] = true;
-            $http({
-                method: 'GET',
-                url: url
-            }).then(function successCallback(response) {
-                if (response['status'] == 200) {
-                    //返回正确操作后执行回调函数
-                    callback(response['data'])
-
-                } else {
-                    alert(MyData.requestDataErrorMsg + ",.");
-                }
-            }, function errorCallback(err) {
-                alert(MyData.requestDataErrorMsg + ".," + err);
-
-            }).finally(function () {
-                //重置loading状态
-                //MyData.overallData['loadData'] = false;
-            });
-        };
+            };
 
 
-        /**
-         * 用户点赞和取消点赞操作
-         */
-        var updatePitchCount = function () {
-            if (!MyData.overallData['markSubmitPitchOpt']) {
-                //设置提交点赞为true
-                MyData.overallData['markSubmitPitchOpt'] = true;
+            /**
+             * 进入预览新闻数据
+             */
+            var reloadPageAndGetCompanyCode = function () {
+                MyData.viewNewsDetailSetting['redirect_uri'] = $location.absUrl();
+                //MyData.viewNewsDetailSetting['redirect_uri'] = "http://gntqant.com/getWxOauthToken";
+                console.log("绝对路径");
+                console.log(MyData.viewNewsDetailSetting['redirect_uri']);
+                location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?" + jQuery.param(MyData.viewNewsDetailSetting) + "#wechat_redirect"
+            };
+
+
+            /**
+             * 进入新闻详情页面后，获取新闻详细信息和该用户操作新闻的行为数据
+             */
+            var getUserDynamicInfo = function () {
+                //允许用户查看该消息体
+                MyData.overallData['showPageInfo'] = true;
 
                 //装载表单数据
                 var fd = new FormData();
                 fd.append('wx_user_id', MyData.userInfo['openid']);
                 fd.append('dynamic_timestamp', MyData.overallData['param']['timestamp']);
-                MyData.userDynamic['dynamic_pitch'] = (MyData.userDynamic['dynamic_pitch'] == 1 ? 0 : 1);
-                fd.append('dynamic_pitch', MyData.userDynamic['dynamic_pitch']);
-
-                var url = MyData.updatePitchCount;
-
+                var url = MyData.getUserDynamicInfo;
                 //http请求数据
                 $http.post(url, fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined},
                 }).success(function (response) {
                     if (response['status_code'] == 200) {
-                        //更新点赞数
-                        MyData.dynamicDetail['pitch_count'] = response['data'];
-                    }
 
+                        //initWxConfig();
+
+                        //装载每个用户操作新闻表数据
+                        for (var i in response['data']['user_dynamic']) {
+                            MyData.userDynamic[i] = response['data']['user_dynamic'][i];
+                        }
+                        //装载每个动态消息数据
+                        for (var i in response['data']['dynamicinfo']) {
+                            MyData.dynamicDetail[i] = response['data']['dynamicinfo'][i];
+                        }
+
+                    } else {
+                        alert("尊敬的客户，服务器异常，请稍后重试,.")
+                    }
                 }).error(function (err) {
-                    alert("尊敬的客户，服务器异常，请稍后重试._")
-
-                }).finally(function () {
-                    MyData.overallData['markSubmitPitchOpt'] = false;
+                    alert("尊敬的客户，服务器异常，请稍后重试.")
                 })
+            };
 
-            } else {
-                alert("正在执行点赞更新操作，请稍后重试");
-            }
-        };
+            /**
+             * 调用企业微信JS Api需满足config需求
+             */
+            // var initWxConfig = function () {
+            //
+            //     var url = MyData.getJsSign + "?type=" + MyData.overallData['param']['type'] + "&webUrl=" + encodeURIComponent($location.absUrl());
+            //     var title = document.title;
+            //     if (MyData.overallData['param']['type']==7) {
+            //         var imgurl = $('img').eq(0).attr('src');
+            //     }
+            //     else {
+            //         var imgurl = MyData.coverImgUrl + MyData.overallData['param']['timestamp'] + ".png";
+            //     }
+            //
+            //
+            //     var htmlurl = $location.absUrl();
+            //
+            //     httpGetFiles(url, function (data) {
+            //         //配置签名信息
+            //         wx.config({
+            //             beta: true,// 必须这么写，否则wx.invoke调用形式的jsapi会有问题
+            //             debug: false, //关闭debug模式，调试信息不弹出
+            //             appId: data['appId'],
+            //             timestamp: data['timestamp'],
+            //             nonceStr: data['noncestr'],
+            //             signature: data['signature'],
+            //             jsApiList: [
+            //                 'onMenuShareAppMessage',
+            //             ]
+            //         });
+            //         wx.ready(function(){
+            //             wx.onMenuShareAppMessage({
+            //                 title: title, // 分享标题
+            //                 desc: '', // 分享描述
+            //                 link: htmlurl, // 分享链接
+            //                 imgUrl: imgurl, // 分享图标
+            //                 success: function () {
+            //                     // 用户确认分享后执行的回调函数
+            //                 },
+            //                 cancel: function () {
+            //                     // 用户取消分享后执行的回调函数
+            //                 }
+            //             });
+            //         });
+            //     });
+            // };
 
-        /**
-         * 对数据进行判空处理
-         * @param data
-         */
-        var checkDataNotEmpty = function (data) {
-            var status = false;
-            if (data != null && data != undefined) {
-                //根据变量的不同类型进行判空处理
-                switch (Object.prototype.toString.call(data)) {
+            /**
+             * http get获取资源数据
+             */
+            // var httpGetFiles = function (url, callback) {
+            //     //设置loading状态
+            //     //MyData.overallData['loadData'] = true;
+            //     $http({
+            //         method: 'GET',
+            //         url: url
+            //     }).then(function successCallback(response) {
+            //         if (response['status'] == 200) {
+            //             //返回正确操作后执行回调函数
+            //             callback(response['data'])
+            //
+            //         } else {
+            //             alert(MyData.requestDataErrorMsg + ",.");
+            //         }
+            //     }, function errorCallback(err) {
+            //         alert(MyData.requestDataErrorMsg + ".," + err);
+            //
+            //     }).finally(function () {
+            //         //重置loading状态
+            //         //MyData.overallData['loadData'] = false;
+            //     });
+            // };
+
+
+            /**
+             * 用户点赞和取消点赞操作
+             */
+            var updatePitchCount = function () {
+                if (!MyData.overallData['markSubmitPitchOpt']) {
+                    //设置提交点赞为true
+                    MyData.overallData['markSubmitPitchOpt'] = true;
+
+                    //装载表单数据
+                    var fd = new FormData();
+                    fd.append('wx_user_id', MyData.userInfo['openid']);
+                    fd.append('dynamic_timestamp', MyData.overallData['param']['timestamp']);
+                    MyData.userDynamic['dynamic_pitch'] = (MyData.userDynamic['dynamic_pitch'] == 1 ? 0 : 1);
+                    fd.append('dynamic_pitch', MyData.userDynamic['dynamic_pitch']);
+
+                    var url = MyData.updatePitchCount;
+
+                    //http请求数据
+                    $http.post(url, fd, {
+                        transformRequest: angular.identity,
+                        headers: {'Content-Type': undefined},
+                    }).success(function (response) {
+                        if (response['status_code'] == 200) {
+                            //更新点赞数
+                            MyData.dynamicDetail['pitch_count'] = response['data'];
+                        }
+
+                    }).error(function (err) {
+                        alert("尊敬的客户，服务器异常，请稍后重试._")
+
+                    }).finally(function () {
+                        MyData.overallData['markSubmitPitchOpt'] = false;
+                    })
+
+                } else {
+                    alert("正在执行点赞更新操作，请稍后重试");
+                }
+            };
+
+            /**
+             * 对数据进行判空处理
+             * @param data
+             */
+            var checkDataNotEmpty = function (data) {
+                var status = false;
+                if (data != null && data != undefined) {
+                    //根据变量的不同类型进行判空处理
+                    switch (Object.prototype.toString.call(data)) {
                         /*String类型数据*/
-                    case '[object String]': {
-                        if (data.trim() != '') {
-                            status = true;
+                        case '[object String]': {
+                            if (data.trim() != '') {
+                                status = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
                         /*Array类型*/
-                    case '[object Array]': {
-                        if (data.length > 0) {
-                            status = true;
+                        case '[object Array]': {
+                            if (data.length > 0) {
+                                status = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
                         /*Object类型*/
-                    case '[object Object]': {
-                        if (Object.keys(data).length > 0) {
-                            status = true;
+                        case '[object Object]': {
+                            if (Object.keys(data).length > 0) {
+                                status = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
                         /*其他类型状态默认设置为true，分别为Number和Boolean类型*/
-                    default: {
-                        status = true;
-                        break;
+                        default: {
+                            status = true;
+                            break;
+                        }
                     }
                 }
+                return status;
+            };
+
+
+            return {
+                initData: initData,
+                updatePitchCount:updatePitchCount,
             }
-            return status;
-        };
-
-
-        return {
-            initData: initData,
-            updatePitchCount:updatePitchCount,
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>

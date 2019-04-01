@@ -29,8 +29,9 @@ function GetAccessTokenSer () {
                 if (!err && res['statusCode'] == 200) {
                     serverSerData.wxCertData['access_token'] = JSON.parse(body)['access_token'];
                     serverSerData.wxCertData['timestamp'] = new Date();//插入新记录的时间
-                    callback();
                     console.log(serverSerData.wxCertData);
+                    callback();
+
                 } else {
                     //调用出错
                     console.log(err);

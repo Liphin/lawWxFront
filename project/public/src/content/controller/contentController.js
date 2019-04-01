@@ -45,7 +45,16 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
      * 根据是否置顶的数据返回相应左偏移量
      */
     content.stickLeftOffset = function (status_cd) {
-        return status_cd == 1 ? '-312px' : '-286px';
+        if (ContentDataSer.overallData['pageType']<4) {
+            return status_cd == 1 ? '-312px' : '-286px';
+        }
+        else if (ContentDataSer.overallData['pageType']==4) {
+            return status_cd == 1 ? '-200px' : '-174px';
+        }
+        else {
+            return status_cd == 1 ? '-260px' : '-234px';
+        }
+
     };
 
     /**
@@ -405,10 +414,10 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
 
     /**
      * 保存成员数据
-     * @see MsgListSer.saveTeam
+     * @see TeamEditSer.saveTeam
      */
     content.saveTeam = function () {
-        MsgListSer.saveTeam();
+        TeamEditSer.saveTeam();
     };
 
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="MyCtrl as ctrl">
+<head>
+    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/jquery/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/css/jquery/jquery-ui-custom.min.css">
+
+    <script src="/assets/js/jquery/jquery-1.11.0.min.js"></script>
+    <script src="/assets/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery/jquery-ui.min.js"></script>
+    <script src="/assets/js/jquery/jqueryui-touch-punch.js"></script>
+    <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="/assets/js/cropImage/transform.js"></script>
+    <script src="/assets/js/cropImage/alloy-finger.js"></script>
+    <script src="/assets/js/cropImage/alloy-crop.js"></script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>期待律师事务所</title>
+</head>
+
+<body>
+    <!--页面头部和商标-->
+    <section>
+        <div id="myCarousel" class="carousel slide">
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="/assets/img/mini/001.jpg" alt="First slide">
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 5px;height: 100px">
+            <div style="display:inline;margin-top: 10px;margin-left: 5px;height:70px;width: 70px;background-color: #8c8c8c">此处存放商标</div>
+            <div onclick="window.location='./aboutUs.html'" style="display:inline;font-size: 30px; margin-left: 150px;margin-top: 20px;height: 50px;width: 150px;background-color: #8c8c8c">律所简介</div>
+        </div>
+
+    </section>
+
+    <!--页面按钮-->
+    <section>
+        <div style="text-align:center;display: inline-block;width: 100%">
+            <!--律所资讯-->
+            <button id="dynamic" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 20px" class="btn btn-success" onclick="window.location='./dynamic/index.html'" >律所资讯</button>
+            <!--业务项目-->
+            <button id="business" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 20px;margin-left: 20px" class="btn btn-success" onclick="window.location='./business/business.html'" >业务项目</button>
+        </div>
+
+        <div style="text-align:center;display: inline-block;width: 100%">
+            <!--专业团队-->
+            <button id="team" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 30px" class="btn btn-success" onclick="window.location='./team/index.html'" >专业团队</button>
+            <!--一键留言-->
+            <button id="msg" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 30px;margin-left: 20px" class="btn btn-success" onclick="window.location='./msg/index.html'" >一键留言</button>
+        </div>
+    </section>
+
+    <!--页面底部-->
+    <section style="position:fixed; bottom:0;display: inline-block;width: 100%;text-align: center">
+        <div onclick="window.location='./joinUs.html'" style="display: inline;font-size: 20px">加入我们</div>
+        <div onclick="window.location='./connectUs.html'" style="margin-left:150px;display: inline;font-size: 20px">联系我们</div>
+    </section>
+
+</body>
+
+</html>

@@ -121,6 +121,7 @@ app.post('/saveCoverImage',upload.single('fileBlob'),function (req, res) {
 app.use('/dynamicinfo',express.static(serverSerData.basePath + '/dynamicinfo'));
 // app.use('/favicon.ico', express.static(serverSerData.publicPath + '/favicon.ico'));
 app.use('/assets', express.static(serverSerData.projectPath + '/assets'));
+app.use('/desktop', express.static(serverSerData.projectPath + '/public/src/officialPages/desktop'));
 app.use("/", express.static(serverSerData.projectPath + '/public'));
 app.listen(PORT);
 console.log("Server is running at port: " + PORT + " , and at environment: " + global.env);

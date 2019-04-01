@@ -35,6 +35,7 @@ function ServerSer() {
      */
     this.dataInit = function () {
         getAccessTokenSer.getAccessToken(function () {
+            console.log("创建菜单");
             wxApiGerSer.createWxMenu();
         });
 

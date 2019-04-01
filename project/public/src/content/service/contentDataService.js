@@ -448,7 +448,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         deleteStudy: deleteStudy,
         deleteBatchStudy: deleteBatchStudy,
         searchStudyData: searchStudyData,
-        copyInterest: copyStudy,
+        copyStudy: copyStudy,
         saveStudyData: saveStudyData,
 
         //律所资讯api

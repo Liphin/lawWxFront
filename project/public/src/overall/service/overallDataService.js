@@ -27,10 +27,10 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
 
     /* Url 系统各种文件获取的URL设置 */
     var baseUrlData = {
-        'backEndHttp': "http://127.0.0.1:8085/",
-        'frontEndHttp': "http://127.0.0.1:80/",
-        // 'backEndHttp': "http://gntqant.com:8085/",
-        // 'frontEndHttp': "http://gntqant.com:80/",
+        //'backEndHttp': "http://127.0.0.1:8085/",
+        //'frontEndHttp': "http://127.0.0.1:80/",
+        'backEndHttp': "http://gntqant.com:8085/",
+        'frontEndHttp': "http://gntqant.com:80/",
         'ossHttp': "",
         'resource_http_request': '',
     };
@@ -59,7 +59,7 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
             'getRangeStudyListToBg': baseUrlData['backEndHttp'] + 'getRangeStudyListToBg',
             'deleteStudy': baseUrlData['backEndHttp'] + 'deleteStudy',
             'deleteBatchStudy': baseUrlData['backEndHttp'] + 'deleteBatchStudy',
-            'copyStudy': baseUrlData['backEndHttp'] + 'copyInterest', //拷贝文章数据
+            'copyStudy': baseUrlData['backEndHttp'] + 'copyStudy', //拷贝文章数据
             'saveStudyData': baseUrlData['backEndHttp'] + 'saveStudyData', //保存文章数据
             'searchStudyData': baseUrlData['backEndHttp'] + 'searchStudyData', //搜索操作
 

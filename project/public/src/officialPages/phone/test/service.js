@@ -54,9 +54,9 @@ app.factory('MySer',function ($http, $rootScope,$window, $timeout, $location, My
 
                     new AlloyCrop({
                         image_src: MyData.overallData['images']['url'],
-                        width: 470,
-                        height: 200,
-                        output: 1.5,
+                        width: 350,
+                        height: 149,
+                        output: 1,
                         ok: function (base64, canvas) {
                             MyData.overallData['loadData'] = false;
                             // crop_result.appendChild(canvas);
