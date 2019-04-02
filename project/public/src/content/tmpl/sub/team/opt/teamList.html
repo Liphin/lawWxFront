@@ -55,8 +55,23 @@
                     <th style="text-align: center; width: 60px;">
                         <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">选择</span>
                     </th>
-                    <th style="text-align: center; width: 700px; ">
-                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">人员介绍</span>
+                    <th style="text-align: center; width: 110px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">头像</span>
+                    </th>
+                    <th style="text-align: center; width: 80px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">姓名</span>
+                    </th>
+                    <th style="text-align: center; width: 60px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">状态</span>
+                    </th>
+                    <th style="text-align: center; width: 120px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">联系电话</span>
+                    </th>
+                    <th style="text-align: center; width: 150px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">联系邮箱</span>
+                    </th>
+                    <th style="text-align: center; width: 180px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">时间</span>
                     </th>
                     <th style="text-align: center; width: 78px; ">
                         <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">操作</span>
@@ -65,26 +80,31 @@
                 </thead>
                 <!--表格内容 table content-->
                 <tbody>
-                <tr ng-repeat="news in content['teamData']['list'] | limitTo:content['overallData']['teamListShow']['screenNum']:content['overallData']['teamListShow']['pagination']['beginListIndex'] track by $index" style="height:300px;">
-                    <th style=" width: 60px;text-align: center">
-                        <input style="margin-top: 12px" type="checkbox" ng-model="news['toDelete']">
+                <tr ng-repeat="news in content['teamData']['list'] | limitTo:content['overallData']['teamListShow']['screenNum']:content['overallData']['teamListShow']['pagination']['beginListIndex'] track by $index" style="height:110px;">
+                    <th style="width: 60px;text-align: center;vertical-align: middle;">
+                        <input style="" type="checkbox" ng-model="news['toDelete']">
                     </th>
-                    <td style="padding: 15px 0 0 0;width: 700px;">
-                        <div style="display: inline-block">
-                            <img src={{news['coverImage']}} style="height: 290px;width: 180px">
-                        </div>
-                        <div style="display: inline-block">
-                            <div style="margin-left: 20px;font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">姓名： {{news['name']}}</div>
-                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">状态：{{news['status_cd_name']}}</div>
-                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">职能：{{news['content']}}</div>
-                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">电话：{{news['phone']}}</div>
-                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">邮件：{{news['mail']}}</div>
-                            <div style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">时间：{{news['create_time']}}</div>
-                        </div>
 
+                    <td style="padding: 15px 0 10px 0;text-align: center;width: 110px;">
+                        <div style="display:inline-block;width: 100px;height: 100px;border: 1px solid #dedede;background: white url({{news['coverImage']}}) no-repeat center center;background-size: 100px 100px"></div>
+                    </td>
+                    <td style="padding: 15px 0 10px 0;text-align: center;width: 80px;vertical-align: middle;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['name']}}</span>
+                    </td>
+                    <td style="padding: 15px 0 10px 0;text-align: center;width: 60px;vertical-align: middle;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['status_cd_name']}}</span>
+                    </td>
+                    <td style="padding: 15px 0 10px 0;text-align: center;width: 120px;vertical-align: middle;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['phone']}}</span>
+                    </td>
+                    <td style="padding: 15px 0 10px 0;text-align: center;width: 150px;vertical-align: middle;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['mail']}}</span>
+                    </td>
+                    <td style="padding: 15px 0 10px 0;text-align: center;width: 180px;vertical-align: middle;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['create_time']}}</span>
                     </td>
 
-                    <td style="padding: 15px 0 0 0;text-align: center; width: 78px;">
+                    <td style="padding: 15px 0 0 0;text-align: center; width: 78px;vertical-align: middle;">
                         <div ng-mouseleave="news['menu']=false" style="position: relative">
                             <!--置顶标识小图标-->
                             <img title="已置顶" ng-if="news['stick_cd']==1" src="/assets/img/content/topSet.png" style="width: 15px !important;position: absolute; top: 7px;right: 0;opacity: 0.8">

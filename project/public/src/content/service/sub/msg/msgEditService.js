@@ -31,7 +31,7 @@ contentModule.factory('MsgEditSer',function ($http, $window, $timeout, ContentDa
             if (response['status_code'] == 200) {
                 //管理员编写审核完成，发布该消息,如果该条消息已发布，则不用再推送消息
                 ContentDataSer.navigation['msg']['msgEdit']=false;
-                $location.search('subPage', "msgList");
+                $window.location.reload();
 
             } else {
                 OverallGeneralSer.alertHttpRequestError("saveMsg", response['exception_code'], response['exception']);

@@ -1,23 +1,27 @@
 <div ng-if="content.navigation['team']['teamEdit']" style="display: flex;align-items: center;justify-content: center;position:fixed; top: 0; left: 0; bottom: 0; right: 0;background: rgba(0,0,0,0.47); z-index: 10000">
 
     <!--编辑面板框上方-->
-    <div style="padding: 20px;background: white; border-radius: 20px; width: 80%; min-height: 0;height: 95%; max-width: 1300px; max-height: 1000px">
+    <div style="padding: 20px;background: white; border-radius: 20px; width: 65%; min-height: 0;height: 75%; max-width: 1300px; max-height: 1000px">
         <!--顶部关闭按钮-->
         <div style="margin-top: -20px;height: 32px;text-align: center">
             <span style="font-size: 18px;text-align: center; position: relative; top: 10px;">人员资料填写</span>
             <span ng-click="content.navigation['team']['teamEdit']=false" style="float: right; font-size: 35px; cursor: pointer;">&times;</span>
         </div>
 
-        <div id="55" name="Bg_55" style="position: absolute; height: 300px; z-index:55; width: 200px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 10px 10px 10px 10px; background:rgba(255,255,255,1); "></div>
-        <div id="57" name="Image_57" style="position: absolute;top: 52px; height: 290px; z-index:57; left: 166px; width: 180px; background: url({{content.teamData['editData']['data']['coverImage']}}) no-repeat ; background-size: cover;"></div>
-        <input type="file" img-model class="btn btn-default" id="48" name="File_48" style="cursor: pointer;opacity: 0;position: absolute;top: 325px;height: 50px; z-index:98; width: 150px; padding: 4px 12px 2px 12px; background:rgba(255,255,255,1); border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 5px 5px 5px 5px; font-size: 0; color: rgba(0,0,0,1.0);  ">
-        <span id="56" name="Text_56" style="position: absolute;top: 350px; margin-left:50px;height: 27px; z-index:56;width: 110px; color: rgba(83,41,125,1); text-decoration: underline; background:rgba(255,255,255,0); ">点击上传头像</span>
+        <div id="55" name="Bg_55" style="position: absolute; height: 300px; z-index:55; width: 200px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 10px 10px 10px 10px; background:rgba(255,255,255,1); ">
+            <div id="57" name="Image_57" style="margin-top:5px;margin-left:8.5px;height: 290px; z-index:57; width: 180px; background: url({{content.teamData['editData']['data']['coverImage']}}) no-repeat ; background-size: 180px 290px;"></div>
+        </div>
+
+        <input type="file" img-model class="btn btn-default" id="48" name="File_48" style="cursor: pointer;opacity: 0;position: absolute;top: 400px;height: 50px; left:280px;z-index:98; width: 150px; padding: 4px 12px 2px 12px; background:rgba(255,255,255,1); border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 5px 5px 5px 5px; font-size: 0; color: rgba(0,0,0,1.0);  ">
+        <span id="56" name="Text_56" style="position: absolute;top: 415px; margin-left:50px;height: 27px; z-index:56;width: 110px; color: rgba(83,41,125,1); text-decoration: underline; background:rgba(255,255,255,0); ">点击上传头像</span>
 
 
         <div style="margin-top: 20px">
             <span style="margin-left: 220px">姓名：</span>
             <input class="inputStyle" style="margin-left: 10px; width: 242px" type="text" ng-model="content.teamData['editData']['data']['name']" maxlength="50"
-                   placeholder="">
+                       placeholder="">
+
+            <!--<span id="crop_result" style="margin-left:300px;background: white url({{content.teamData['editData']['data']['coverCrop']}}) no-repeat center center; background-size: cover;"></span>-->
         </div>
         <div style="margin-top: 20px">
             <span style="margin-left: 220px">电话：</span>
@@ -33,10 +37,10 @@
         <div style="margin-top: 20px;margin-left: 220px">
             <span>人员状态：</span>
             <label class="radio-inline">
-                <input type="radio" ng-model="content.teamData['editData']['data']['status_name']" name="status_name{{$index}}" value="在职"> 在职
+                <input type="radio" ng-model="content.teamData['editData']['data']['status_cd']" name="status_cd{{$index}}" value="1"> 在职
             </label>
             <label class="radio-inline">
-                <input type="radio" ng-model="content.teamData['editData']['data']['status_name']" name="status_name{{$index}}" value="离职"> 离职
+                <input type="radio" ng-model="content.teamData['editData']['data']['status_cd']" name="status_cd{{$index}}" value="0"> 离职
             </label>
         </div>
 

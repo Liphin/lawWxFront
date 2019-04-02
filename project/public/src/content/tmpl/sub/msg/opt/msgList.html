@@ -54,8 +54,20 @@
                     <th style="text-align: center; width: 60px;">
                         <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">选择</span>
                     </th>
-                    <th style="text-align: center; width: 700px; ">
-                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">留言阅览</span>
+                    <th style="text-align: center; width: 100px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">客户称呼</span>
+                    </th>
+                    <th style="text-align: center; width: 100px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">留言状态</span>
+                    </th>
+                    <th style="text-align: center; width: 160px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">联系电话</span>
+                    </th>
+                    <th style="text-align: center; width: 160px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">联系邮箱</span>
+                    </th>
+                    <th style="text-align: center; width: 180px; ">
+                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">时间</span>
                     </th>
                     <th style="text-align: center; width: 78px; ">
                         <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">操作</span>
@@ -64,17 +76,24 @@
                 </thead>
                 <!--表格内容 table content-->
                 <tbody>
-                <tr ng-repeat="news in content['msgData']['list'] | limitTo:content['overallData']['msgListShow']['screenNum']:content['overallData']['msgListShow']['pagination']['beginListIndex'] track by $index" style="height:300px;">
+                <tr ng-repeat="news in content['msgData']['list'] | limitTo:content['overallData']['msgListShow']['screenNum']:content['overallData']['msgListShow']['pagination']['beginListIndex'] track by $index" style="height:50px;">
                     <th style=" width: 60px;text-align: center">
                         <input style="margin-top: 12px" type="checkbox" ng-model="news['toSelect']">
                     </th>
-                    <td style="padding: 15px 0 0 0;width: 700px;">
-                        <span style="margin-left: 20px;font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">客户称呼： {{news['name']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">留言状态：{{news['status_cd_name']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">电话：{{news['phone']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">邮件：{{news['mail']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">业务描述：{{news['content']}}</span>
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">时间：{{news['create_time']}}</span>
+                    <td style="padding: 15px 0 0 0;text-align: center;width: 100px;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['name']}}</span>
+                    </td>
+                    <td style="padding: 15px 0 0 0;text-align: center;width: 100px;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['status_cd_name']}}</span>
+                    </td>
+                    <td style="padding: 15px 0 0 0;text-align: center;width: 160px;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['phone']}}</span>
+                    </td>
+                    <td style="padding: 15px 0 0 0;text-align: center;width: 160px;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['mail']}}</span>
+                    </td>
+                    <td style="padding: 15px 0 0 0;text-align: center;width: 180px;">
+                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['create_time']}}</span>
                     </td>
 
                     <td style="padding: 15px 0 0 0;text-align: center; width: 78px;">

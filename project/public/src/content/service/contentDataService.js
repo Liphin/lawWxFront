@@ -376,6 +376,8 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
                 'create_time': '',
                 'update_time': '',
                 'coverImage': '',
+                'coverImageSrc': '',
+                'coverCrop':'',
             },
         },
         'list': [],

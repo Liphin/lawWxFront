@@ -102,28 +102,13 @@ contentModule.directive('imgModel', ['$parse', 'ContentDataSer', 'OverallSer', '
                         var ctx = canvas.getContext("2d");
                         ctx.drawImage(this, 0, 0, width, height);
                         var dataUrl = canvas.toDataURL();
-                        var blob = OverallSer.dataURItoBlob(dataUrl);
 
                         var fileName = ContentDataSer.teamData['editData']['data']['timestamp']+".png";
-                        var fileUrl = ContentDataSer.fileUrl;
-
-                        var formData = {
-                            'fileUrl': fileUrl,
-                            'fileName': fileName,
-                            'fileBlob': blob
-                        };
-                        TeamEditSer.saveCoverImage(formData,function (response) {
-                            console.log(response);
-
-                        });
 
                         //强制渲染操作才可现实在前端
                         scope.$apply(function () {
-                            if(ContentDataSer.overallData['pageType']==4) {
-                                //生成blob数据到前端url
-                                ContentDataSer.teamData['editData']['data']['imgUrl'] = fileName;
-                                ContentDataSer.teamData['editData']['data']['coverImage'] = ContentDataSer.getCoverImage+fileName;
-                            }
+                            ContentDataSer.teamData['editData']['data']['imgUrl'] = fileName;
+                            ContentDataSer.teamData['editData']['data']['coverImage'] = dataUrl;
                         })
                     });
                 }, true);

@@ -4,7 +4,7 @@
 
 var contentModule = angular.module('Angular.content');
 
-contentModule.factory('TeamListSer',function ($http, $window, $timeout,ContentDataSer, $location, OverallGeneralSer,
+contentModule.factory('TeamListSer',function ($http,$window, $timeout,ContentDataSer, $location, OverallGeneralSer,
                                               OverallDataSer, ContentGeneralSer) {
 
     //定义文章服务业务逻辑
@@ -314,7 +314,6 @@ contentModule.factory('TeamListSer',function ($http, $window, $timeout,ContentDa
         for (var i in ContentDataSer.teamData['list'][index]) {
             ContentDataSer.teamData['editData']['data'][i] = ContentDataSer.teamData['list'][index][i];
         }
-        ContentDataSer.teamData['editData']['data']['coverImage'] = ContentDataSer.getCoverImage+ContentDataSer.teamData['list'][index][i]
         ContentDataSer.teamData['editData']['optType'] = 2; //2为编辑，1为创建
 
         ContentDataSer.navigation['team']['teamEdit'] = true;
