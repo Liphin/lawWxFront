@@ -41,6 +41,7 @@ contentModule.factory('TeamEditSer',function ($http, $window, $timeout, ContentD
             'fileName': fileName,
             'fileBlob': blob
         };
+        console.log(formData);
 
         saveCoverImage(formData,function (response) {
             console.log(response);
@@ -64,11 +65,11 @@ contentModule.factory('TeamEditSer',function ($http, $window, $timeout, ContentD
                     bg_position_left: ContentDataSer.teamData['editData']['imageData']['bg_position_left'],
                     bg_size: ContentDataSer.teamData['editData']['imageData']['bg_size']
                 };
+                //console.log(targetData);
+                var imgURlArr = ContentDataSer.teamData['editData']['data']['imgUrl'].split(":");
 
-                ContentDataSer.teamData['editData']['data']['imgUrl']=ContentDataSer.teamData['editData']['data']['imgUrl']+
-                    ":"+targetData.bg_position_top+
-                    ":"+targetData.bg_position_left+
-                    ":"+targetData.bg_size;
+                ContentDataSer.teamData['editData']['data']['imgUrl']=imgURlArr[0]+ ":"+targetData.bg_position_top+ ":"+targetData.bg_position_left+ ":"+targetData.bg_size;
+                //console.log(ContentDataSer.teamData['editData']['data']['imgUrl']);
 
 
                 //如果封面图不为空则添加封面图

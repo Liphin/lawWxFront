@@ -44,7 +44,7 @@ contentModule.factory('TeamListSer',function ($http,$window, $timeout,ContentDat
 
                 //重置数据顺序：1、根据置顶标签排在前面，2、置顶的数据中根据置顶时间戳进行排序
                 var newListSortedData = teamListData.sort(ContentGeneralSer.sortStickNum);
-                console.log(newListSortedData);
+                //console.log(newListSortedData);
 
                 //循环填充成员list数据
                 for (var i in newListSortedData) {
@@ -56,10 +56,12 @@ contentModule.factory('TeamListSer',function ($http,$window, $timeout,ContentDat
                     var imgURlArr = newListSortedData[i]['imgUrl'].split(":");
 
                     newListSortedData[i]['imageData'] = {
-                        url:newListSortedData[i]['coverImage'],
-                        bg_position_top:imgURlArr[1],
-                        bg_position_left:imgURlArr[2],
-                        bg_size:imgURlArr[3],
+                        url: newListSortedData[i]['coverImage'],
+                        bg_position_left: Number(imgURlArr[2])/2,
+                        bg_position_top: Number(imgURlArr[1])/2,
+                        bg_size: Number(imgURlArr[3]),
+                        reposition: {status: false, x: 0, y: 0}, //记录上次重置图片位置时鼠标所在坐标
+                        targetImgData: '' //截取的目标图片数据
                     };
                     //装载新闻list数据
                     ContentDataSer.teamData['list'].push(newListSortedData[i]);
@@ -333,10 +335,14 @@ contentModule.factory('TeamListSer',function ($http,$window, $timeout,ContentDat
         }
         var imgURlArr = ContentDataSer.teamData['editData']['data']['imgUrl'].split(":");
 
-        ContentDataSer.teamData['editData']['imageData']['url']=ContentDataSer.teamData['editData']['data']['coverImage'];
-        ContentDataSer.teamData['editData']['imageData']['bg_position_top']=imgURlArr[1];
-        ContentDataSer.teamData['editData']['imageData']['bg_position_left']=imgURlArr[2];
-        ContentDataSer.teamData['editData']['imageData']['bg_size']=imgURlArr[3];
+        ContentDataSer.teamData['editData']['imageData'] = {
+            url: ContentDataSer.teamData['editData']['data']['coverImage'],
+            bg_position_left: Number(imgURlArr[2]),
+            bg_position_top: Number(imgURlArr[1]),
+            bg_size: Number(imgURlArr[3]),
+            reposition: {status: false, x: 0, y: 0}, //记录上次重置图片位置时鼠标所在坐标
+            targetImgData: '' //截取的目标图片数据
+        };
 
         ContentDataSer.teamData['editData']['optType'] = 2; //2为编辑，1为
 

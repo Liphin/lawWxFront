@@ -28,9 +28,9 @@ app.factory('MySer',function ($window, $document, $http, MyData, $location, MyGe
 
                     teamListSortedData[i]['imageData'] = {
                         url:teamListSortedData[i]['url'],
-                        bg_position_top:imgURlArr[1],
-                        bg_position_left:imgURlArr[2],
-                        bg_size:imgURlArr[3],
+                        bg_position_top:Number(imgURlArr[1])/2,
+                        bg_position_left:Number(imgURlArr[2])/2,
+                        bg_size:Number(imgURlArr[3]),
                     };
                     MyData.teamList.push(teamListSortedData[i]);
                 };
