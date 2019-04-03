@@ -412,6 +412,24 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
 
     /************************ 成员编辑Edit设置 ******************************/
 
+    content.picShotMouseDown = function (event) {
+        //TeamEditSer.picShotMouseDown(event);
+        ContentDataSer.teamData['editData']['imageData'].reposition.status = true; //开始检测鼠标拖拽移动事件
+        ContentDataSer.teamData['editData']['imageData'].reposition.y = event.pageY + event.target.scrollTop; //设置此时上偏移
+        ContentDataSer.teamData['editData']['imageData'].reposition.x = event.pageX + event.target.scrollLeft; //设置此时左偏移
+        console.log(ContentDataSer.teamData['editData']['imageData']);
+    };
+
+    content.picShotMouseMove = function (event) {
+        //开始监听鼠标拖拽图片移动后才进行拖拽操作
+        TeamEditSer.picShotMouseMove(event);
+    };
+
+
+    content.picShotMouseUp = function (event) {
+        TeamEditSer.picShotMouseUp(event);
+    };
+
     /**
      * 保存成员数据
      * @see TeamEditSer.saveTeam
@@ -475,7 +493,7 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
         MsgListSer.msgOpt(optType, msgId, index);
     };
 
-    /************************ 成员编辑Edit设置 ******************************/
+    /************************ 留言编辑Edit设置 ******************************/
 
     /**
      * 保存成员数据

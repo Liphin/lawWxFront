@@ -24,6 +24,14 @@ app.factory('MySer',function ($window, $document, $http, MyData, $location, MyGe
 
                 for (var i in teamListSortedData) {
                     teamListSortedData[i]['url']= MyData.coverImgBaseUrl + teamListSortedData[i]['timestamp'] + ".png";
+                    var imgURlArr = teamListSortedData[i]['imgUrl'].split(":");
+
+                    teamListSortedData[i]['imageData'] = {
+                        url:teamListSortedData[i]['url'],
+                        bg_position_top:imgURlArr[1],
+                        bg_position_left:imgURlArr[2],
+                        bg_size:imgURlArr[3],
+                    };
                     MyData.teamList.push(teamListSortedData[i]);
                 };
 

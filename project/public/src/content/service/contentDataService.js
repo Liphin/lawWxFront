@@ -360,6 +360,14 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         'editData': {
             'optType': 2, //1为创建人员操作，2为更新人员操作
             'editIndex': '',
+            'imageData':{
+                url: '',
+                bg_position_left: 0,
+                bg_position_top: 0,
+                bg_size: 101,
+                reposition: {status: false, x: 0, y: 0}, //记录上次重置图片位置时鼠标所在坐标
+                targetImgData: '' //截取的目标图片数据
+            },
             'data': {
                 'id':'',
                 'wx_user_id': '',

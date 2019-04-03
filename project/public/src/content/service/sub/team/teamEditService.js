@@ -59,6 +59,18 @@ contentModule.factory('TeamEditSer',function ($http, $window, $timeout, ContentD
                 //操作类型：创建、保存类型
                 fd.append('optType', ContentDataSer.teamData['editData']['optType']);
 
+                var targetData = {
+                    bg_position_top: ContentDataSer.teamData['editData']['imageData']['bg_position_top'],
+                    bg_position_left: ContentDataSer.teamData['editData']['imageData']['bg_position_left'],
+                    bg_size: ContentDataSer.teamData['editData']['imageData']['bg_size']
+                };
+
+                ContentDataSer.teamData['editData']['data']['imgUrl']=ContentDataSer.teamData['editData']['data']['imgUrl']+
+                    ":"+targetData.bg_position_top+
+                    ":"+targetData.bg_position_left+
+                    ":"+targetData.bg_size;
+
+
                 //如果封面图不为空则添加封面图
                 if (OverallGeneralSer.checkDataNotEmpty(ContentDataSer.teamData['editData']['data']['imgUrl'])) {
                     fd.append('imgUrl', ContentDataSer.teamData['editData']['data']['imgUrl']);
@@ -105,9 +117,40 @@ contentModule.factory('TeamEditSer',function ($http, $window, $timeout, ContentD
 
     };
 
+    var picShotMouseDown = function (event) {
+        ContentDataSer.teamData['editData']['imageData'].reposition.status = true; //开始检测鼠标拖拽移动事件
+        ContentDataSer.teamData['editData']['imageData'].reposition.y = event.pageY + event.target.scrollTop; //设置此时上偏移
+        ContentDataSer.teamData['editData']['imageData'].reposition.x = event.pageX + event.target.scrollLeft; //设置此时左偏移
+    };
+
+    var picShotMouseMove = function (event) {
+        //开始监听鼠标拖拽图片移动后才进行拖拽操作
+        if (ContentDataSer.teamData['editData']['imageData'].reposition.status) {
+            //获取上偏移和左偏移两次之差
+            var topOffset = event.pageY + event.target.scrollTop - ContentDataSer.teamData['editData']['imageData'].reposition.y;
+            var leftOffset = event.pageX + event.target.scrollLeft - ContentDataSer.teamData['editData']['imageData'].reposition.x;
+
+            //设置图片位置的上偏移和左偏移
+            ContentDataSer.teamData['editData']['imageData'].bg_position_top += topOffset;
+            ContentDataSer.teamData['editData']['imageData'].bg_position_left += leftOffset;
+
+            //重新赋值上偏移和左偏移
+            ContentDataSer.teamData['editData']['imageData'].reposition.y = event.pageY + event.target.scrollTop;
+            ContentDataSer.teamData['editData']['imageData'].reposition.x = event.pageX + event.target.scrollLeft;
+        }
+    };
+
+
+    var picShotMouseUp = function (event) {
+        ContentDataSer.teamData['editData']['imageData'].reposition.status = false;
+    };
+
     return {
         saveTeam:saveTeam,
         saveCoverImage:saveCoverImage,
+        picShotMouseDown:picShotMouseDown,
+        picShotMouseMove:picShotMouseMove,
+        picShotMouseUp:picShotMouseUp,
     }
 
 });

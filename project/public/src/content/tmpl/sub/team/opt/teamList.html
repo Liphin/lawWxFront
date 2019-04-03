@@ -86,7 +86,10 @@
                     </th>
 
                     <td style="padding: 15px 0 10px 0;text-align: center;width: 110px;">
-                        <div style="display:inline-block;width: 100px;height: 100px;border: 1px solid #dedede;background: white url({{news['coverImage']}}) no-repeat center center;background-size: 100px 100px"></div>
+                        <!--<div style="display:inline-block;width: 100px;height: 100px;border: 1px solid #dedede;background: white url({{news['coverImage']}}) no-repeat center center;background-size: 100px 100px"></div>-->
+                        <div id="picShotCanvas" bg-size="news['imageData']['bg_size']"
+                             style="border: 1px solid grey; border-radius: 100px;background: url({{news['coverImage']}}) no-repeat {{news['imageData']['bg_position_left']}}px {{news['imageData']['bg_position_top']}}px;
+                             background-size: {{news['imageData']['bg_size']}}% auto; width: 100px; height: 100px;"></div>
                     </td>
                     <td style="padding: 15px 0 10px 0;text-align: center;width: 80px;vertical-align: middle;">
                         <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['name']}}</span>

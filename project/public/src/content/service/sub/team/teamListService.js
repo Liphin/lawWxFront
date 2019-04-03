@@ -49,11 +49,18 @@ contentModule.factory('TeamListSer',function ($http,$window, $timeout,ContentDat
                 //循环填充成员list数据
                 for (var i in newListSortedData) {
                     //转换设置类型、状态、人群范围等数据
-                    var peopleType = newListSortedData[i]['status_cd'];
                     //设置消息状态信息
                     var statusCd = newListSortedData[i]['status_cd'];
                     newListSortedData[i]['status_cd_name'] = ContentDataSer.overallData['teamListShow']['statusType'][statusCd];
                     newListSortedData[i]['coverImage'] = ContentDataSer.getCoverImage + newListSortedData[i]['timestamp']+".png";
+                    var imgURlArr = newListSortedData[i]['imgUrl'].split(":");
+
+                    newListSortedData[i]['imageData'] = {
+                        url:newListSortedData[i]['coverImage'],
+                        bg_position_top:imgURlArr[1],
+                        bg_position_left:imgURlArr[2],
+                        bg_size:imgURlArr[3],
+                    };
                     //装载新闻list数据
                     ContentDataSer.teamData['list'].push(newListSortedData[i]);
                 }
@@ -150,6 +157,16 @@ contentModule.factory('TeamListSer',function ($http,$window, $timeout,ContentDat
         ContentDataSer.teamData['editData']['data']['timestamp'] =
             OverallGeneralSer.getTimeStamp() + '_' + OverallDataSer.overallData['userInfo']['wx_user_id'];
         console.log(ContentDataSer.teamData['editData']);
+
+        ContentDataSer.teamData['editData']['imageData'] = {
+            url: '',
+            bg_position_left: 0,
+            bg_position_top: 0,
+            bg_size: 101,
+            reposition: {status: false, x: 0, y: 0}, //记录上次重置图片位置时鼠标所在坐标
+            targetImgData: '' //截取的目标图片数据
+        };
+
         //进行人员编辑页面
         ContentDataSer.navigation['team']['teamEdit'] = true;
     };
@@ -314,7 +331,14 @@ contentModule.factory('TeamListSer',function ($http,$window, $timeout,ContentDat
         for (var i in ContentDataSer.teamData['list'][index]) {
             ContentDataSer.teamData['editData']['data'][i] = ContentDataSer.teamData['list'][index][i];
         }
-        ContentDataSer.teamData['editData']['optType'] = 2; //2为编辑，1为创建
+        var imgURlArr = ContentDataSer.teamData['editData']['data']['imgUrl'].split(":");
+
+        ContentDataSer.teamData['editData']['imageData']['url']=ContentDataSer.teamData['editData']['data']['coverImage'];
+        ContentDataSer.teamData['editData']['imageData']['bg_position_top']=imgURlArr[1];
+        ContentDataSer.teamData['editData']['imageData']['bg_position_left']=imgURlArr[2];
+        ContentDataSer.teamData['editData']['imageData']['bg_size']=imgURlArr[3];
+
+        ContentDataSer.teamData['editData']['optType'] = 2; //2为编辑，1为
 
         ContentDataSer.navigation['team']['teamEdit'] = true;
     };

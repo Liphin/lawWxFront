@@ -33,7 +33,11 @@
        <div style="width: 100%;padding: 10px 20px 3px 20px;border: 1px solid #dedede;border-width: 0 0 1px 0;position: relative"
             ng-repeat="team in ctrl.teamList track by $index" >
            <div style="display: block;text-align: center;width:100%;margin-top: 5px">
-               <div style="display:inline-block;width: 105px;height: 105px;border: 1px solid #dedede;background: white url({{team['url']}}) no-repeat center center;background-size: 100px 100px"></div>
+               <!--<div style="display:inline-block;width: 105px;height: 105px;border: 1px solid #dedede;background: white url({{team['url']}}) no-repeat center center;background-size: 100px 100px"></div>-->
+               <!--装载图片-->
+               <div id="picShotCanvas" bg-size="team['imageData']['bg_size']"
+                    style="display:inline-block;border: 1px solid grey; border-radius: 100px;background: url({{team['url']}}) no-repeat {{team['imageData']['bg_position_left']}}px {{team['imageData']['bg_position_top']}}px;
+                             background-size: {{team['imageData']['bg_size']}}% auto; width: 100px; height: 100px;"></div>
            </div>
 
            <div style="display: block;text-align: center;width: 100%">
