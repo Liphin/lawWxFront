@@ -15,52 +15,120 @@
     <script src="/assets/js/cropImage/alloy-finger.js"></script>
     <script src="/assets/js/cropImage/alloy-crop.js"></script>
 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>期待律师事务所</title>
 </head>
 
-<body>
-    <!--页面头部和商标-->
-    <section>
-        <div id="myCarousel" class="carousel slide">
-            <!-- 轮播（Carousel）项目 -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="/assets/img/mini/001.jpg" alt="First slide">
+<body style="max-width: 640px;font-family: 微软雅黑">
+<!--页面头部和商标-->
+<section>
+    <div id="myCarousel" class="carousel slide">
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="http://dacheng.weimob.com/img/slide-a-20180123.jpg" style="max-width: 100%; height: auto" alt="First slide">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Logo及简介-->
+<div>
+    <div style="box-shadow: 0 0 7px white;;width: 90px; height: 90px; border-radius: 50px; background: #5b2b77; margin-top: -35px;margin-left: 30px; position: relative; z-index: 10">
+        <img src="" style="width: 60px; height: 20px; position: relative; top: 36px; left: 15px"/>
+    </div>
+    <div onclick="window.location='./aboutUs.html'" style="display: inline-block;float: right; margin-top: -45px;background: #5b2b77; padding: 10px 25px; border-radius: 20px; font-size: 17px; color: white; box-shadow: 0 0 8px #5b2b77">律所简介</div>
+</div>
+
+<!--页面按钮-->
+<section style="width: 100%; text-align: center; margin-top: 20px">
+    <!--律所资讯-->
+    <div onclick="window.location='./dynamic/index.html'"  style="border: 1px solid gainsboro;width: 95%; display: inline-block; border-radius: 10px; box-shadow: 0 0 10px gainsboro">
+        <div style="display: flex; flex-direction: row;padding: 20px 20px">
+            <img src="http://dacheng.weimob.com/img/tame-20180123.jpg" style="width: 100px;height: 70px;vertical-align: middle ">
+            <div style="padding-left: 15px">
+                <div style="color: rebeccapurple; font-weight: bold; font-size: 18px; margin-bottom: 5px;position: relative; left: -15px">律师咨讯</div>
+                <div style="text-align: left;color: #343434;width: 90%;font-size: 15px">律师咨询律师咨询律师咨询律师咨询律师咨询</div>
+            </div>
+        </div>
+    </div>
+
+    <!--业务项目-->
+    <div onclick="window.location='./business/business.html'" style="border: 1px solid gainsboro;width: 95%; display: inline-block; border-radius: 10px; box-shadow: 0 0 10px gainsboro; margin-top: 20px">
+        <div style="display: flex; flex-direction: row;padding: 20px 20px">
+            <div style=" ">
+                <div style="color: rebeccapurple; font-weight: bold; font-size: 18px; margin-bottom: 5px;position: relative; right: 15px">业务项目</div>
+                <div style="text-align: left;color: #343434;width: 90%;font-size: 15px">业务项目业务项目业务项目业务项目业务项目业务项目</div>
+            </div>
+            <img src="http://dacheng.weimob.com/img/meeting-20180123.jpg" style="width: 100px;height: 70px;vertical-align: middle ">
+        </div>
+    </div>
+
+    <!--专业团队和一键留言-->
+    <div style=" width: 100%; height: 200px; display: inline-block; margin-top: 10px; margin-bottom: 20px">
+        <div style="width: 95%; display: inline-block; ">
+            <div style="display: flex; flex-direction: row;padding: 20px 10px;text-align: center;">
+                <!--专业团队-->
+                <div onclick="window.location='./team/index.html'"  style="box-shadow: 0 0 10px gainsboro;padding: 20px 15px;border: 1px solid gainsboro; flex: 1; display: inline-block; margin-right: 20px; text-align: center">
+                    <i class="fa fa-users" style="font-size: 20px;;color: rebeccapurple;"></i>
+                    <div style="margin: 10px; font-weight: bold; font-size: 17px;color: rebeccapurple">专业团队</div>
+                    <div style="margin-bottom: 10px;width: 90%; height: 1px; background: rebeccapurple;display: inline-block;"></div>
+                    <div style="width: 90%; font-size: 13px;display: inline-block">专业团队，打造专业团队打造专业团队打造专业团队打</div>
+                </div>
+                <!--一键留言-->
+                <div onclick="window.location='./msg/index.html'" style="box-shadow: 0 0 10px gainsboro;padding: 20px 15px;border: 1px solid gainsboro; flex: 1; display: inline-block;  text-align: center">
+                    <i class="fa fa-phone" style="font-size: 20px;color: rebeccapurple;"></i>
+                    <div style="margin: 10px; font-weight: bold; font-size: 17px;color: rebeccapurple">一键留言</div>
+                    <div style="margin-bottom: 10px;width: 90%; height: 1px; background: rebeccapurple;display: inline-block;"></div>
+                    <div style="width: 90%; font-size: 13px;display: inline-block">一键留言，一键留言一键留言一键留言一键留言一键留</div>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 5px;height: 100px">
-            <div style="display:inline;margin-top: 10px;margin-left: 5px;height:70px;width: 70px;background-color: #8c8c8c">此处存放商标</div>
-            <div onclick="window.location='./aboutUs.html'" style="display:inline;font-size: 30px; margin-left: 150px;margin-top: 20px;height: 50px;width: 150px;background-color: #8c8c8c">律所简介</div>
+    </div>
+
+    <!--加入我们，联系电话-->
+    <div style="padding-top: 20px;text-align: center;color: white;display: inline-block;width: 100%; height: 280px; background: url(https://mc.qcloudimg.com/static/img/91dda9c196e2ec5f6294c083651c556d/image.jpg)no-repeat center center; background-size: cover ">
+        <div style="font-weight: bold; font-size: 19px;margin: 30px;">招贤纳士，让我们携手构建未来</div>
+        <button onclick="window.location='./joinUs.html'" class="btn btn-success" style=";border: 1px solid white; border-radius: 10px; width: 200px;height: 40px;font-size: 15px">加入我们</button>
+
+        <!--联系电话和地址-->
+        <div style="margin-top:50px; margin-left: 20px; text-align: left">
+            <!--联系电话-->
+            <div>
+                <i class="fa fa-phone" style="margin-right: 10px"></i>
+                <span>联系电话：400-024-1868</span>
+            </div>
+            <!--地址-->
+            <div>
+                <i class="fa fa-building-o" style="margin-right: 10px"></i>
+                <span>企业地址：广东省广州市盘区域富华东路518号桥力大厦三楼</span>
+            </div>
         </div>
 
-    </section>
+    </div>
 
-    <!--页面按钮-->
-    <section>
-        <div style="text-align:center;display: inline-block;width: 100%">
-            <!--律所资讯-->
-            <button id="dynamic" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 20px" class="btn btn-success" onclick="window.location='./dynamic/index.html'" >律所资讯</button>
-            <!--业务项目-->
-            <button id="business" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 20px;margin-left: 20px" class="btn btn-success" onclick="window.location='./business/business.html'" >业务项目</button>
-        </div>
 
-        <div style="text-align:center;display: inline-block;width: 100%">
-            <!--专业团队-->
-            <button id="team" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 30px" class="btn btn-success" onclick="window.location='./team/index.html'" >专业团队</button>
-            <!--一键留言-->
-            <button id="msg" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 30px;margin-left: 20px" class="btn btn-success" onclick="window.location='./msg/index.html'" >一键留言</button>
-        </div>
-    </section>
+    <!--<div style="text-align:center;display: inline-block;width: 100%">-->
+    <!--&lt;!&ndash;律所资讯&ndash;&gt;-->
+    <!--<button id="dynamic" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 20px" class="btn btn-success" onclick="window.location='./dynamic/index.html'" >律所资讯</button>-->
+    <!--&lt;!&ndash;业务项目&ndash;&gt;-->
+    <!--<button id="business" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 20px;margin-left: 20px" class="btn btn-success" onclick="window.location='./business/business.html'" >业务项目</button>-->
+    <!--</div>-->
 
-    <!--页面底部-->
-    <section style="position:fixed; bottom:0;display: inline-block;width: 100%;text-align: center">
-        <div onclick="window.location='./joinUs.html'" style="display: inline;font-size: 20px">加入我们</div>
-        <div onclick="window.location='./connectUs.html'" style="margin-left:150px;display: inline;font-size: 20px">联系我们</div>
-    </section>
+    <!--<div style="text-align:center;display: inline-block;width: 100%">-->
+    <!--&lt;!&ndash;专业团队&ndash;&gt;-->
+    <!--<button id="team" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 30px" class="btn btn-success" onclick="window.location='./team/index.html'" >专业团队</button>-->
+    <!--&lt;!&ndash;一键留言&ndash;&gt;-->
+    <!--<button id="msg" style="font-size:25px;width: 150px;height: 50px;display:inline;margin-top: 30px;margin-left: 20px" class="btn btn-success" onclick="window.location='./msg/index.html'" >一键留言</button>-->
+    <!--</div>-->
+</section>
+
+<!--页面底部-->
+<!--<section style="display: inline-block;width: 100%;text-align: center">-->
+<!--<div onclick="window.location='./joinUs.html'" style="display: inline;font-size: 20px">加入我们</div>-->
+<!--<div onclick="window.location='./connectUs.html'" style="margin-left:150px;display: inline;font-size: 20px">联系我们</div>-->
+<!--</section>-->
 
 </body>
 

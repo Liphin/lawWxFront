@@ -15,6 +15,9 @@ if (global.env == 'dev') {
 } else if(global.env == 'lxctest') {
     basePath = "/root/wxpublic/front"; //远程项目根文件目录
     port = 80;
+} else if(global.env == 'bin') {
+    basePath = "G:\\SoftwareOutSourcing\\qidailaw\\front\\lawWxFront"; //远程项目根文件目录
+    port = 80;
 }else {
     basePath = "/root/lawWxPublic/front/output/"; //远程项目根文件目录
     port = 80;

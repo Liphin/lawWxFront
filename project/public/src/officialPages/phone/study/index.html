@@ -28,7 +28,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>{{ctrl.overallData['title']}}</title>
 </head>
-
+<style>
+    .selectedNewsType {
+        color: #346788;
+        font-weight: bold;
+    }
+</style>
 <body>
     <!--章头-->
     <!--标题搜索-->
@@ -76,17 +81,22 @@
 
     <!--新闻数据-->
     <div ng-if="(!ctrl.overallData['searchFlag'])">
-        <div style="margin-top: 20px;display: inline;margin-left: 55px;height: 80px"
-             ng-repeat="value in ctrl.overallData['listShow']['subType']"
-             ng-click="ctrl.changePageList(value['key'])">
-            {{value['name']}}
+        <!--选择栏目-->
+        <div style="padding: 7px;;width: 100%; height: 40px; font-size: 18px; font-family: 微软雅黑;display: flex; flex-direction: row;">
+            <div style="display: inline; flex: 1; text-align: center;"
+                 ng-repeat="value in ctrl.overallData['listShow']['subType']"
+                 ng-class="{'selectedNewsType':ctrl.overallData['listShow']['showFlag'][value['key']]}"
+                 ng-click="ctrl.changePageList(value['key'])">
+                {{value['name']}}
+            </div>
         </div>
+
         <div style="border: 1px solid #dedede;border-width: 0 0 1px 0;position: relative"></div>
 
         <div style="width: 100%;display:inline-block;margin-top:10px;padding: 10px 20px 3px 20px;border: 1px solid #dedede;border-width: 0 0 1px 0;position: relative"
              ng-repeat="news in ctrl.carouselList[ctrl.overallData['listShow']['showNow']] track by $index" ng-click="ctrl.viewNewsDetail(news)">
             <div style="font-size: 14px;;position: absolute;left: 20px;;right: 120px; top: 20px; display: inline-block;">
-                <div style="overflow: hidden;white-space: nowrap;width: 200px;text-overflow:ellipsis;display: inline-block">
+                <div style="font-size: 16px;font-family: 微软雅黑;overflow: hidden;white-space: nowrap;width: 200px;text-overflow:ellipsis;display: inline-block">
                     {{news['title']}}
                 </div>
             </div>
@@ -105,7 +115,7 @@
              ng-repeat="news in ctrl.newsList track by $index" ng-click="ctrl.viewNewsDetail(news)">
             <!--news的title-->
             <div style="font-size: 14px;;position: absolute;left: 20px;;right: 120px; top: 20px; display: inline-block;">
-                <div style="overflow: hidden;white-space: nowrap;width: 200px;text-overflow:ellipsis;display: inline-block">
+                <div style="font-size: 16px;font-family: 微软雅黑;overflow: hidden;white-space: nowrap;width: 200px;text-overflow:ellipsis;display: inline-block">
                     {{news['title']}}
                 </div>
             </div>
