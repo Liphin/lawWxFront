@@ -7,9 +7,9 @@ var wxMeunJson = {
             "name":"茶话会",
             "sub_button":[
                 {
-                    "type":"click",
+                    "type":"view",
                     "name":"简介",
-                    "key":"WX_00001"
+                    "url":"http://gntqant.com:80/src/officialPages/phone/mini/brief.html",
                 },
                 {
                     "type":"view",
@@ -22,9 +22,9 @@ var wxMeunJson = {
                     "key":"WX_00003"
                 },
                 {
-                    "type":"click",
+                    "type":"view",
                     "name":"加入我们",
-                    "key":"WX_00004"
+                    "url":"http://gntqant.com:80/src/officialPages/phone/mini/joinUs.html",
                 },
                 {
                     "type":"view",
