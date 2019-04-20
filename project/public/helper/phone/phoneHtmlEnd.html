@@ -10,15 +10,15 @@
 </div>
 
 <!--展示总阅读量和允许点赞操作-->
-<div style="font-family: 微软雅黑; font-size: 15px; color: grey; background: white;position: fixed; bottom: 0; left: 0;right: 0;height: 50px;border: 1px solid #d8d8d8;border-width: 1px 0 0 0;padding: 13px;">
-    <span>阅读 {{ctrl.dynamicDetail['view_count']}}</span>
-    <div style="display: inline-block; position: relative; left: 20px;" ng-click="ctrl.updatePitchCount()">
-        <i ng-if="ctrl.userDynamic['dynamic_pitch']!=1" class="fa fa-heart-o" style="color: grey"></i>
-        <i ng-if="ctrl.userDynamic['dynamic_pitch']==1" class="fa fa-heart" style="color: #ff4e66"></i>
-        <span>点赞 {{ctrl.dynamicDetail['pitch_count']}}</span>
-        <span ng-if="ctrl.overallData['markSubmitPitchOpt']" style="position: relative; left: 20px">提交中...</span>
-    </div>
-</div>
+<!--<div style="font-family: 微软雅黑; font-size: 15px; color: grey; background: white;position: fixed; bottom: 0; left: 0;right: 0;height: 50px;border: 1px solid #d8d8d8;border-width: 1px 0 0 0;padding: 13px;">-->
+    <!--<span>阅读 {{ctrl.dynamicDetail['view_count']}}</span>-->
+    <!--<div style="display: inline-block; position: relative; left: 20px;" ng-click="ctrl.updatePitchCount()">-->
+        <!--<i ng-if="ctrl.userDynamic['dynamic_pitch']!=1" class="fa fa-heart-o" style="color: grey"></i>-->
+        <!--<i ng-if="ctrl.userDynamic['dynamic_pitch']==1" class="fa fa-heart" style="color: #ff4e66"></i>-->
+        <!--<span>点赞 {{ctrl.dynamicDetail['pitch_count']}}</span>-->
+        <!--<span ng-if="ctrl.overallData['markSubmitPitchOpt']" style="position: relative; left: 20px">提交中...</span>-->
+    <!--</div>-->
+<!--</div>-->
 </div>
     <script>
         var app = angular.module('myApp', []);
@@ -57,10 +57,10 @@
             var requestDataErrorMsg = "尊敬的客户，服务器异常，请稍后分享";
 
             var userInfo = {};
-            var userDynamic = {}; //用户_新闻行为表
+            //var userDynamic = {}; //用户_新闻行为表
             var dynamicDetail = {}; //进入新闻详情页面后，记录新闻详细信息
             var getUserDynamicInfo = serverHost + ":" + backSerPort + "/getUserDynamicInfo"; //获取某条新闻详情
-            var updatePitchCount = serverHost + ":" + backSerPort + "/updatePitchCount"; //更新用户点赞数
+            //var updatePitchCount = serverHost + ":" + backSerPort + "/updatePitchCount"; //更新用户点赞数
             var getWxOauthToken = serverHost + ":" + frontSerPort + "/getWxOauthToken";
             var getJsSign = serverHost + ":" + frontSerPort + '/getJsSign';
             var coverImgUrl = serverHost + ":" + frontSerPort + "/dynamicinfo/coverimg/";
@@ -82,11 +82,11 @@
             return {
                 userInfo: userInfo,
                 getJsSign: getJsSign,
-                userDynamic: userDynamic,
+                //userDynamic: userDynamic,
                 dynamicDetail: dynamicDetail,
                 coverImgUrl: coverImgUrl,
                 overallData: overallData,
-                updatePitchCount: updatePitchCount,
+                // updatePitchCount: updatePitchCount,
                 getWxOauthToken: getWxOauthToken,
                 getUserDynamicInfo: getUserDynamicInfo,
                 viewNewsDetailSetting: viewNewsDetailSetting,
@@ -194,9 +194,9 @@
                         //initWxConfig();
 
                         //装载每个用户操作新闻表数据
-                        for (var i in response['data']['user_dynamic']) {
-                            MyData.userDynamic[i] = response['data']['user_dynamic'][i];
-                        }
+                        // for (var i in response['data']['user_dynamic']) {
+                        //     MyData.userDynamic[i] = response['data']['user_dynamic'][i];
+                        // }
                         //装载每个动态消息数据
                         for (var i in response['data']['dynamicinfo']) {
                             MyData.dynamicDetail[i] = response['data']['dynamicinfo'][i];
@@ -211,117 +211,43 @@
             };
 
             /**
-             * 调用企业微信JS Api需满足config需求
-             */
-            // var initWxConfig = function () {
-            //
-            //     var url = MyData.getJsSign + "?type=" + MyData.overallData['param']['type'] + "&webUrl=" + encodeURIComponent($location.absUrl());
-            //     var title = document.title;
-            //     if (MyData.overallData['param']['type']==7) {
-            //         var imgurl = $('img').eq(0).attr('src');
-            //     }
-            //     else {
-            //         var imgurl = MyData.coverImgUrl + MyData.overallData['param']['timestamp'] + ".png";
-            //     }
-            //
-            //
-            //     var htmlurl = $location.absUrl();
-            //
-            //     httpGetFiles(url, function (data) {
-            //         //配置签名信息
-            //         wx.config({
-            //             beta: true,// 必须这么写，否则wx.invoke调用形式的jsapi会有问题
-            //             debug: false, //关闭debug模式，调试信息不弹出
-            //             appId: data['appId'],
-            //             timestamp: data['timestamp'],
-            //             nonceStr: data['noncestr'],
-            //             signature: data['signature'],
-            //             jsApiList: [
-            //                 'onMenuShareAppMessage',
-            //             ]
-            //         });
-            //         wx.ready(function(){
-            //             wx.onMenuShareAppMessage({
-            //                 title: title, // 分享标题
-            //                 desc: '', // 分享描述
-            //                 link: htmlurl, // 分享链接
-            //                 imgUrl: imgurl, // 分享图标
-            //                 success: function () {
-            //                     // 用户确认分享后执行的回调函数
-            //                 },
-            //                 cancel: function () {
-            //                     // 用户取消分享后执行的回调函数
-            //                 }
-            //             });
-            //         });
-            //     });
-            // };
-
-            /**
-             * http get获取资源数据
-             */
-            // var httpGetFiles = function (url, callback) {
-            //     //设置loading状态
-            //     //MyData.overallData['loadData'] = true;
-            //     $http({
-            //         method: 'GET',
-            //         url: url
-            //     }).then(function successCallback(response) {
-            //         if (response['status'] == 200) {
-            //             //返回正确操作后执行回调函数
-            //             callback(response['data'])
-            //
-            //         } else {
-            //             alert(MyData.requestDataErrorMsg + ",.");
-            //         }
-            //     }, function errorCallback(err) {
-            //         alert(MyData.requestDataErrorMsg + ".," + err);
-            //
-            //     }).finally(function () {
-            //         //重置loading状态
-            //         //MyData.overallData['loadData'] = false;
-            //     });
-            // };
-
-
-            /**
              * 用户点赞和取消点赞操作
              */
-            var updatePitchCount = function () {
-                if (!MyData.overallData['markSubmitPitchOpt']) {
-                    //设置提交点赞为true
-                    MyData.overallData['markSubmitPitchOpt'] = true;
-
-                    //装载表单数据
-                    var fd = new FormData();
-                    fd.append('wx_user_id', MyData.userInfo['openid']);
-                    fd.append('dynamic_timestamp', MyData.overallData['param']['timestamp']);
-                    MyData.userDynamic['dynamic_pitch'] = (MyData.userDynamic['dynamic_pitch'] == 1 ? 0 : 1);
-                    fd.append('dynamic_pitch', MyData.userDynamic['dynamic_pitch']);
-
-                    var url = MyData.updatePitchCount;
-
-                    //http请求数据
-                    $http.post(url, fd, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined},
-                    }).success(function (response) {
-                        if (response['status_code'] == 200) {
-                            //更新点赞数
-                            MyData.dynamicDetail['pitch_count'] = response['data'];
-                        }
-
-                    }).error(function (err) {
-                        alert("尊敬的客户，服务器异常，请稍后重试._")
-
-                    }).finally(function () {
-                        MyData.overallData['markSubmitPitchOpt'] = false;
-                    })
-
-                } else {
-                    alert("正在执行点赞更新操作，请稍后重试");
-                }
-            };
+            // var updatePitchCount = function () {
+            //     if (!MyData.overallData['markSubmitPitchOpt']) {
+            //         //设置提交点赞为true
+            //         MyData.overallData['markSubmitPitchOpt'] = true;
+            //
+            //         //装载表单数据
+            //         var fd = new FormData();
+            //         fd.append('wx_user_id', MyData.userInfo['openid']);
+            //         fd.append('dynamic_timestamp', MyData.overallData['param']['timestamp']);
+            //         MyData.userDynamic['dynamic_pitch'] = (MyData.userDynamic['dynamic_pitch'] == 1 ? 0 : 1);
+            //         fd.append('dynamic_pitch', MyData.userDynamic['dynamic_pitch']);
+            //
+            //         var url = MyData.updatePitchCount;
+            //
+            //         //http请求数据
+            //         $http.post(url, fd, {
+            //             transformRequest: angular.identity,
+            //             headers: {'Content-Type': undefined},
+            //         }).success(function (response) {
+            //             if (response['status_code'] == 200) {
+            //                 //更新点赞数
+            //                 MyData.dynamicDetail['pitch_count'] = response['data'];
+            //             }
+            //
+            //         }).error(function (err) {
+            //             alert("尊敬的客户，服务器异常，请稍后重试._")
+            //
+            //         }).finally(function () {
+            //             MyData.overallData['markSubmitPitchOpt'] = false;
+            //         })
+            //
+            //     } else {
+            //         alert("正在执行点赞更新操作，请稍后重试");
+            //     }
+            // };
 
             /**
              * 对数据进行判空处理
@@ -366,7 +292,6 @@
 
             return {
                 initData: initData,
-                updatePitchCount:updatePitchCount,
             }
         });
     </script>

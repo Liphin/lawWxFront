@@ -127,6 +127,30 @@ contentModule.directive('msgList', ['$document', function ($document) {
 }]);
 
 /**
+ * 设置群发页面
+ */
+contentModule.directive('contentMass', ['$document', function ($document) {
+    return {
+        restrict: 'E',
+        templateUrl: 'src/content/tmpl/sub/mass/mass.html'
+    };
+}]);
+
+contentModule.directive('massList', ['$document', function ($document) {
+    return {
+        restrict: 'E',
+        templateUrl: 'src/content/tmpl/sub/mass/opt/massList.html'
+    };
+}]);
+
+contentModule.directive('massEdit', ['$document', function ($document) {
+    return {
+        restrict: 'E',
+        templateUrl: 'src/content/tmpl/sub/mass/opt/massEdit.html'
+    };
+}]);
+
+/**
  * 设置手机预览页面
  */
 contentModule.directive('phoneView', ['$document', function ($document) {

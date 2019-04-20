@@ -43,7 +43,7 @@ contentModule.factory('TeamListSer',function ($http,$window, $timeout,ContentDat
                     Math.ceil(parseFloat(totalNum) / ContentDataSer.overallData['teamListShow']['screenNum']);
 
                 //重置数据顺序：1、根据置顶标签排在前面，2、置顶的数据中根据置顶时间戳进行排序
-                var newListSortedData = teamListData.sort(ContentGeneralSer.sortStickNum);
+                var newListSortedData = teamListData.sort(ContentGeneralSer.sortTeamStickNum);
                 //console.log(newListSortedData);
 
                 //循环填充成员list数据

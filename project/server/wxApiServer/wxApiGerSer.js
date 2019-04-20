@@ -14,7 +14,7 @@ var serverSerData = require('../serverSerData');
 var wxApiGerSerData = require('./wxApiGerSerData');
 function WxApiGerSer() {
     //微信公众号创建菜单
-    this.createWxMenu = function () {
+    this.createWxMenu = function (callback) {
         var menuData = wxApiGerSerData.wxMeunJson;
         var access_token = serverSerData.wxCertData['access_token'];
         var uri = util.format(serverSerData.createWxMenuUrl,access_token);
@@ -23,7 +23,8 @@ function WxApiGerSer() {
             url: uri,
             json: menuData,
         }, function (err, res, body) {
-            console.log(body)
+            console.log(body);
+            callback();
         });
     };
 

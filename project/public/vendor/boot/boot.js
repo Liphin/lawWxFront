@@ -74,6 +74,8 @@ head.load(
     'src/content/service/sub/team/teamEditService.js',
     'src/content/service/sub/msg/msgListService.js',
     'src/content/service/sub/msg/msgEditService.js',
+    'src/content/service/sub/mass/massListService.js',
+    'src/content/service/sub/mass/massEditService.js',
 
     'src/content/directive/contentDirective.js',
     'src/content/directive/richTextEditorDirective.js',

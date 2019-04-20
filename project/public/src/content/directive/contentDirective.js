@@ -38,7 +38,7 @@ contentModule.directive('fileModel', ['$parse', 'ContentDataSer', 'OverallSer', 
                         ctx.drawImage(this, 0, 0, width, height);
                         var dataUrl = canvas.toDataURL();
                         var blob = OverallSer.dataURItoBlob(dataUrl);
-
+                        var fileName = ContentDataSer.interestData['editData']['data']['timestamp']+".png";
                         //强制渲染操作才可现实在前端
                         scope.$apply(function () {
                             if(ContentDataSer.overallData['pageType']==1) {
@@ -46,18 +46,24 @@ contentModule.directive('fileModel', ['$parse', 'ContentDataSer', 'OverallSer', 
                                 ContentDataSer.interestData['editData']['data']['coverImageSrc'] = dataUrl;
                                 //对进行拷贝保存该文件装载
                                 ContentDataSer.interestData['editData']['data']['coverImage'] = blob;
+                                //保存文件路径
+                                ContentDataSer.interestData['editData']['data']['fileName'] = fileName;
                             }
                             else if(ContentDataSer.overallData['pageType']==2) {
                                 //生成blob数据到前端url
                                 ContentDataSer.studyData['editData']['data']['coverImageSrc'] = dataUrl;
                                 //对进行拷贝保存该文件装载
                                 ContentDataSer.studyData['editData']['data']['coverImage'] = blob;
+                                //保存文件路径
+                                ContentDataSer.studyData['editData']['data']['fileName'] = fileName;
                             }
                             else if(ContentDataSer.overallData['pageType']==3) {
                                 //生成blob数据到前端url
                                 ContentDataSer.dynamicData['editData']['data']['coverImageSrc'] = dataUrl;
                                 //对进行拷贝保存该文件装载
                                 ContentDataSer.dynamicData['editData']['data']['coverImage'] = blob;
+                                //保存文件路径
+                                ContentDataSer.dynamicData['editData']['data']['fileName'] = fileName;
                             }
                         })
                     });

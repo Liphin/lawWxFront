@@ -68,8 +68,28 @@ contentModule.factory('StudyEditSer',function ($http, $window, $timeout, Content
 
             //特殊字符串转换并赋值
             ContentDataSer.overallData['phoneView']['html'] = ContentGeneralSer.replaceSpecialCharacters(phoneHtml);
+
             //提交保存，并携带标识新建、跟新新闻操作标识符
             saveStudyHtmlData(ContentDataSer.studyData['editData']['optType']);
+            // var formData = {
+            //     'fileUrl': ContentDataSer.fileUrl,
+            //     'fileName': ContentDataSer.studyData['editData']['data']['fileName'],
+            //     'wxFlag':"study",
+            //     'fileBlob': ContentDataSer.studyData['editData']['data']['coverImage'],
+            // };
+            // ContentGeneralSer.saveCoverImage(formData,function (response) {
+            //     //提交保存，并携带标识新建、跟新新闻操作标识符
+            //     ContentGeneralSer.saveCoverImage(formData,function (response) {
+            //         if (response['errcode']=="45009") {
+            //             alert("素材上传已达上限");
+            //         }
+            //         else {
+            //             ContentDataSer.studyData['editData']['data']['cover_media_id'] = response['media_id'];
+            //             saveStudyHtmlData(ContentDataSer.studyData['editData']['optType']);
+            //             //console.log('phoneHtml', html);
+            //         }
+            //     });
+            // });
             //console.log('phoneHtml', html);
         }
     };
@@ -139,6 +159,7 @@ contentModule.factory('StudyEditSer',function ($http, $window, $timeout, Content
                         if (imgSrc.indexOf('127.0.0.1') <= -1 && imgSrc.indexOf(ContentDataSer.overallData['netURL']) <= -1) {
                             var imgSrcArray = imgSrc.split('.');
                             var fileName = OverallGeneralSer.getTimeStamp(++index) + "." + imgSrcArray[imgSrcArray.length - 1].split('?')[0];
+                            fileName = fileName.replace(/.gif/,".jpg");
                             var url = OverallDataSer.urlData['frontEndHttp']['uploadCrossOriginImg'] + "?croUrl=" + encodeURIComponent(imgSrc) + "&fileName=" + encodeURIComponent(fileName);
                             OverallGeneralSer.httpGetFiles(url, function (responseData) {
                                 if (responseData) {

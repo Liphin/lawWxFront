@@ -43,6 +43,14 @@ var createWxMenuUrl = "https://api.weixin.qq.com/cgi-bin/menu/create?access_toke
 var getOauthTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code";
 var getJsSignUrl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=%s&type=jsapi";
 var copyResourceUrl = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=%s&media_id=%s";
+var uploadInfoUrl = "https://api.weixin.qq.com/cgi-bin/media/uploadnews?access_token=%s";
+var uploadImageUrl = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=%s";
+var uploadMediaUrl = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=%s&type=image";
+//var sendMassInfoUrl = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=%s";
+var viewSendInfoUrl = "https://api.weixin.qq.com/cgi-bin/message/mass/preview?access_token=%s";
+var sendMassInfoUrl = "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token=%s";
+
+var clearAPiQuatoUrl = "https://api.weixin.qq.com/cgi-bin/clear_quota?access_token=%s";
 // var jsSdkSignUrl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=%s&type=jsapi";
 
 /**
@@ -67,6 +75,12 @@ var wxCertData = {
   "js_timestamp":"",
 };
 
+/**
+ * 上传图文信息
+ * @type {{}}
+ */
+var uploadMediaData = '';
+
 module.exports = {
     projectPath: projectPath,
     basePath: basePath,
@@ -79,6 +93,13 @@ module.exports = {
     getOauthTokenUrl: getOauthTokenUrl,
     getJsSignUrl:getJsSignUrl,
     copyResourceUrl:copyResourceUrl,
+    uploadInfoUrl:uploadInfoUrl,
+    uploadMediaUrl:uploadMediaUrl,
+    sendMassInfoUrl:sendMassInfoUrl,
+    clearAPiQuatoUrl:clearAPiQuatoUrl,
+    uploadImageUrl:uploadImageUrl,
+    viewSendInfoUrl:viewSendInfoUrl,
     wxAppInfo: wxAppInfo,
     wxCertData: wxCertData,
+    uploadMediaData:uploadMediaData,
 };

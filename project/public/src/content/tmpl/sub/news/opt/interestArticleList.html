@@ -18,6 +18,8 @@
         <span ng-click="content.chooseProjectPanel('content/team','teamList')" id="53" name="Text_53" style="cursor: pointer;position: absolute;top: 318px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">团队管理</span>
         <!--留言代办-->
         <span ng-click="content.chooseProjectPanel('content/msg','msgList')" id="54" name="Text_54" style="cursor: pointer;position: absolute;top: 369px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">留言代办</span>
+        <!--微信群发-->
+        <span ng-click="content.chooseProjectPanel('content/mass','massList')" id="55" name="Text_55" style="cursor: pointer;position: absolute;top: 420px; height: 42px; z-index:34; left: 16px; width: 157px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">微信群发</span>
 
         <!-- 文本 -->
         <span id="44" name="Text_44" style="position: absolute;top: 20px; height: 25px; z-index:44; left: 251px; width: 71px; font-size: 16px; color: rgba(255,255,255,1.0); background:rgba(255,255,255,0); ">内容管理</span>
@@ -55,14 +57,11 @@
                     <th style="text-align: center; width: 60px;">
                         <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">选择</span>
                     </th>
-                    <th style="text-align: center; width: 278px; ">
+                    <th style="text-align: center; width: 356px; ">
                         <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">内容标题</span>
                     </th>
                     <th style="text-align: center; width: 89px; ">
                         <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">类型</span>
-                    </th>
-                    <th style="text-align: center; width: 78px; ">
-                        <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">已读人数</span>
                     </th>
                     <th style="text-align: center; width: 78px; ">
                         <span style="font-size: 14px;color: #4a4a4a;font-weight: bold">状态</span>
@@ -88,9 +87,6 @@
                         <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['type_name']}}</span>
                     </td>
                     <td style="padding: 15px 0 0 0;text-align: center; width: 78px;">
-                        <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['view_count']}}</span>
-                    </td>
-                    <td style="padding: 15px 0 0 0;text-align: center; width: 78px;">
                         <span style="font-size: 13px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">{{news['status_cd_name']}}</span>
                     </td>
                     <td style="padding: 15px 0 0 0;text-align: center; width: 200px;">
@@ -110,6 +106,7 @@
                                 <span style="padding: 9px 15px;" ng-click="content.interestOpt('copy', news['id'], $index)">复制</span>
                                 <span style="padding: 9px 15px;" ng-click="content.interestOpt('edit', news['id'], $index)">编辑</span>
                                 <span style="padding: 9px 15px;" ng-click="content.interestOpt('view', news['id'], $index)">预览</span>
+                                <span style="padding: 9px 15px;" ng-click="content.interestOpt('addSend', news['id'], $index)">添加群发</span>
                             </div>
                             <div ng-mouseenter="news['menu']=true" style="cursor: pointer;width: 80px; border: 1px solid gainsboro; border-radius: 5px;height: 28px;padding: 2px 0 0 0;position: relative; top: -5px">
                                 <span style="padding: 0;;font-size: 12px;font-weight: normal;font-family: microsoft yahei;font-style: normal;text-decoration: none;color: rgba(0,0,0,1.0);">操作</span>

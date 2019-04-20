@@ -8,7 +8,7 @@ var contentModule = angular.module('Angular.content');
 contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window, $location,ContentSer,ContentDataSer,ContentGeneralSer,
                                                   OverallDataSer, OverallGeneralSer,InterestListSer,InterestEditSer,
                                                   StudyListSer,StudyEditSer,DynamicListSer,DynamicEditSer,
-                                                  TeamListSer,TeamEditSer,MsgListSer,MsgEditSer) {
+                                                  TeamListSer,TeamEditSer,MsgListSer,MsgEditSer,MassListSer,MassEditSer) {
     //检查是否登录状态
     if(!check) return;
     var content = this;
@@ -19,6 +19,8 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
     content.dynamicData = ContentDataSer.dynamicData;
     content.teamData = ContentDataSer.teamData;
     content.msgData = ContentDataSer.msgData;
+    content.massData = ContentDataSer.massData;
+    content.massListData = ContentDataSer.massListData;
 
     ContentSer.parsePath(); //解析路径操作
     ContentSer.dataInit(); //数据初始化操作
@@ -45,14 +47,23 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
      * 根据是否置顶的数据返回相应左偏移量
      */
     content.stickLeftOffset = function (status_cd) {
-        if (ContentDataSer.overallData['pageType']<4) {
+        if (ContentDataSer.overallData['pageType']<3) {
+            return status_cd == 1 ? '-412px' : '-386px';
+        }
+        else if (ContentDataSer.overallData['pageType']==3) {
             return status_cd == 1 ? '-312px' : '-286px';
         }
         else if (ContentDataSer.overallData['pageType']==4) {
             return status_cd == 1 ? '-200px' : '-174px';
         }
-        else {
+        else if (ContentDataSer.overallData['pageType']==5) {
             return status_cd == 1 ? '-260px' : '-234px';
+        }
+        else if (ContentDataSer.overallData['pageType']==6) {
+            return status_cd == 1 ? '-160px' : '-134px';
+        }
+        else if (ContentDataSer.overallData['pageType']==7) {
+            return status_cd == 1 ? '-60px' : '-34px';
         }
 
     };
@@ -154,10 +165,10 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
     /**
      * 检测富文本框按键按下和弹起的操作
      */
-    content.checkRichEditorKeyDown = function (event) {
+    content.checkRichEditorKeyDownInterest = function (event) {
         InterestEditSer.checkRichEditorKeyDown(event);
     };
-    content.checkRichEditorKeyUp = function (event) {
+    content.checkRichEditorKeyUpInterest = function (event) {
         InterestEditSer.checkRichEditorKeyUp(event);
     };
 
@@ -249,10 +260,10 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
     /**
      * 检测富文本框按键按下和弹起的操作
      */
-    content.checkRichEditorKeyDown = function (event) {
+    content.checkRichEditorKeyDownStudy = function (event) {
         StudyEditSer.checkRichEditorKeyDown(event);
     };
-    content.checkRichEditorKeyUp = function (event) {
+    content.checkRichEditorKeyUpStudy = function (event) {
         StudyEditSer.checkRichEditorKeyUp(event);
     };
 
@@ -343,10 +354,10 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
     /**
      * 检测富文本框按键按下和弹起的操作
      */
-    content.checkRichEditorKeyDown = function (event) {
+    content.checkRichEditorKeyDownDynamic = function (event) {
         DynamicEditSer.checkRichEditorKeyDown(event);
     };
-    content.checkRichEditorKeyUp = function (event) {
+    content.checkRichEditorKeyUpDynamic = function (event) {
         DynamicEditSer.checkRichEditorKeyUp(event);
     };
 
@@ -503,7 +514,70 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
         MsgEditSer.saveMsg();
     };
 
+    /************************ 群发列表List设置 ******************************/
 
+    /**
+     * 新建群发任务
+     */
+    content.createNewMass = function () {
+        MassListSer.createNewMass();
+    };
 
+    /**
+     * 任务列表中每一条任务的操作
+     */
+    content.massOpt = function (optType, massId, index) {
+        MassListSer.massOpt(optType, massId, index);
+    };
+
+    /**
+     * 获取下一批任务列表
+     */
+    content.getBatchRangeMassInfo =function (changeBatch) {
+        MassListSer.getBatchRangeMassInfo(changeBatch);
+    };
+
+    /************************ 群发列表Edit设置 ******************************/
+
+    /**
+     * 搜索趣文数据
+     * @see MassEditSer.searchMassList
+     */
+    content.searchMassList = function () {
+        //点击搜素按钮的操作都视为第一次搜索
+        ContentDataSer.overallData['listShow']['search_first_flag'] = 0;
+        MassEditSer.searchMassList();
+    };
+
+    /**
+     * 按下enter进行搜索
+     * @see MassEditSer.searchMassList()
+     */
+    content.searchMassListKeyDown = function (event) {
+        var keyObj = event.key.toLowerCase();
+        if (keyObj == 'enter') MassEditSer.searchMassList();
+    };
+
+    /**
+     * 待处理消息列表操作
+     */
+    content.massListOpt = function (optType, massListId, index) {
+        MassEditSer.massListOpt(optType, massListId, index);
+    };
+
+    /**
+     * 获取下一批待处理消息列表
+     */
+    content.getBatchRangeMassListInfo =function (changeBatch) {
+        MassEditSer.getBatchRangeMassInfo(changeBatch);
+    };
+
+    /**
+     * 批量上传图文信息
+     * @see MassEditSer.uploadBatchMedia
+     */
+    content.uploadBatchMedia = function () {
+        MassEditSer.uploadBatchMedia();
+    };
 
 });

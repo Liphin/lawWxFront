@@ -6,6 +6,8 @@ var http = require('http');
 var https = require('https');
 var request = require('request');
 var crypto = require('crypto');
+var GetAccessTokenSer = require('../tokenServer/getAccessTokenSer');
+var getAccessTokenSer = new GetAccessTokenSer();
 var serverSerData = require('../serverSerData');
 
 function resourceLocalize() {
@@ -28,6 +30,35 @@ function resourceLocalize() {
                 response.send(true)
             });
         });
+    };
+
+    this.clearQuato =function (req,res) {
+        var arg = url.parse(req.url, true).query;
+        var pass = arg['pass'];
+        console.log(pass);
+        if (pass=="qidai6968") {
+            getAccessTokenSer.getAccessToken(function () {
+                var uri = util.format(serverSerData.clearAPiQuatoUrl,serverSerData.wxCertData['access_token']);
+                request.post({
+                    url:uri,
+                    json:{
+                        "appid":serverSerData.wxAppInfo['appid'],
+                    }
+                },function (err,response,body) {
+                    if (!err && response['statusCode']==200) {
+                        res.send(JSON.parse(body));
+                    }
+                    else {
+                        console.log(err);
+                        res.send(JSON.parse(body));
+                    }
+                });
+            });
+
+        }
+        else {
+            res.send("请输入正确的密码参数");
+        }
     };
 
 

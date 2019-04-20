@@ -307,10 +307,44 @@ contentModule.factory('DynamicListSer', function ($http, $window, $timeout, Cont
                 topDynamic(index);
                 break;
             }
+            case 'addSend': {
+                addSend(index);
+                break;
+            }
             default: {
                 break;
             }
         }
+    };
+
+    /**
+     * 添加预群发
+     * @param index
+     */
+    var addSend = function (index) {
+        //添加预群发，上传头像
+        // var targetNews = ContentDataSer.studyData['list'][index];
+        // var timestamp = targetNews['timestamp'];
+        // var fd = new FormData();
+        // fd.append('timestamp',timestamp);
+        //
+        // $http.post(ContentDataSer.addMassListToSend,fd,{
+        //     transformRequest: angular.identity,
+        //     headers: {'Content-Type': undefined},
+        // }).success(function (response) {
+        //     if (response['status_code'] == 200) {
+        //         //重新清空列表并获取数据操作
+        //         ContentDataSer.dynamicData['list'].length = 0;
+        //         ContentDataSer.overallData['listShow']['pagination']['loadedMaxPageNum'] = 0;
+        //         getRangeDynamicInfo();
+        //
+        //     } else {
+        //         OverallGeneralSer.alertHttpRequestError("addSend", response['exception_code'], response['exception']);
+        //     }
+        // }).error(function (err) {
+        //     OverallGeneralSer.alertHttpRequestError("addSend", 600, err);
+        // });
+        alert("此为手机微网站的文章，不能作为微信群发");
     };
 
     /**

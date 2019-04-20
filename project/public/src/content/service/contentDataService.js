@@ -9,6 +9,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
 
     //var getRangeFriendCircleListToBg = OverallDataSer.urlData['backEndHttp']['getRangeFriendCircleListToBg'];
     var getPhoneHtmlHead = OverallDataSer.urlData['backEndHttp']['getPhoneHtmlHead'];
+    var getPhoneHtmlHeadMini = OverallDataSer.urlData['backEndHttp']['getPhoneHtmlHeadMini'];
 
 
 
@@ -63,12 +64,24 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
     var setupMsg = OverallDataSer.urlData['backEndHttp']['setupMsg'];
     var setupBatchMsg = OverallDataSer.urlData['backEndHttp']['setupBatchMsg'];
 
+    //群发api
+    var getRangeMassToBg = OverallDataSer.urlData['backEndHttp']['getRangeMassToBg'];
+    var deleteMass = OverallDataSer.urlData['backEndHttp']['deleteMass'];
+    var wxMassSendInfo = OverallDataSer.urlData['backEndHttp']['wxMassSendInfo'];
+    var updateMassResult = OverallDataSer.urlData['backEndHttp']['updateMassResult'];
+    var updateMassUpload = OverallDataSer.urlData['backEndHttp']['updateMassUpload'];
+    var getRangeMassListToBg = OverallDataSer.urlData['backEndHttp']['getRangeMassListToBg'];
+    var searchMassListData = OverallDataSer.urlData['backEndHttp']['searchMassListData'];
+
 
     //公用api
     var uploadResource = OverallDataSer.urlData['backEndHttp']['uploadResource'];
+    var addMassListToSend = OverallDataSer.urlData['backEndHttp']['addMassListToSend'];
     var getDynamicResource = OverallDataSer.urlData['frontEndHttp']['getDynamicResource'];
     var saveCoverImage = OverallDataSer.urlData['frontEndHttp']['saveCoverImage'];
     var getCoverImage = OverallDataSer.urlData['frontEndHttp']['getCoverImage'];
+    var uploadCoverImage = OverallDataSer.urlData['frontEndHttp']['uploadCoverImage'];
+    var wxMassUploadInfo = OverallDataSer.urlData['frontEndHttp']['wxMassUploadInfo'];
     var fileUrl = "coverimg";
 
     //全局数据
@@ -105,11 +118,21 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
                 0: '草稿',
                 1: '发布',
             },
+            'massStatusType': {
+                99: '全部',
+                2: '预群发',
+                3: '已上传',
+                4: '已群发',
+            },
+            'massType': {
+                0: '预群发',
+                1: '已群发',
+            },
 
             'pageType':1,//1-趣文 2-研究所 3-律所动态 4-团队管理 5-留言代办
 
-            // 'netURL':'gntqant.com',
-            'netURL':'127.0.0.1',
+            'netURL':'gntqant.com',
+            //'netURL':'127.0.0.1',
 
 
         },
@@ -175,6 +198,38 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
                 1: '已办',
             },
         },
+
+        'massListShow': {
+            'maxFromCreateTime': '2088-01-01 00:00:00',  //最大值，用于起始页操作
+            'screenNum': 12, //新闻或朋友圈列表每次获取的数量
+            'maxShowPage': 10, //一次性最多展示10页数据
+
+            'totalNum': 0, //所有新闻条目数据
+            'totalPage': 0, //一共多少分页
+
+            'search': '',//搜索页面内容
+            'status_cd': 99,
+
+            'search_flag': 0,//0--获取一定范围的数据 1--搜素一定范围的数据
+            'search_first_flag': 0,//0--第一次搜索 1--非第一次搜索
+
+            'pagination': {
+                'loadedMaxPageNum': 0,//已加载过的最大page number
+                'beginPageNum': 1,//页面开始的下标号
+                'activeIndex': 0, //激活状态的分页index
+                'beginListIndex': 0, //新闻list列表，开始展示数据的下标条目
+                'num': [], //所有装填分页数据
+                'pre': false, //是否可选择上一批次
+                'next': true, //是否可选择下一批次
+            },
+
+            'statusType': {
+                99: '全部',
+                0: '待群发',
+                1: '已群发',
+            },
+        },
+
         //生成的页面手机版本预览
         'phoneView': {
             'status': false,
@@ -187,6 +242,9 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'viewHeadHtml': '', //预览时前端
             'phoneHeadHtml': '', //手机端拼凑的头部数据
             'phoneEndHtml': '', //手机端拼凑的尾部数据
+            'viewHeadHtmlMini': '', //预览时前端
+            'phoneHeadHtmlMini': '', //手机端拼凑的头部数据
+            'phoneEndHtmlMini': '', //手机端拼凑的尾部数据
             'html': '',//生成的网页html数据
             'height': '',//手机展示区的高度
             'maxHeight': '700',//手机展示区的最大高度为700px
@@ -226,6 +284,11 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'status': false,
             'msgList': false,
             'msgEdit': false,
+        },
+        'mass': {
+            'status': false,
+            'massList': false,
+            'massEdit': false,
         }
     };
 
@@ -246,6 +309,9 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'data': {
                 'id':'',
                 'title': '',
+                'cover_media_id': '',
+                'media_id': '',
+                'msg_id': '',
                 'type': 1,
                 'subtype':10,
                 'wx_user_id': '',
@@ -258,6 +324,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
 
                 'coverImage': '',
                 'coverImageSrc': '',
+                'fileName':'',
             },
         },
         'list': [],
@@ -281,6 +348,9 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'data': {
                 'id':'',
                 'title': '',
+                'cover_media_id': '',
+                'media_id': '',
+                'msg_id': '',
                 'type': 2,
                 'subtype': 20,
                 'wx_user_id': '',
@@ -293,6 +363,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
 
                 'coverImage': '',
                 'coverImageSrc': '',
+                'fileName':'',
             },
         },
         'list': [],
@@ -315,6 +386,9 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'data': {
                 'id':'',
                 'title': '',
+                'cover_media_id': '',
+                'media_id': '',
+                'msg_id': '',
                 'type': 3,
                 'subtype':30,
                 'wx_user_id': '',
@@ -327,6 +401,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
 
                 'coverImage': '',
                 'coverImageSrc': '',
+                'fileName':'',
             },
         },
         'list': [],
@@ -437,6 +512,66 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         'list': [],
     };
 
+    //群发信息管理
+    var massData = {
+        'mapData': {
+            'msgType': {
+                0: '微信群发',
+            },
+            'subType':{
+                0: '预群发',
+                1: '已群发',
+                2: '群发失败',
+            }
+
+        },
+        'editData': {
+            'optType': 1, //2为更新留言操作
+            'editIndex': '',
+            'data': {
+                'id':'',
+                'msg_id': '',
+                'msg_data_id': '',
+                'media_id':'',
+                'news_count': '',
+                'status_cd': '',
+                'timestamp': '',
+                'create_time': '',
+                'update_time': '',
+            },
+        },
+        'list': [],
+    };
+
+    //群发信息管理
+    var massListData = {
+        'mapData': {
+            'subtype': {
+                10: '见识闻趣',
+                20: '婚姻专栏',
+                21: '房产专栏',
+                22: '公司专栏',
+                30: '律所资讯',
+            },
+        },
+        'toUploadListData':{
+            "articles":[],
+        },
+        'mediaData':{
+            "thumb_media_id":"",
+            "content":"",
+            "show_cover_pic":0,
+            "need_open_comment":1,
+            "only_fans_can_comment":1
+        },
+        'toSelectListArray':[],
+        'editData': {
+            'optType': 2, //1为创建文章操作，2为更新文章操作
+            'editIndex': '',
+        },
+        'list': [],
+    };
+
 
 
 
@@ -444,6 +579,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         //数据获取api
         getDynamicResource: getDynamicResource,
         getPhoneHtmlHead: getPhoneHtmlHead,
+        getPhoneHtmlHeadMini:getPhoneHtmlHeadMini,
 
         //趣文数据操作api
         getRangeInterestListToBg: getRangeInterestListToBg,
@@ -488,6 +624,18 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         uploadResource: uploadResource,
         saveCoverImage: saveCoverImage,
         getCoverImage:getCoverImage,
+        addMassListToSend:addMassListToSend,
+        uploadCoverImage:uploadCoverImage,
+        wxMassUploadInfo:wxMassUploadInfo,
+
+        //群发api
+        getRangeMassToBg:getRangeMassToBg,
+        deleteMass:deleteMass,
+        wxMassSendInfo:wxMassSendInfo,
+        updateMassResult:updateMassResult,
+        updateMassUpload:updateMassUpload,
+        getRangeMassListToBg:getRangeMassListToBg,
+        searchMassListData:searchMassListData,
 
         //数据定义
         interestData: interestData,
@@ -495,6 +643,8 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         dynamicData: dynamicData,
         teamData: teamData,
         msgData: msgData,
+        massData: massData,
+        massListData:massListData,
         overallData: overallData,
         navigation: navigation,
         fileUrl: fileUrl,

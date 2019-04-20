@@ -60,7 +60,7 @@ contentModule.factory('DynamicEditSer',function ($http, $window, $timeout, Conte
             //拼接保存的最终版数据
             var phoneHtmlHead = ContentGeneralSer.generalHtmlHead(ContentDataSer.dynamicData['editData']['data']['title'],
                 ContentDataSer.dynamicData['editData']['data']['wx_user_name'], ContentDataSer.dynamicData['editData']['data']['create_time'], true);
-            var phoneHtmlEnd = ContentDataSer.overallData['phoneView']['phoneEndHtml'];
+            var phoneHtmlEnd = ContentDataSer.overallData['phoneView']['phoneEndHtmlMini'];
 
             //拼装HTML文件
             var phoneHtml = phoneHtmlHead + html + phoneHtmlEnd;
@@ -70,6 +70,22 @@ contentModule.factory('DynamicEditSer',function ($http, $window, $timeout, Conte
             ContentDataSer.overallData['phoneView']['html'] = ContentGeneralSer.replaceSpecialCharacters(phoneHtml);
             //提交保存，并携带标识新建、跟新新闻操作标识符
             saveDynamicHtmlData(ContentDataSer.dynamicData['editData']['optType']);
+            // var formData = {
+            //     'fileUrl': ContentDataSer.fileUrl,
+            //     'fileName': ContentDataSer.dynamicData['editData']['data']['fileName'],
+            //     'wxFlag':"dynamic",
+            //     'fileBlob': ContentDataSer.dynamicData['editData']['data']['coverImage'],
+            // };
+            // ContentGeneralSer.saveCoverImage(formData,function (response) {
+            //     if (response['errcode']=="45009") {
+            //         alert("素材上传已达上限");
+            //     }
+            //     else {
+            //         ContentDataSer.dynamicData['editData']['data']['cover_media_id'] = response['media_id'];
+            //         saveDynamicHtmlData(ContentDataSer.dynamicData['editData']['optType']);
+            //         //console.log('phoneHtml', html);
+            //     }
+            // });
             //console.log('phoneHtml', html);
         }
     };

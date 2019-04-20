@@ -85,8 +85,15 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
             'setupMsg': baseUrlData['backEndHttp'] + 'setupMsg',
             'setupBatchMsg': baseUrlData['backEndHttp'] + 'setupBatchMsg',
             'searchMsgData': baseUrlData['backEndHttp'] + 'searchMsgData', //搜索操作
+            'addMassListToSend':baseUrlData['backEndHttp'] + 'addMassListToSend',
 
-
+            //群发api
+            'getRangeMassToBg': baseUrlData['backEndHttp'] + 'getRangeMassToBg',
+            'deleteMass':baseUrlData['backEndHttp'] + 'deleteMass',
+            'updateMassResult':baseUrlData['backEndHttp'] + 'updateMassResult',
+            'updateMassUpload':baseUrlData['backEndHttp'] + 'updateMassUpload',
+            'getRangeMassListToBg':baseUrlData['backEndHttp'] + 'getRangeMassListToBg',
+            'searchMassListData':baseUrlData['backEndHttp'] + 'searchMassListData',
         },
 
         'frontEndHttp': {
@@ -95,10 +102,16 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
             'getViewHeadHtml': baseUrlData['frontEndHttp'] + 'helper/phone/viewHtmlHead.html',
             'getPhoneHtmlHead': baseUrlData['frontEndHttp'] + 'helper/phone/phoneHtmlHead.html',
             'getPhoneHtmlEnd': baseUrlData['frontEndHttp'] + 'helper/phone/phoneHtmlEnd.html',
+            'getViewHeadHtmlMini': baseUrlData['frontEndHttp'] + 'helper/mini/viewHtmlHead.html',
+            'getPhoneHtmlHeadMini': baseUrlData['frontEndHttp'] + 'helper/mini/phoneHtmlHead.html',
+            'getPhoneHtmlEndMini': baseUrlData['frontEndHttp'] + 'helper/mini/phoneHtmlEnd.html',
             'uploadCrossOriginImg': baseUrlData['frontEndHttp'] + 'uploadCrossOriginImg',
             'getDynamicResource': baseUrlData['frontEndHttp'] + 'dynamicinfo/resource/',
             'saveCoverImage': baseUrlData['frontEndHttp'] + 'saveCoverImage', //保存图片操作
             'getCoverImage': baseUrlData['frontEndHttp'] + 'dynamicinfo/coverimg/',
+            'uploadCoverImage': baseUrlData['frontEndHttp'] + 'uploadCoverImage',
+            'wxMassSendInfo':baseUrlData['frontEndHttp'] + 'wxMassSendInfo',
+            'wxMassUploadInfo':baseUrlData['frontEndHttp'] + 'wxMassUploadInfo',
 
         }
     };

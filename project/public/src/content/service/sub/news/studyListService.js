@@ -307,10 +307,59 @@ contentModule.factory('StudyListSer', function ($http, $window, $timeout, Conten
                 topStudy(index);
                 break;
             }
+            case 'addSend': {
+                addSend(index);
+                break;
+            }
             default: {
                 break;
             }
         }
+    };
+
+    /**
+     * 添加预群发
+     * @param index
+     */
+    var addSend = function (index) {
+        console.log("添加预群发");
+        //添加预群发，上传头像
+        var targetNews = ContentDataSer.studyData['list'][index];
+        var timestamp = targetNews['timestamp'];
+
+        //上传微信的缩略图
+        var formData = {
+            'fileName':timestamp+".png",
+        }
+        //提交保存，并携带标识新建、跟新新闻操作标识符
+        ContentGeneralSer.uploadCoverImage(formData,function (response) {
+            if (response['errcode']=="45009") {
+                alert("素材上传已达上限");
+            }
+            else {
+                var fd = new FormData();
+                var cover_media_id = response['media_id'];
+                fd.append('timestamp',timestamp);
+                fd.append('cover_media_id',cover_media_id);
+
+                $http.post(ContentDataSer.addMassListToSend,fd,{
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined},
+                }).success(function (res) {
+                    if (response['status_code'] == 200) {
+                        //重新清空列表并获取数据操作
+                        ContentDataSer.studyData['list'].length = 0;
+                        ContentDataSer.overallData['listShow']['pagination']['loadedMaxPageNum'] = 0;
+                        getRangeStudyInfo();
+
+                    } else {
+                        OverallGeneralSer.alertHttpRequestError("addSend", res['exception_code'], res['exception']);
+                    }
+                }).error(function (err) {
+                    OverallGeneralSer.alertHttpRequestError("addSend", 600, err);
+                });
+            }
+        });
     };
 
     /**
@@ -409,7 +458,7 @@ contentModule.factory('StudyListSer', function ($http, $window, $timeout, Conten
                 OverallGeneralSer.alertHttpRequestError("copyStudy", response['exception_code'], response['exception']);
             }
         }).error(function (err) {
-            OverallGeneralSer.alertHttpRequestError("copyStudy", 600, err)
+            OverallGeneralSer.alertHttpRequestError("copyStudy", 600, err);
         });
     };
 

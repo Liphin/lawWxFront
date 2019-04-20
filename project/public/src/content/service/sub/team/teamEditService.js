@@ -39,11 +39,11 @@ contentModule.factory('TeamEditSer',function ($http, $window, $timeout, ContentD
         var formData = {
             'fileUrl': fileUrl,
             'fileName': fileName,
-            'fileBlob': blob
+            'fileBlob': blob,
         };
         console.log(formData);
 
-        saveCoverImage(formData,function (response) {
+        ContentGeneralSer.saveCoverImage(formData,function (response) {
             console.log(response);
             if (checkNewsInfo()) {
                 var fd = new FormData();
@@ -98,26 +98,6 @@ contentModule.factory('TeamEditSer',function ($http, $window, $timeout, ContentD
         });
     };
 
-    /***
-     * 把blob数据传到后台保存
-     */
-    var saveCoverImage = function (obj,callback) {
-        var fd = new FormData();
-        var url = ContentDataSer.saveCoverImage;
-        for (var i in obj) {
-            fd.append(i, obj[i]);
-        }
-        $http.post(url,fd,{
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined},
-        }).success(function (response) {
-            callback(response);
-        }).error(function (error) {
-            alert("saveCoverImage error: "+JSON.stringify(error));
-        })
-
-    };
-
     var picShotMouseDown = function (event) {
         ContentDataSer.teamData['editData']['imageData'].reposition.status = true; //开始检测鼠标拖拽移动事件
         ContentDataSer.teamData['editData']['imageData'].reposition.y = event.pageY + event.target.scrollTop; //设置此时上偏移
@@ -148,7 +128,6 @@ contentModule.factory('TeamEditSer',function ($http, $window, $timeout, ContentD
 
     return {
         saveTeam:saveTeam,
-        saveCoverImage:saveCoverImage,
         picShotMouseDown:picShotMouseDown,
         picShotMouseMove:picShotMouseMove,
         picShotMouseUp:picShotMouseUp,

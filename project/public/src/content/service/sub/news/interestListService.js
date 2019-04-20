@@ -307,10 +307,75 @@ contentModule.factory('InterestListSer', function ($http, $window, $timeout, Con
                 topInterest(index);
                 break;
             }
+            case 'addSend': {
+                addSend(index);
+                break;
+            }
             default: {
                 break;
             }
         }
+    };
+
+    /**
+     * 添加预群发
+     * @param index
+     */
+    var addSend = function (index) {
+        console.log("添加预群发");
+        //添加预群发，上传头像
+        var targetNews = ContentDataSer.interestData['list'][index];
+        console.log(targetNews);
+        var timestamp = targetNews['timestamp'];
+
+        //上传微信的缩略图
+        var formData = {
+            'fileUrl':ContentDataSer.fileUrl,
+            'fileName':timestamp+".png",
+        }
+        //提交保存，并携带标识新建、跟新新闻操作标识符
+        ContentGeneralSer.uploadCoverImage(formData,function (response) {
+            if (response['errcode']=="45009") {
+                alert("素材上传已达上限");
+                return;
+            }
+            else {
+                var fd = new FormData();
+                var cover_media_id = response['media_id'];
+                fd.append('timestamp',timestamp);
+                fd.append('cover_media_id',cover_media_id);
+
+                $http.post(ContentDataSer.addMassListToSend,fd,{
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined},
+                }).success(function (response) {
+                    if (response['status_code'] == 200) {
+                        uploadImageUrl(timestamp);
+                        //重新清空列表并获取数据操作
+                        ContentDataSer.interestData['list'].length = 0;
+                        ContentDataSer.overallData['listShow']['pagination']['loadedMaxPageNum'] = 0;
+                        getRangeInterestInfo();
+
+                    } else {
+                        OverallGeneralSer.alertHttpRequestError("addSend", response['exception_code'], response['exception']);
+                    }
+                }).error(function (err) {
+                    OverallGeneralSer.alertHttpRequestError("addSend", 600, err);
+                });
+            }
+        });
+    };
+
+    /**
+     * 上传图文的图片获取URl
+     */
+
+    var uploadImageUrl = function (timestamp) {
+        var url = OverallGeneralSer.getDynamicInfoNews(timestamp, 'html');
+        OverallGeneralSer.httpGetFiles(url,function (response) {
+            var data = response;
+
+        })
     };
 
     /**

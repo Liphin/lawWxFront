@@ -36,7 +36,9 @@ function ServerSer() {
     this.dataInit = function () {
         getAccessTokenSer.getAccessToken(function () {
             console.log("创建菜单");
-            wxApiGerSer.createWxMenu();
+            wxApiGerSer.createWxMenu(function () {
+                console.log("完成创建菜单");
+            });
         });
 
         //配置每10分钟的定时任务
@@ -45,7 +47,8 @@ function ServerSer() {
             getAccessTokenSer.getAccessToken(function () {
                 console.log(serverSerData.wxCertData);
             });
-        })
+        });
+
     }
 
 

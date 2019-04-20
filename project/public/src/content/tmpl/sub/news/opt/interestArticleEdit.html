@@ -21,7 +21,8 @@
         <span ng-click="content.chooseProjectPanel('content/team','teamList')" id="61" name="Text_61" style="cursor: pointer;position: absolute;top: 318px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">团队管理</span>
         <!--留言代办-->
         <span ng-click="content.chooseProjectPanel('content/msg','msgList')" id="64" name="Text_64" style="cursor: pointer;position: absolute;top: 369px; height: 42px; z-index:51; left: 15px; width: 159px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1.0); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">留言代办</span>
-
+        <!--微信群发-->
+        <span ng-click="content.chooseProjectPanel('content/mass','massList')" id="59" name="Text_55" style="cursor: pointer;position: absolute;top: 420px; height: 42px; z-index:34; left: 16px; width: 157px; padding: 10px 0px 0px 0px; color: rgba(255,255,255,1); text-align: center; border-radius: 20px 20px 20px 20px; background:rgba(255,255,255,0); ">微信群发</span>
         <!-- 文本 -->
         <span id="44" name="Text_44" style="position: absolute;top: 20px; height: 25px; z-index:44; left: 251px; width: 71px; font-size: 16px; color: rgba(255,255,255,1.0); background:rgba(255,255,255,0); ">内容管理</span>
         <!-- 文本 -->
@@ -61,7 +62,7 @@
         <span id="56" name="Text_56" style="position: absolute;top: 359px; height: 27px; z-index:56; left: 1091px; width: 110px; color: rgba(83,41,125,1); text-decoration: underline; background:rgba(255,255,255,0); ">点击上传封面图</span>
 
         <!-- 富文本框编辑器 -->
-        <div id="49" name="Bg_49" style="text-align: left;position: absolute;top: 225px; height: 589px; z-index:49; left: 237px; width: 726px; " ng-keydown="content.checkRichEditorKeyDown($event)" ng-keyup="content.checkRichEditorKeyUp($event)">
+        <div id="49" name="Bg_49" style="text-align: left;position: absolute;top: 225px; height: 589px; z-index:49; left: 237px; width: 726px; " ng-keydown="content.checkRichEditorKeyDownInterest($event)" ng-keyup="content.checkRichEditorKeyUpInterest($event)">
             <div id="newsEditor" rich-text-editor editor-height="528"></div>
         </div>
 

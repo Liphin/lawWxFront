@@ -68,9 +68,28 @@ contentModule.factory('InterestEditSer',function ($http, $window, $timeout, Cont
 
             //特殊字符串转换并赋值
             ContentDataSer.overallData['phoneView']['html'] = ContentGeneralSer.replaceSpecialCharacters(phoneHtml);
+
             //提交保存，并携带标识新建、跟新新闻操作标识符
             saveInterestHtmlData(ContentDataSer.interestData['editData']['optType']);
-            //console.log('phoneHtml', html);
+
+            //上传封面图片到微信
+            // var formData = {
+            //     'fileUrl': ContentDataSer.fileUrl,
+            //     'fileName': ContentDataSer.interestData['editData']['data']['fileName'],
+            //     'wxFlag':"interest",
+            //     'fileBlob': ContentDataSer.interestData['editData']['data']['coverImage'],
+            // };
+            // ContentGeneralSer.saveCoverImage(formData,function (response) {
+            //     //提交保存，并携带标识新建、跟新新闻操作标识符
+            //     if (response['errcode']=="45009") {
+            //         alert("素材上传已达上限");
+            //     }
+            //     else {
+            //         ContentDataSer.interestData['editData']['data']['cover_media_id'] = response['media_id'];
+            //         saveInterestHtmlData(ContentDataSer.interestData['editData']['optType']);
+            //         //console.log('phoneHtml', html);
+            //     }
+            // });
         }
     };
 
@@ -136,9 +155,13 @@ contentModule.factory('InterestEditSer',function ($http, $window, $timeout, Cont
                     $("img", $('#49')).each(function () {
                         var target = $(this);
                         var imgSrc = target[0].src;
+                        //console.log(imgSrc);
                         if (imgSrc.indexOf('127.0.0.1') <= -1 && imgSrc.indexOf(ContentDataSer.overallData['netURL']) <= -1) {
                             var imgSrcArray = imgSrc.split('.');
                             var fileName = OverallGeneralSer.getTimeStamp(++index) + "." + imgSrcArray[imgSrcArray.length - 1].split('?')[0];
+                            //因为微信群发不支持gif，所以把gif的图片保存为jpg
+                            fileName = fileName.replace(/.gif/,".jpg");
+                            //console.log(fileName);
                             var url = OverallDataSer.urlData['frontEndHttp']['uploadCrossOriginImg'] + "?croUrl=" + encodeURIComponent(imgSrc) + "&fileName=" + encodeURIComponent(fileName);
                             OverallGeneralSer.httpGetFiles(url, function (responseData) {
                                 if (responseData) {

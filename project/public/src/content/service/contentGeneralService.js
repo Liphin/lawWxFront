@@ -5,7 +5,7 @@
 
 var contentModule = angular.module('Angular.content');
 
-contentModule.factory('ContentGeneralSer', function ($http, ContentDataSer, $window, OverallDataSer, OverallGeneralSer) {
+contentModule.factory('ContentGeneralSer', function ($location,$http, ContentDataSer, $window, OverallDataSer, OverallGeneralSer) {
 
     /**
      * 重置数据顺序：
@@ -24,6 +24,35 @@ contentModule.factory('ContentGeneralSer', function ($http, ContentDataSer, $win
         } else {
             //无置顶要求数据根据创建时间进行排列
             return new Date(b['create_time']) - new Date(a['create_time']);
+        }
+    };
+
+    /**
+     * 重置数据顺序：
+     *  1、根据置顶标签排在前面，
+     *  2、置顶的数据中根据置顶时间戳进行排序
+     */
+    var sortMassNum = function (a, b) {
+        return new Date(b['create_time']) - new Date(a['create_time']);
+    };
+
+    /**
+     * 重置数据顺序：
+     *  1、根据置顶标签排在前面，
+     *  2、置顶的数据中根据置顶时间戳进行排序
+     */
+    var sortTeamStickNum = function (a, b) {
+        if (a['stick_cd'] == 1 && b['stick_cd'] == 1) {
+            //若两者均为置顶状态，则比较置顶时间
+            return b['stick_time'] - a['stick_time']
+
+        } else if (b['stick_cd'] != a['stick_cd']) {
+            //若两者置顶数据不一样，则置顶作为比较条件
+            return b['stick_cd'] - a['stick_cd'];
+
+        } else {
+            //无置顶要求数据根据创建时间进行排列
+            return new Date(a['create_time']) - new Date(b['create_time']);
         }
     };
 
@@ -231,11 +260,23 @@ contentModule.factory('ContentGeneralSer', function ($http, ContentDataSer, $win
      */
     var generalHtmlHead = function (title, userName, targetCreateTime, isProduct) {
         //分别替换title，name，和 date
+        var targetSubPage = $location.search()['subPage'];
         var htmlHead='';
         if(isProduct){
             htmlHead = ContentDataSer.overallData['phoneView']['phoneHeadHtml'];
+            if (targetSubPage.indexOf("interest")!=-1||targetSubPage.indexOf("study")!=-1) {
+                htmlHead = ContentDataSer.overallData['phoneView']['phoneHeadHtml'];
+            }
+            else if(targetSubPage.indexOf("dynamic")!=-1){
+                htmlHead = ContentDataSer.overallData['phoneView']['phoneHeadHtmlMini'];
+            }
         }else {
-            htmlHead = ContentDataSer.overallData['phoneView']['viewHeadHtml'];
+            if (targetSubPage.indexOf("interest")!=-1||targetSubPage.indexOf("study")!=-1||targetSubPage.indexOf("massEdit")!=-1) {
+                htmlHead = ContentDataSer.overallData['phoneView']['viewHeadHtml'];
+            }
+            else if(targetSubPage.indexOf("dynamic")!=-1){
+                htmlHead = ContentDataSer.overallData['phoneView']['viewHeadHtmlMini'];
+            }
         }
         var defaultTitle = ContentDataSer.overallData['phoneView']['defaultTitle'];
         var defaultName = ContentDataSer.overallData['phoneView']['defaultName'];
@@ -246,13 +287,95 @@ contentModule.factory('ContentGeneralSer', function ($http, ContentDataSer, $win
         return htmlHead
     };
 
+    /***
+     * 把blob数据传到后台保存
+     */
+    var saveCoverImage = function (obj,callback) {
+        var fd = new FormData();
+        var url = ContentDataSer.saveCoverImage;
+        for (var i in obj) {
+            fd.append(i, obj[i]);
+        }
+        $http.post(url,fd,{
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined},
+        }).success(function (response) {
+            if (response=="OK") {
+                callback(response);
+            }
+            else {
+                alert("saveCoverImage error: "+response);
+            }
+        }).error(function (error) {
+            alert("saveCoverImage error: "+JSON.stringify(error));
+        })
 
+    };
 
+    /**
+     * 上传微信缩略图
+     */
+    var uploadCoverImage = function (obj,callback) {
+        var url = ContentDataSer.uploadCoverImage;
+
+        $http({
+            method: 'POST',
+            url: url,
+            data: ($.param(obj)),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function (response) {
+            console.log(response);
+            callback(response);
+        }).error(function (error) {
+            alert("uploadCoverImage error: "+JSON.stringify(error));
+        })
+
+    };
+
+    /**
+     * 上传微信图文信息
+     */
+    var uploadMedia = function (obj,callback) {
+        var url = ContentDataSer.wxMassUploadInfo;
+        // console.log(obj['articles']);
+        // var fd = new FormData();
+        // fd.append("articles",JSON.stringify(obj));
+        // $http.post(url,($.param(obj)),{
+        //     transformRequest: angular.identity,
+        //     headers: {'Content-Type': undefined},
+        // }).success(function (response) {
+        //     console.log(response)
+        //     callback(response);
+        // }).error(function (error) {
+        //     alert("uploadMedia error: "+JSON.stringify(error));
+        // })
+
+        $http({
+            method: 'POST',
+            url: url,
+            data: ($.param(obj)),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function (response) {
+            console.log(response);
+            callback(response);
+        }).error(function (error) {
+            alert("uploadMedia error: "+JSON.stringify(error));
+        });
+        // var response ={
+        //     "media_id":"LughyQ1CgyaooG4NZGqryimAtCR7eZdVK7PxQF1gUGGdmBjSVVZDp9nJwvSjsfdO"
+        // }
+        // callback(response);
+    };
 
     return {
         sortStickNum: sortStickNum,
+        sortTeamStickNum:sortTeamStickNum,
+        sortMassNum:sortMassNum,
         loadPageInfo: loadPageInfo,
         sendDynamicInfo: sendDynamicInfo,
+        saveCoverImage:saveCoverImage,
+        uploadCoverImage:uploadCoverImage,
+        uploadMedia:uploadMedia,
         generalHtmlHead: generalHtmlHead,
         showTargetNumNewsList: showTargetNumNewsList,
         setPreNextLoadBatchData: setPreNextLoadBatchData,

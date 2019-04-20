@@ -129,7 +129,7 @@ overallModule.factory('OverallGeneralSer', function (OverallDataSer, $http,$time
                 callback(response['data'])
 
             } else {
-                alertHttpRequestError("httpPostData", response['exception_code'], response['exception']);
+                alertHttpRequestError("httpGetFiles", response['exception_code'], response['exception']);
             }
         }, function errorCallback(err) {
             alertHttpRequestError("httpGetFiles", 500, err);

@@ -1,0 +1,138 @@
+    </mark></div>
+
+<div>
+    <!--放置二维码地方及关注我们的描述-->
+    <div style="font-family: 微软雅黑;color: #7f559c; font-size: 18px;margin-left: 20px; font-weight: bold">长按识别下方二维吗，关注我们吧</div>
+    <div style="border: 1px solid gainsboro; border-width: 1px 0 1px 0; margin: 20px;display: flex; flex-direction: row;padding: 20px 0">
+        <div style="flex: 1; margin-right: 20px; display: inline-block">及关注我们的描述放置二维码地方及关注我们的描述放置二维码地方及关注我们的描述放置二维码地方及关注我们的描述放置二维码地方及关注我们的描述</div>
+        <img style="width: 100px; height: 100px;" src="">
+    </div>
+</div>
+
+<!--展示总阅读量和允许点赞操作-->
+<!--<div style="font-family: 微软雅黑; font-size: 15px; color: grey; background: white;position: fixed; bottom: 0; left: 0;right: 0;height: 50px;border: 1px solid #d8d8d8;border-width: 1px 0 0 0;padding: 13px;">-->
+    <!--<span>阅读 {{ctrl.dynamicDetail['view_count']}}</span>-->
+    <!--<div style="display: inline-block; position: relative; left: 20px;" ng-click="ctrl.updatePitchCount()">-->
+        <!--<i ng-if="ctrl.userDynamic['dynamic_pitch']!=1" class="fa fa-heart-o" style="color: grey"></i>-->
+        <!--<i ng-if="ctrl.userDynamic['dynamic_pitch']==1" class="fa fa-heart" style="color: #ff4e66"></i>-->
+        <!--<span>点赞 {{ctrl.dynamicDetail['pitch_count']}}</span>-->
+        <!--<span ng-if="ctrl.overallData['markSubmitPitchOpt']" style="position: relative; left: 20px">提交中...</span>-->
+    <!--</div>-->
+<!--</div>-->
+</div>
+    <script>
+        var app = angular.module('myApp', []);
+        //重置HTML的url即，可以无需hash情况使用$location
+        app.config(function ($locationProvider) {
+            $locationProvider.html5Mode({
+                enabled: true,
+                rewriteLinks: false,
+                requireBase: false
+            });
+        });
+        /*控制器*/
+        app.controller('MyCtrl', function ($scope, $http, $window, $location, MyData, MySer) {
+            //数据初始化操作
+            var ctrl = this;
+            ctrl.overallData = MyData.overallData;
+            ctrl.dynamicDetail = MyData.dynamicDetail;
+            ctrl.userDynamic = MyData.userDynamic;
+            MySer.initData();
+
+            /**
+             * 点赞操作
+             */
+            ctrl.updatePitchCount = function () {
+                MySer.updatePitchCount();
+            }
+        });
+
+
+        /*数据集*/
+        app.factory('MyData', function () {
+            var serverHost = 'http://gntqant.com';
+            //var serverHost = 'http://127.0.0.1';
+            var frontSerPort = 80;
+            var backSerPort = 8085;
+            var requestDataErrorMsg = "尊敬的客户，服务器异常，请稍后分享";
+
+            var userInfo = {};
+            var dynamicDetail = {}; //进入新闻详情页面后，记录新闻详细信息
+            var getUserDynamicInfo = serverHost + ":" + backSerPort + "/getUserDynamicInfo"; //获取某条新闻详情
+            var getWxOauthToken = serverHost + ":" + frontSerPort + "/getWxOauthToken";
+            var getJsSign = serverHost + ":" + frontSerPort + '/getJsSign';
+            var coverImgUrl = serverHost + ":" + frontSerPort + "/dynamicinfo/coverimg/";
+
+
+            //设置对象数据
+            var overallData = {
+                param: '', //记录类型
+                showPageInfo: false, //是否允许查看本消息体的开关
+            };
+
+            return {
+                userInfo: userInfo,
+                getJsSign: getJsSign,
+                dynamicDetail: dynamicDetail,
+                coverImgUrl: coverImgUrl,
+                overallData: overallData,
+                getWxOauthToken: getWxOauthToken,
+                getUserDynamicInfo: getUserDynamicInfo,
+                requestDataErrorMsg: requestDataErrorMsg,
+            }
+        });
+
+
+        app.factory('MySer', function ($window, $document, $http, MyData, $location) {
+            /**
+             * 初始化页面数据操作
+             */
+            var initData = function () {
+                //设置标题数据
+                var parameters = $location.search();
+                MyData.overallData['param'] = parameters; //装载参数数据
+
+                getUserDynamicInfo();
+            };
+
+
+            /**
+             * 进入新闻详情页面后，获取新闻详细信息和该用户操作新闻的行为数据
+             */
+            var getUserDynamicInfo = function () {
+                //允许用户查看该消息体
+                MyData.overallData['showPageInfo'] = true;
+
+                //装载表单数据
+                var fd = new FormData();
+                //fd.append('wx_user_id', MyData.userInfo['openid']);
+                fd.append('dynamic_timestamp', MyData.overallData['param']['timestamp']);
+                var url = MyData.getUserDynamicInfo;
+                //http请求数据
+                $http.post(url, fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined},
+                }).success(function (response) {
+                    if (response['status_code'] == 200) {
+
+                        //装载每个动态消息数据
+                        for (var i in response['data']['dynamicinfo']) {
+                            MyData.dynamicDetail[i] = response['data']['dynamicinfo'][i];
+                        }
+
+                    } else {
+                        alert("尊敬的客户，服务器异常，请稍后重试,.")
+                    }
+                }).error(function (err) {
+                    alert("尊敬的客户，服务器异常，请稍后重试.")
+                })
+            };
+
+
+            return {
+                initData: initData,
+            }
+        });
+    </script>
+</body>
+</html>

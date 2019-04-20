@@ -8,7 +8,7 @@ var contentModule = angular.module('Angular.content');
 contentModule.factory('ContentSer',function ($http, $window, $routeParams, $timeout, $location, ContentDataSer, OverallGeneralSer,
                                              OverallDataSer, ContentGeneralSer, OverallSer,InterestListSer,InterestEditSer,
                                              StudyListSer,StudyEditSer,DynamicListSer,DynamicEditSer,
-                                             TeamListSer,MsgListSer) {
+                                             TeamListSer,MsgListSer,MassListSer,MassEditSer) {
 
     /**
      * 数据初始化操作
@@ -106,6 +106,18 @@ contentModule.factory('ContentSer',function ($http, $window, $routeParams, $time
                 MsgListSer.getRangeMsgInfo();//获取一定范围内的新闻数据
                 break;
             }
+            case 'massList' : {
+                ContentDataSer.massData['list'].length = 0; //清空之前数据，下次进入方法会重新获取数据
+                ContentDataSer.overallData['pageType']=6;
+                MassListSer.getRangeMassInfo();//获取一定范围内的新闻数据
+                break;
+            }
+            case 'massEdit' : {
+                ContentDataSer.massListData['list'].length = 0; //清空之前数据，下次进入方法会重新获取数据
+                ContentDataSer.overallData['pageType']=7;
+                MassEditSer.validateMassEdit();
+                break;
+            }
             default: {
                 break;
             }
@@ -123,6 +135,9 @@ contentModule.factory('ContentSer',function ($http, $window, $routeParams, $time
         var viewHeadHtml = OverallDataSer.urlData['frontEndHttp']['getViewHeadHtml'];
         var phoneHtmlHead = OverallDataSer.urlData['frontEndHttp']['getPhoneHtmlHead'];
         var phoneHtmlEnd = OverallDataSer.urlData['frontEndHttp']['getPhoneHtmlEnd'];
+        var viewHeadHtmlMini = OverallDataSer.urlData['frontEndHttp']['getViewHeadHtmlMini'];
+        var phoneHtmlHeadMini = OverallDataSer.urlData['frontEndHttp']['getPhoneHtmlHeadMini'];
+        var phoneHtmlEndMini = OverallDataSer.urlData['frontEndHttp']['getPhoneHtmlEndMini'];
 
         //如果尚未获取手机端头部转换数据则获取
         if (!OverallGeneralSer.checkDataNotEmpty(ContentDataSer.overallData['phoneView']['phoneHeadHtml'])) {
@@ -140,6 +155,25 @@ contentModule.factory('ContentSer',function ($http, $window, $routeParams, $time
         if (!OverallGeneralSer.checkDataNotEmpty(ContentDataSer.overallData['phoneView']['viewHeadHtml'])) {
             OverallGeneralSer.httpGetFiles(viewHeadHtml, function (response) {
                 ContentDataSer.overallData['phoneView']['viewHeadHtml'] = response;
+            });
+        }
+
+        //如果尚未获取手机端头部转换数据则获取
+        if (!OverallGeneralSer.checkDataNotEmpty(ContentDataSer.overallData['phoneView']['phoneHeadHtmlMini'])) {
+            OverallGeneralSer.httpGetFiles(phoneHtmlHeadMini, function (response) {
+                ContentDataSer.overallData['phoneView']['phoneHeadHtmlMini'] = response;
+            });
+        }
+        //如果尚未获取手机端尾部转换数据则获取
+        if (!OverallGeneralSer.checkDataNotEmpty(ContentDataSer.overallData['phoneView']['phoneEndHtmlMini'])) {
+            OverallGeneralSer.httpGetFiles(phoneHtmlEndMini, function (response) {
+                ContentDataSer.overallData['phoneView']['phoneEndHtmlMini'] = response;
+            });
+        }
+        //如果尚未获取预览效果前端转换数据则获取
+        if (!OverallGeneralSer.checkDataNotEmpty(ContentDataSer.overallData['phoneView']['viewHeadHtmlMini'])) {
+            OverallGeneralSer.httpGetFiles(viewHeadHtmlMini, function (response) {
+                ContentDataSer.overallData['phoneView']['viewHeadHtmlMini'] = response;
             });
         }
     };
