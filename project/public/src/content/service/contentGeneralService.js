@@ -337,19 +337,6 @@ contentModule.factory('ContentGeneralSer', function ($location,$http, ContentDat
      */
     var uploadMedia = function (obj,callback) {
         var url = ContentDataSer.wxMassUploadInfo;
-        // console.log(obj['articles']);
-        // var fd = new FormData();
-        // fd.append("articles",JSON.stringify(obj));
-        // $http.post(url,($.param(obj)),{
-        //     transformRequest: angular.identity,
-        //     headers: {'Content-Type': undefined},
-        // }).success(function (response) {
-        //     console.log(response)
-        //     callback(response);
-        // }).error(function (error) {
-        //     alert("uploadMedia error: "+JSON.stringify(error));
-        // })
-
         $http({
             method: 'POST',
             url: url,
@@ -361,10 +348,76 @@ contentModule.factory('ContentGeneralSer', function ($location,$http, ContentDat
         }).error(function (error) {
             alert("uploadMedia error: "+JSON.stringify(error));
         });
-        // var response ={
-        //     "media_id":"LughyQ1CgyaooG4NZGqryimAtCR7eZdVK7PxQF1gUGGdmBjSVVZDp9nJwvSjsfdO"
-        // }
-        // callback(response);
+    };
+
+    var uploadImageGetUrl = function (obj,index,length,timestamp) {
+        OverallDataSer.overallData['loadingData']=true;
+        var url = ContentDataSer.wxUploadImageUrl;
+        if (index>=length) {
+            return saveWxHtml(timestamp);
+        }
+        var beginIndex = obj[index].lastIndexOf("/")+1;
+
+        var srcData = {
+            'src':obj[index].substr(beginIndex),
+        };
+        $http({
+            method: 'POST',
+            url: url,
+            data: ($.param(srcData)),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function (response) {
+            console.log(response);
+            ContentDataSer.overallData['phoneView']['wxHtml'] = ContentDataSer.overallData['phoneView']['wxHtml'].replace(obj[index],response['url']);
+            index = index+1;
+            return uploadImageGetUrl(obj,index,length,timestamp);
+        }).error(function (error) {
+            alert("uploadImageGetUrl error: "+JSON.stringify(error));
+            OverallDataSer.overallData['loadingData']=false;
+            return -1;
+        });
+
+    };
+
+
+    var saveWxHtml = function (timestamp) {
+        OverallDataSer.overallData['loadingData']=true;
+        var data = ContentDataSer.overallData['phoneView']['wxHtml'];
+        var pStyle = "<p style=\"__PSTYLE__\">"
+        data = data.replace(/<p>/g,pStyle);
+        data = data.replace(/__PSTYLE__/g,ContentDataSer.overallData['PSTYLE']);
+        data = data.replace(/__IMGSTYLE__/g,ContentDataSer.overallData['IMGSTYLE']);
+        var beginIndex = data.indexOf("<div id=\"headStart\" style=\"display: none\"></div>");
+        var endIndex = data.indexOf("<div id=\"headEnd\" style=\"display: none\"></div>");
+        var splitStr = data.substring(beginIndex,endIndex+47);
+        data = data.replace(splitStr,"");
+
+        var obj = {
+            'fileUrl':'html',
+            'fileName':timestamp + "_wxHtml" + "-index.html",
+            'fileData':encodeURIComponent(data),
+        };
+        var fd = new FormData();
+        var url = ContentDataSer.saveWxHtml;
+        for (var i in obj) {
+            fd.append(i, obj[i]);
+        }
+        $http.post(url,fd,{
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined},
+        }).success(function (response) {
+            if (response=="OK") {
+                console.log("上传成功");
+                OverallDataSer.overallData['loadingData']=false;
+            }
+            else {
+                alert("saveWxHtml error: "+response);
+                OverallDataSer.overallData['loadingData']=false;
+            }
+        }).error(function (error) {
+            alert("saveWxHtml error: "+JSON.stringify(error));
+            OverallDataSer.overallData['loadingData']=false;
+        })
     };
 
     return {
@@ -374,8 +427,10 @@ contentModule.factory('ContentGeneralSer', function ($location,$http, ContentDat
         loadPageInfo: loadPageInfo,
         sendDynamicInfo: sendDynamicInfo,
         saveCoverImage:saveCoverImage,
+        saveWxHtml:saveWxHtml,
         uploadCoverImage:uploadCoverImage,
         uploadMedia:uploadMedia,
+        uploadImageGetUrl:uploadImageGetUrl,
         generalHtmlHead: generalHtmlHead,
         showTargetNumNewsList: showTargetNumNewsList,
         setPreNextLoadBatchData: setPreNextLoadBatchData,

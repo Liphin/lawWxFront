@@ -244,9 +244,9 @@ contentModule.factory('MassEditSer', function ($http, $window, $timeout, Content
 
             //装载HTML核心前端代码数据
             var data = response;
-            var beginIndex = data.indexOf('<mark>');
+            var beginIndex = data.indexOf('<mark');
             var endIndex = data.indexOf('</mark>');
-            var keyCode = data.substring((beginIndex + 6), endIndex);
+            var keyCode = data.substring((beginIndex + 46), endIndex);
 
             //拼凑头部和尾部生成最终展示数据
             var viewHtmlHead = ContentGeneralSer.generalHtmlHead(targetNews['title'], targetNews['wx_user_name'], targetNews['create_time']);
@@ -293,12 +293,14 @@ contentModule.factory('MassEditSer', function ($http, $window, $timeout, Content
                 ContentDataSer.massListData['mediaData'] = {
                     "thumb_media_id":"",
                     "content":"",
+                    "title":"",
                     "show_cover_pic":0,
                     "need_open_comment":1,
                     "only_fans_can_comment":1
                 };
                 //获取图文相关信息
-                ContentDataSer.massListData['mediaData']['content']=ContentDataSer.massListData['list'][i]['timestamp'] + "-index.html";
+                ContentDataSer.massListData['mediaData']['content']=ContentDataSer.massListData['list'][i]['timestamp'] +"_wxHtml"+ "-index.html";
+                ContentDataSer.massListData['mediaData']['title']=ContentDataSer.massListData['list'][i]['title'];
                 ContentDataSer.massListData['mediaData']['thumb_media_id']=ContentDataSer.massListData['list'][i]['cover_media_id'];
                 ContentDataSer.massListData['toUploadListData']['articles'].push(ContentDataSer.massListData['mediaData']);
                 ContentDataSer.massListData['toSelectListArray'].push(ContentDataSer.massListData['list'][i]);
@@ -309,6 +311,11 @@ contentModule.factory('MassEditSer', function ($http, $window, $timeout, Content
                 //     ContentDataSer.massListData['toSelectListArray'].push(ContentDataSer.massListData['list'][i]);
                 // });
             }
+        }
+        if (ContentDataSer.massListData['toSelectListArray'].length==0) {
+            alert("请选择发送的记录");
+            OverallDataSer.overallData['loadingData']=false;
+            return;
         }
 
         ContentGeneralSer.uploadMedia(ContentDataSer.massListData['toUploadListData'],function (response) {

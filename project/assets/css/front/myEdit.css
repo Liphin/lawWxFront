@@ -1,0 +1,25 @@
+.myImg {
+    width: 100% !important;
+    height: auto !important;
+    display: inherit;
+    margin-top: 15px;
+    text-indent: 0;
+}
+.myMark {
+    background: white;
+    border: none;
+}
+.myIframe {
+    width: 100%;
+    height: auto;
+}
+.myP {
+    text-align: left;
+    padding: 0 10px;
+    font-size: 17px;
+    width: 100%;
+    text-indent: 2em;
+    letter-spacing: 1px;
+    line-height: 150%;
+    color: #4b4b4b;
+}

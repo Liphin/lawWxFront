@@ -372,9 +372,22 @@ contentModule.factory('InterestListSer', function ($http, $window, $timeout, Con
 
     var uploadImageUrl = function (timestamp) {
         var url = OverallGeneralSer.getDynamicInfoNews(timestamp, 'html');
+        var src = [];
         OverallGeneralSer.httpGetFiles(url,function (response) {
             var data = response;
-
+            ContentDataSer.overallData['phoneView']['wxHtml'] = data;
+            var imgReg = /<img.*?(?:>|\/>)/gi;
+            var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
+            var arr = data.match(imgReg);
+            for (var i = 0; i < arr.length; i++) {
+                var srcValue = arr[i].match(srcReg);
+                //获取图片地址
+                src.push(srcValue[1]);
+            }
+            console.log(src);
+            var index =0;
+            var length = src.length;
+            ContentGeneralSer.uploadImageGetUrl(src,index,length,timestamp);
         })
     };
 
@@ -389,9 +402,9 @@ contentModule.factory('InterestListSer', function ($http, $window, $timeout, Con
 
             //装载HTML核心前端代码数据
             var data = response;
-            var beginIndex = data.indexOf('<mark>');
+            var beginIndex = data.indexOf('<mark');
             var endIndex = data.indexOf('</mark>');
-            var keyCode = data.substring((beginIndex + 6), endIndex);
+            var keyCode = data.substring((beginIndex + 46), endIndex);
 
             //拼凑头部和尾部生成最终展示数据
             var viewHtmlHead = ContentGeneralSer.generalHtmlHead(targetNews['title'], targetNews['wx_user_name'], targetNews['create_time']);
@@ -433,9 +446,9 @@ contentModule.factory('InterestListSer', function ($http, $window, $timeout, Con
         OverallGeneralSer.httpGetFiles(url, function (response) {
             //装载html数据到edit页面
             var data = response;
-            var beginIndex = data.indexOf('<mark>');
+            var beginIndex = data.indexOf('<mark');
             var endIndex = data.indexOf('</mark>');
-            ContentDataSer.overallData['phoneView']['editHtml'] = data.substring((beginIndex + 6), endIndex);
+            ContentDataSer.overallData['phoneView']['editHtml'] = data.substring((beginIndex + 46), endIndex);
             //打开编辑页面
             $location.search({'subPage': 'interestEdit'});
         });

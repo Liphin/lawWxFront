@@ -253,9 +253,9 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
      * 添加外部引用视频到富文本框面板
      * @see StudyEditSer.addVideoUrlToEditor
      */
-    content.addVideoUrlToEditor = function () {
-        StudyEditSer.addVideoUrlToEditor();
-    };
+    // content.addVideoUrlToEditor = function () {
+    //     StudyEditSer.addVideoUrlToEditor();
+    // };
 
     /**
      * 检测富文本框按键按下和弹起的操作
@@ -347,9 +347,9 @@ contentModule.controller('ContentCtrl', function (check, $cookies, $http,$window
      * 添加外部引用视频到富文本框面板
      * @see DynamicEditSer.addVideoUrlToEditor
      */
-    content.addVideoUrlToEditor = function () {
-        DynamicEditSer.addVideoUrlToEditor();
-    };
+    // content.addVideoUrlToEditor = function () {
+    //     DynamicEditSer.addVideoUrlToEditor();
+    // };
 
     /**
      * 检测富文本框按键按下和弹起的操作

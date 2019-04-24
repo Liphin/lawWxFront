@@ -6,6 +6,7 @@ global.env = process.env.TARGET_ENV;
 if (env == undefined || env == '' || env == null) {
     global.env = 'dev';
 }
+var fs = require('fs');
 var http = require('http');
 var request = require('request');
 var multer = require('multer');
@@ -157,7 +158,6 @@ app.post('/uploadCoverImage',function (req, res) {
  * 上传图片URL
  */
 app.post('/uploadImageUrl',function (req, res) {
-    console.log(req.body);
     wxMassInfo.wxUploadImgUrl(req, res);
 });
 
@@ -181,8 +181,23 @@ var storage = multer.diskStorage({
  */
 var upload = multer({storage: storage});
 app.post('/saveCoverImage',upload.single('fileBlob'),function (req, res) {
-    res.send(200);
+    res.send("OK");
 
+});
+
+
+var upload2 = multer();
+app.post('/saveWxHtml',upload2.none(),function (req, res) {
+    var filePath = serverSerData.loadFilePath+req['body']['fileUrl']+"/"+req['body']['fileName'];
+    var wstream = fs.createWriteStream(filePath);
+    var data = decodeURIComponent(req['body']['fileData']);
+    wstream.write(data);
+    wstream.on('error', function(err) {
+        console.log(err);
+        wstream.end();
+        res.send(err);
+    });
+    res.send("OK");
 });
 
 

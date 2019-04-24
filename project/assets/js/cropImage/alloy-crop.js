@@ -96,36 +96,42 @@
                     self.img.translateY += offY - preOriginY * self.img.scaleX;
 
                     
-                    if(self.first == 1){
-                        self.img.scaleX = self.img.scaleY = self.initScale * 1.1;
-                        ++self.first;
-                    }
+                    // if(self.first == 1){
+                    //     self.img.scaleX = self.img.scaleY = self.initScale * 1.1;
+                    //     ++self.first;
+                    // }
 
                     self.initScale = self.img.scaleX;
                     
                 },
                 pinch: function (evt) {
+                    //添加缩小功能
+                    self.img.scaleX = self.img.scaleY = self.initScale * evt.zoom;
                     
-                    var cr = self.img.getBoundingClientRect();
-                    var boxOffY = (document.documentElement.clientHeight - self.height)/2;
-                    
-                    var tempo = evt.zoom;
-                    var dw = (cr.width * tempo - cr.width)/2;
-                    var dh = (cr.height - cr.height * tempo)/2;
-                    if( (self.initScale * tempo <= 1.6 ) && (self.initScale * tempo >= self.originScale) && (dw >= cr.left) && (-dw <= (cr.right - self.width) ) && (dh <= (boxOffY - cr.top) ) && (dh <= (cr.bottom-boxOffY-self.height)) ){
-                        self.img.scaleX = self.img.scaleY = self.initScale * tempo;
-                    }
+                    // var cr = self.img.getBoundingClientRect();
+                    // var boxOffY = (document.documentElement.clientHeight - self.height)/2;
+                    //
+                    // var tempo = evt.zoom;
+                    // var dw = (cr.width * tempo - cr.width)/2;
+                    // var dh = (cr.height - cr.height * tempo)/2;
+                    // if( (self.initScale * tempo <= 1.6 ) && (self.initScale * tempo >= self.originScale) && (dw >= cr.left) && (-dw <= (cr.right - self.width) ) && (dh <= (boxOffY - cr.top) ) && (dh <= (cr.bottom-boxOffY-self.height)) ){
+                    //     self.img.scaleX = self.img.scaleY = self.initScale * tempo;
+                    // }
                 },
                 pressMove: function (evt) {
-                    var cr = self.img.getBoundingClientRect();
-                    var boxOffY = (document.documentElement.clientHeight - self.height)/2;
-                    if((boxOffY - cr.top - evt.deltaY >= 0) && (cr.bottom + evt.deltaY - boxOffY>= self.height)){
-                        self.img.translateY += evt.deltaY;
-                    }
-                    var boxOffX = (document.documentElement.clientWidth - self.width)/2;
-                    if((cr.left + evt.deltaX <= boxOffX) && (cr.right + evt.deltaX - boxOffX >= self.width)){
-                        self.img.translateX += evt.deltaX;  
-                    }
+                    // var cr = self.img.getBoundingClientRect();
+                    // var boxOffY = (document.documentElement.clientHeight - self.height)/2;
+                    // if((boxOffY - cr.top - evt.deltaY >= 0) && (cr.bottom + evt.deltaY - boxOffY>= self.height)){
+                    //     self.img.translateY += evt.deltaY;
+                    // }
+                    // var boxOffX = (document.documentElement.clientWidth - self.width)/2;
+                    // if((cr.left + evt.deltaX <= boxOffX) && (cr.right + evt.deltaX - boxOffX >= self.width)){
+                    //     self.img.translateX += evt.deltaX;
+                    // }
+                    // evt.preventDefault();
+                    //添加缩小功能
+                    self.img.translateX += evt.deltaX;
+                    self.img.translateY += evt.deltaY;
                     evt.preventDefault();
                 }
             }));

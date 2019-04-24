@@ -20,10 +20,6 @@
             margin-top: 15px;
             text-indent: 0;
         }
-        mark {
-            background: white;
-            border: none;
-        }
         iframe, embed {
             width: 100%;
             height: auto;
@@ -43,6 +39,7 @@
 <body>
 
 <div ng-if="ctrl.overallData['showPageInfo']" style="width: 100%; position: relative;display: inline-block">
+    <div id="headStart" style="display: none"></div>
     <!--新闻标题数据-->
     <div style="width: 100%; text-align: left; font-size: 20px;padding: 15px 15px 5px 15px;font-weight: bold;color: #585858">
         <span>__TITLE__</span>
@@ -53,7 +50,8 @@
         <span>__NAME__</span>
         <span style="margin-left: 10px">__DATE__</span>
     </div>
+    <div id="headEnd" style="display: none"></div>
 
     <!--新闻数据展示-->
-    <div id="content" style="padding: 0 0 55px 0;width: 100%;text-align: left;font: 15px/1.5 Microsoft YaHei,arial,SimSun,宋体;margin-top: -20px">
-        <mark>
+    <div id="content" style="padding: 0 0 55px 0;width: 100%;text-align: left;font: 15px/1.5 Microsoft YaHei,arial,SimSun,宋体;margin-top: 5px">
+        <mark style="background: white;border: none;">

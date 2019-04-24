@@ -49,7 +49,7 @@ function WxMassInfo() {
         getAccessTokenSer.getAccessToken(function () {
             console.log(req['body']);
             var uri = util.format(serverSerData.uploadImageUrl,serverSerData.wxCertData['access_token']);
-            var file = fs.createReadStream(req['body']['fileName']);
+            var file = fs.createReadStream(serverSerData.loadFilePath+"resource/"+req['body']['src']);
             //var file = req['body']['file'];
             const options = {
                 method:"post",
@@ -98,7 +98,7 @@ function WxMassInfo() {
                 res.send(400);
                 return;
             }
-            serverSerData.uploadMediaData['articles'][index]['content'] = data;
+            serverSerData.uploadMediaData['articles'][index]['content'] = data.toString();
             index=index+1;
             return readFile(index,length,res);
         });
@@ -106,6 +106,7 @@ function WxMassInfo() {
 
     var UploadFile = function (res) {
         var uri = util.format(serverSerData.uploadInfoUrl,serverSerData.wxCertData['access_token']);
+        console.log(serverSerData.uploadMediaData);
         getAccessTokenSer.getAccessToken(function () {
             request.post({
                 url:uri,
@@ -147,13 +148,14 @@ function WxMassInfo() {
 
     this.viewSendInfoUrl = function (req,res) {
         var arg = req.body;
+        console.log(arg);
         getAccessTokenSer.getAccessToken(function () {
-            var uri = util.format(serverSerData.sendMassInfoUrl,serverSerData.wxCertData['access_token']);
+            var uri = util.format(serverSerData.viewSendInfoUrl,serverSerData.wxCertData['access_token']);
             request.post({
                 url:uri,
                 json:arg
             },function (err,response,body) {
-                //console.log(response);
+                console.log(body);
                 if (!err && response['statusCode']==200) {
                     res.send(body);
                 }

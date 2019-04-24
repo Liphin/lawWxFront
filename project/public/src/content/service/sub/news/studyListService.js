@@ -325,16 +325,19 @@ contentModule.factory('StudyListSer', function ($http, $window, $timeout, Conten
         console.log("添加预群发");
         //添加预群发，上传头像
         var targetNews = ContentDataSer.studyData['list'][index];
+        console.log(targetNews);
         var timestamp = targetNews['timestamp'];
 
         //上传微信的缩略图
         var formData = {
+            'fileUrl':ContentDataSer.fileUrl,
             'fileName':timestamp+".png",
         }
         //提交保存，并携带标识新建、跟新新闻操作标识符
         ContentGeneralSer.uploadCoverImage(formData,function (response) {
             if (response['errcode']=="45009") {
                 alert("素材上传已达上限");
+                return;
             }
             else {
                 var fd = new FormData();
@@ -345,21 +348,46 @@ contentModule.factory('StudyListSer', function ($http, $window, $timeout, Conten
                 $http.post(ContentDataSer.addMassListToSend,fd,{
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined},
-                }).success(function (res) {
+                }).success(function (response) {
                     if (response['status_code'] == 200) {
-                        //重新清空列表并获取数据操作
+                        uploadImageUrl(timestamp);
                         ContentDataSer.studyData['list'].length = 0;
                         ContentDataSer.overallData['listShow']['pagination']['loadedMaxPageNum'] = 0;
                         getRangeStudyInfo();
-
                     } else {
-                        OverallGeneralSer.alertHttpRequestError("addSend", res['exception_code'], res['exception']);
+                        OverallGeneralSer.alertHttpRequestError("addSend", response['exception_code'], response['exception']);
                     }
                 }).error(function (err) {
                     OverallGeneralSer.alertHttpRequestError("addSend", 600, err);
                 });
             }
         });
+    };
+
+    /**
+     * 上传图文的图片获取URl
+     */
+
+    var uploadImageUrl = function (timestamp) {
+        var url = OverallGeneralSer.getDynamicInfoNews(timestamp, 'html');
+        var src = [];
+        OverallGeneralSer.httpGetFiles(url,function (response) {
+            var data = response;
+            ContentDataSer.overallData['phoneView']['wxHtml'] = data;
+            var imgReg = /<img.*?(?:>|\/>)/gi;
+            var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
+            var arr = data.match(imgReg);
+            for (var i = 0; i < arr.length; i++) {
+                var srcValue = arr[i].match(srcReg);
+                //获取图片地址
+                src.push(srcValue[1]);
+            }
+            console.log(src);
+            var index =0;
+            var length = src.length;
+            ContentGeneralSer.uploadImageGetUrl(src,index,length,timestamp);
+
+        })
     };
 
     /**
@@ -373,9 +401,9 @@ contentModule.factory('StudyListSer', function ($http, $window, $timeout, Conten
 
             //装载HTML核心前端代码数据
             var data = response;
-            var beginIndex = data.indexOf('<mark>');
+            var beginIndex = data.indexOf('<mark');
             var endIndex = data.indexOf('</mark>');
-            var keyCode = data.substring((beginIndex + 6), endIndex);
+            var keyCode = data.substring((beginIndex + 46), endIndex);
 
             //拼凑头部和尾部生成最终展示数据
             var viewHtmlHead = ContentGeneralSer.generalHtmlHead(targetNews['title'], targetNews['wx_user_name'], targetNews['create_time']);
@@ -417,9 +445,9 @@ contentModule.factory('StudyListSer', function ($http, $window, $timeout, Conten
         OverallGeneralSer.httpGetFiles(url, function (response) {
             //装载html数据到edit页面
             var data = response;
-            var beginIndex = data.indexOf('<mark>');
+            var beginIndex = data.indexOf('<mark');
             var endIndex = data.indexOf('</mark>');
-            ContentDataSer.overallData['phoneView']['editHtml'] = data.substring((beginIndex + 6), endIndex);
+            ContentDataSer.overallData['phoneView']['editHtml'] = data.substring((beginIndex + 46), endIndex);
             //打开编辑页面
             $location.search({'subPage': 'studyEdit'});
         });

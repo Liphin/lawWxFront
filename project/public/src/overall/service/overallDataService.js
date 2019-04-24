@@ -112,6 +112,9 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
             'uploadCoverImage': baseUrlData['frontEndHttp'] + 'uploadCoverImage',
             'wxMassSendInfo':baseUrlData['frontEndHttp'] + 'wxMassSendInfo',
             'wxMassUploadInfo':baseUrlData['frontEndHttp'] + 'wxMassUploadInfo',
+            'uploadImageUrl':baseUrlData['frontEndHttp'] + 'uploadImageUrl',
+            'saveWxHtml':baseUrlData['frontEndHttp'] + 'saveWxHtml',
+            'viewSendInfoUrl':baseUrlData['frontEndHttp'] + 'viewSendInfoUrl',
 
         }
     };

@@ -1612,7 +1612,7 @@ var dom = {
     /** @property {String} blank */
     blank: blankHTML,
     /** @property {String} emptyPara */
-    emptyPara: "<p>" + blankHTML + "</p>",
+    emptyPara: "<p style=\"__PSTYLE__\">" + blankHTML + "</p>",
     makePredByNodeName: makePredByNodeName,
     isEditable: isEditable,
     isControlSizing: isControlSizing,

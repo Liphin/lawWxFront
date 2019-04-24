@@ -210,7 +210,8 @@ contentModule.factory('InterestEditSer',function ($http, $window, $timeout, Cont
         var originHtml = newsEditor.summernote('code');
 
         //添加视频url，并换行处理
-        var finalHtml = originHtml + '<br>' + ContentDataSer.interestData['editData']['videoUrl'] + '\n';
+        var finalHtml = originHtml + '<br>' + ContentDataSer.overallData['videoUrl'] + '\n';
+        console.log(finalHtml);
         newsEditor.summernote('code', finalHtml);
     };
 

@@ -14,6 +14,7 @@ contentModule.factory('ContentSer',function ($http, $window, $routeParams, $time
      * 数据初始化操作
      */
     var dataInit = function () {
+        ContentDataSer.overallData['videoUrl']='';
         //获取拼凑手机HTML的头部数据
         getResourceData();
 

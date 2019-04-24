@@ -358,9 +358,9 @@ contentModule.factory('DynamicListSer', function ($http, $window, $timeout, Cont
 
             //装载HTML核心前端代码数据
             var data = response;
-            var beginIndex = data.indexOf('<mark>');
+            var beginIndex = data.indexOf('<mark');
             var endIndex = data.indexOf('</mark>');
-            var keyCode = data.substring((beginIndex + 6), endIndex);
+            var keyCode = data.substring((beginIndex + 46), endIndex);
 
             //拼凑头部和尾部生成最终展示数据
             var viewHtmlHead = ContentGeneralSer.generalHtmlHead(targetNews['title'], targetNews['wx_user_name'], targetNews['create_time']);
@@ -402,9 +402,9 @@ contentModule.factory('DynamicListSer', function ($http, $window, $timeout, Cont
         OverallGeneralSer.httpGetFiles(url, function (response) {
             //装载html数据到edit页面
             var data = response;
-            var beginIndex = data.indexOf('<mark>');
+            var beginIndex = data.indexOf('<mark');
             var endIndex = data.indexOf('</mark>');
-            ContentDataSer.overallData['phoneView']['editHtml'] = data.substring((beginIndex + 6), endIndex);
+            ContentDataSer.overallData['phoneView']['editHtml'] = data.substring((beginIndex + 46), endIndex);
             //打开编辑页面
             $location.search({'subPage': 'dynamicEdit'});
         });

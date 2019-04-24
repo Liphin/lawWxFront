@@ -192,13 +192,9 @@ contentModule.factory('MassListSer',function ($http, $window, $timeout,ContentDa
         };
 
         var url = ContentDataSer.wxMassSendInfo;
-        var fd = new FormData();
-        for (var i in formData) {
-            fd.append(i, formData[i]);
-        }
-        $http.post(url,fd,{
+        $http.post(url,($.param(formData)),{
             transformRequest: angular.identity,
-            headers: {'Content-Type': undefined},
+            headers: {'Content-Type': "application/x-www-form-urlencoded"},
         }).success(function (response) {
             if(response['errcode']==0) {
                 updateMassResult(response,massInfo['id']);
@@ -233,6 +229,31 @@ contentModule.factory('MassListSer',function ($http, $window, $timeout,ContentDa
      */
     var viewMass = function (index) {
         //直接预览项目文件
+        var massInfo = ContentDataSer.massData['list'][index];
+
+        var formData = {
+            "touser":"o9S-61dYqEBPxK4eV3ZcO46Ikaeg",
+            "mpnews":{
+                "media_id":massInfo['media_id'],
+            },
+            "msgtype":"mpnews",
+        };
+
+        var url = ContentDataSer.viewSendInfoUrl;
+        $http.post(url,($.param(formData)),{
+            transformRequest: angular.identity,
+            headers: {'Content-Type': "application/x-www-form-urlencoded"},
+        }).success(function (response) {
+            if(response['errcode']==0) {
+                alert("viewSend success: "+response['errmsg']);
+            }
+            else {
+                alert("viewSend error: "+response['errmsg']);
+            }
+        }).error(function (err) {
+            alert("viewSend error: "+JSON.stringify(err));
+        });
+
     };
 
     /**

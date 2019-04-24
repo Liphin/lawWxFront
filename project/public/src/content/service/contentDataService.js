@@ -67,12 +67,11 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
     //群发api
     var getRangeMassToBg = OverallDataSer.urlData['backEndHttp']['getRangeMassToBg'];
     var deleteMass = OverallDataSer.urlData['backEndHttp']['deleteMass'];
-    var wxMassSendInfo = OverallDataSer.urlData['backEndHttp']['wxMassSendInfo'];
+
     var updateMassResult = OverallDataSer.urlData['backEndHttp']['updateMassResult'];
     var updateMassUpload = OverallDataSer.urlData['backEndHttp']['updateMassUpload'];
     var getRangeMassListToBg = OverallDataSer.urlData['backEndHttp']['getRangeMassListToBg'];
     var searchMassListData = OverallDataSer.urlData['backEndHttp']['searchMassListData'];
-
 
     //公用api
     var uploadResource = OverallDataSer.urlData['backEndHttp']['uploadResource'];
@@ -82,11 +81,20 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
     var getCoverImage = OverallDataSer.urlData['frontEndHttp']['getCoverImage'];
     var uploadCoverImage = OverallDataSer.urlData['frontEndHttp']['uploadCoverImage'];
     var wxMassUploadInfo = OverallDataSer.urlData['frontEndHttp']['wxMassUploadInfo'];
+    var wxUploadImageUrl = OverallDataSer.urlData['frontEndHttp']['uploadImageUrl'];
+    var saveWxHtml = OverallDataSer.urlData['frontEndHttp']['saveWxHtml'];
+    var wxMassSendInfo = OverallDataSer.urlData['frontEndHttp']['wxMassSendInfo'];
+    var viewSendInfoUrl = OverallDataSer.urlData['frontEndHttp']['viewSendInfoUrl'];
+
     var fileUrl = "coverimg";
 
     //全局数据
     var overallData = {
         'ctrlKeyDown':false,//记录ctrl按键是否有按下
+        'videoUrl':'',
+        'PSTYLE':'text-align: left;padding: 0 10px;font-size: 17px;width: 100%;text-indent: 2em;letter-spacing: 1px;line-height: 150%;color: #4b4b4b',
+        'IMGSTYLE':'width: 100% !important;height: auto !important;display: inherit;margin-top: 15px;text-indent: 0',
+        'IFRAMESTYLE':'width: 100%;height: auto',
 
         //公共列表展示区域
         'listShow': {
@@ -246,6 +254,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'phoneHeadHtmlMini': '', //手机端拼凑的头部数据
             'phoneEndHtmlMini': '', //手机端拼凑的尾部数据
             'html': '',//生成的网页html数据
+            'wxHtml':'',//微信网页
             'height': '',//手机展示区的高度
             'maxHeight': '700',//手机展示区的最大高度为700px
 
@@ -560,6 +569,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         'mediaData':{
             "thumb_media_id":"",
             "content":"",
+            "title":"",
             "show_cover_pic":0,
             "need_open_comment":1,
             "only_fans_can_comment":1
@@ -572,8 +582,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         'list': [],
     };
 
-
-
+    var srcList = [];
 
     return {
         //数据获取api
@@ -623,10 +632,12 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         //公用api
         uploadResource: uploadResource,
         saveCoverImage: saveCoverImage,
+        saveWxHtml:saveWxHtml,
         getCoverImage:getCoverImage,
         addMassListToSend:addMassListToSend,
         uploadCoverImage:uploadCoverImage,
         wxMassUploadInfo:wxMassUploadInfo,
+        wxUploadImageUrl:wxUploadImageUrl,
 
         //群发api
         getRangeMassToBg:getRangeMassToBg,
@@ -636,6 +647,7 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         updateMassUpload:updateMassUpload,
         getRangeMassListToBg:getRangeMassListToBg,
         searchMassListData:searchMassListData,
+        viewSendInfoUrl:viewSendInfoUrl,
 
         //数据定义
         interestData: interestData,
@@ -648,5 +660,6 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
         overallData: overallData,
         navigation: navigation,
         fileUrl: fileUrl,
+        srcList:srcList,
     }
 });

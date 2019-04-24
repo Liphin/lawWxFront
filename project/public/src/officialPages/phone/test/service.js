@@ -53,9 +53,10 @@ app.factory('MySer',function ($http, $rootScope,$window, $timeout, $location, My
                 uploadWxLocalImgIndex(MyData.overallData['localIds'],function () {
 
                     new AlloyCrop({
+                        circle:false,
                         image_src: MyData.overallData['images']['url'],
-                        width: 350,
-                        height: 149,
+                        width: 235,
+                        height: 100,
                         output: 1,
                         ok: function (base64, canvas) {
                             MyData.overallData['loadData'] = false;
