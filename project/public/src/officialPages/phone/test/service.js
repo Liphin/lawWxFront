@@ -57,17 +57,16 @@ app.factory('MySer',function ($http, $rootScope,$window, $timeout, $location, My
                         image_src: MyData.overallData['images']['url'],
                         width: 235,
                         height: 100,
-                        output: 1,
+                        output: 2,
                         ok: function (base64, canvas) {
                             MyData.overallData['loadData'] = false;
                             // crop_result.appendChild(canvas);
                             // crop_result.querySelector("canvas").style.borderRadius = "0%";
                             //console.log(base64);
                             MyData.overallData['imgBase']=base64;
-                            $rootScope.$apply();
 
                             var blob = MyGeneralSer.dataURItoBlob(base64);
-                            var fileName = MyData.overallData['timestamp']+MyGeneralSer.generateUUID()+".png";
+                            var fileName = MyData.overallData['timestamp']+".png";
                             var fileUrl = MyData.fileUrl;
 
                             var formData = {
@@ -79,6 +78,7 @@ app.factory('MySer',function ($http, $rootScope,$window, $timeout, $location, My
                             MyGeneralSer.saveCoverImage(formData,function (response) {
                                 console.log(response);
                                 MyData.overallData['images']['coverUrl']=MyData.coverImgUrl+fileName;
+                                $rootScope.$apply();
                             });
 
                         },

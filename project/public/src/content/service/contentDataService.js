@@ -343,9 +343,9 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
     var studyData = {
         'mapData': {
             'subtype': {
-                20: '婚姻专栏',
-                21: '房产专栏',
-                22: '公司专栏',
+                20: '婚姻继承',
+                21: '房产建筑',
+                22: '劳动交通',
             },
         },
         'editData': {

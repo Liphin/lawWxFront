@@ -27,9 +27,9 @@ app.factory('MyData',function () {
         search: '',//内容搜索功能
         listShow: {
             'subType':[
-                {key:20,name: '婚姻专栏'},
-                {key:21,name: '房产专栏'},
-                {key:22,name: '公司专栏'},
+                {key:20,name: '婚姻继承'},
+                {key:21,name: '房产建筑'},
+                {key:22,name: '劳动交通'},
             ],
             'showFlag':{
                 20:true,

@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>关于我们</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" media="none" onload="if(media!='all')media='all'">
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/assets/js/angularjs/angular.js"></script>
 </head>
 
 <style>
@@ -21,39 +22,37 @@
     }
 
     .region{
-        border: 2px solid #346889;
-        color: #346889;
+        border: 2px solid #050b50;
+        color: #050b50;
         cursor: pointer;
     }
     .region:hover{
-        background: #346889;
+        background: #050b50;
         color: white;
+    }
+    .point:hover{
+        cursor: pointer;
     }
 </style>
 <body  style="font-family: 微软雅黑">
 
-<div id="about" style="overflow-x: auto" align="center">
-        <!--头部-->
-        <div style="width: 1230px; margin-top: 30px; position: relative" align="center">
-            <!--企业信息logo和铭牌-->
-            <img width="277" height="100" style="position: absolute; left: 20px" src="http://www.gzenciw.com/Uploads/Banner/original_img/20180504162912.jpg"/>
+<div id="about" style="overflow-x: auto" align="center" ng-app="myApp" ng-controller="MyCtrl as ctrl">
+    <!--头部-->
+    <div style="width: 1230px; margin-top: 30px; position: relative" align="center">
+        <!--企业信息logo和铭牌-->
+        <img height="180" style="position: absolute; left: 20px;margin-top: -20px" src="http://gntqant.com/assets/img/mini/desktop05.jpg"/>
 
-            <!--搜索框-->
-            <div style="height: 42px;display: inline-block; border: 2px solid #346889;background: #346889;position: relative; top: 20px;">
-                <i class="fa fa-search" style="width:34px;font-size: 23px;color: white; position: relative; left:2px;top: 3px; "></i>
-                <input class="" style="width: 268px; height: 36px; border: none; outline: none; box-shadow: none; padding: 6px;position: relative; top: 1px;" />
-                <div style="color: white; width: 80px; display: inline-block; text-align: center; font-size: 16px;cursor: pointer">搜索</div>
-            </div>
+        <img width="650" height="150" style="position: relative;margin-left: -30px" src="http://gntqant.com/assets/img/mini/desktop06.PNG"/>
 
-            <!--电话-->
-            <div style="display: inline-block;position: absolute;right: 20px">
-                <i class="fa fa-volume-control-phone" style="color: #346889; font-size: 37px;"></i>
-                <h2 style="color: #003851; font-size: 35px; display: inline-block; margin-left: 20px">400-024-1868</h2>
-            </div>
+        <!--电话-->
+        <div style="display: inline-block;position: absolute;right: 20px;top:40px">
+            <i class="fa fa-volume-control-phone" style="color: #050b50; font-size: 30px;"></i>
+            <h2 style="color: #050b50; font-size: 30px; display: inline-block; margin-left: 20px">400-024-1868</h2>
         </div>
+    </div>
 
     <!--导航及轮播-->
-    <div style="margin-top: 80px;background: #346889;" align="center">
+    <div style="margin-top: 10px;background: #050b50;" align="center">
         <!--导航栏-->
         <div style="width: 1230px; height: 46px;">
             <div class="navigation" style="margin-left: 30px;display: flex; flex-direction: row;color: white; font-size: 17px">
@@ -68,8 +67,8 @@
         <div>
             <div style="width: 100%;min-width: 1230px; min-height: 500px; background: url(http://www.gzenciw.com/Public/Home/images/bg10.png) no-repeat center center; background-size: cover; padding-top: 50px;padding-bottom: 60px ">
                 <!--关于我们文字说明-->
-                <div style="font-size: 32px;font-weight: bold;">ABOUT US</div>
-                <div style="font-size: 42px;font-weight: bold; color: #346889">关于我们</div>
+                <div style="font-size: 32px;font-weight: bold;color: #EF0913;">ABOUT US</div>
+                <div style="font-size: 42px;font-weight: bold; color: #050b50">关于我们</div>
 
                 <!--介绍-->
                 <div style="width: 100%;" align="center">
@@ -89,40 +88,33 @@
                         <div style="margin-top: 30px">创办：【广东期待律师事务所】。带领律师团队致力于公司刑事取保，土地房产，拆迁征地，婚姻家庭，债务债务，知识产权，法律顾问等多项重大法律事务1000多件。为当事人挽回了极大经济损失; 在取保和无罪罪轻的刑事案件中亦取得了卓有成效的成果。</div>
                     </div>
                 </div>
-
             </div>
 
-
             <!--荣耀资质-->
-            <div style="width: 100%;min-width: 1230px; min-height: 500px; background: #363b3e; padding-top: 50px;padding-bottom: 60px; margin-bottom: 80px">
+            <div style="width: 100%;min-width: 1230px; min-height: 500px; background: #dedfe3; padding-top: 50px;padding-bottom: 60px; margin-bottom: 35px">
                 <!--介绍-->
                 <div style="width: 100%;" align="center">
                     <!--关于我们文字说明-->
-                    <div style="font-size: 32px;font-weight: bold;color: #5ab6ef; ">Honor</div>
-                    <div style="font-size: 42px;font-weight: bold; color: white">荣誉资质</div>
+                    <div style="font-size: 32px;font-weight: bold;color: #EF0913;">Team</div>
+                    <div style="font-size: 42px;font-weight: bold; color: #050b50;">团队成员</div>
 
-                    <div style="margin-top: 70px;;font-size: 17px; display: inline-block; width: 100%" align="center">
+                    <div style="margin-top: 35px;;font-size: 17px; display: inline-block; width: 100%" align="center">
                         <!--此次填充律所资质挂牌信息-->
-                        <div style="display: flex; flex-direction: row; justify-content: flex-start;flex-wrap: wrap; background: white; width: 1200px; box-shadow: 0 0 10px #858585; border-radius: 20px;padding: 30px 20px" align="left">
-                            <div style="padding: 20px; background: white;margin-left: 30px">
-                                <div style="width: 208px; height: 249px;background: url(http://www.gzenciw.com/Uploads/article/original_img/20190314175935.jpg) no-repeat center center; background-size: contain"></div>
-                                <div style="text-align: center; margin-top: 10px; color: #607D8B; font-size: 16px; font-weight: bold">标杆律师事务所资质</div>
-                            </div>
-                            <div style="padding: 20px; background: white;;margin-left: 30px">
-                                <div style="width: 208px; height: 249px;background: url(http://www.gzenciw.com/Uploads/article/original_img/20190314175935.jpg) no-repeat center center; background-size: contain"></div>
-                                <div style="text-align: center; margin-top: 10px; color: #607D8B; font-size: 16px; font-weight: bold">标杆律师事务所资质</div>
-                            </div>
-                            <div style="padding: 20px; background: white;;margin-left: 30px">
-                                <div style="width: 208px; height: 249px;background: url(http://www.gzenciw.com/Uploads/article/original_img/20190314175935.jpg) no-repeat center center; background-size: contain"></div>
-                                <div style="text-align: center; margin-top: 10px; color: #607D8B; font-size: 16px; font-weight: bold">标杆律师事务所资质</div>
-                            </div>
-                            <div style="padding: 20px; background: white;;margin-left: 30px">
-                                <div style="width: 208px; height: 249px;background: url(http://www.gzenciw.com/Uploads/article/original_img/20190314175935.jpg) no-repeat center center; background-size: contain"></div>
-                                <div style="text-align: center; margin-top: 10px; color: #607D8B; font-size: 16px; font-weight: bold">标杆律师事务所资质</div>
-                            </div>
-                            <div style="padding: 20px; background: white;;margin-left: 30px">
-                                <div style="width: 208px; height: 249px;background: url(http://www.gzenciw.com/Uploads/article/original_img/20190314175935.jpg) no-repeat center center; background-size: contain"></div>
-                                <div style="text-align: center; margin-top: 10px; color: #607D8B; font-size: 16px; font-weight: bold">标杆律师事务所资质</div>
+                        <div style="background: #363b3e; width: 80%; box-shadow: 0 0 10px #858585; border-radius: 20px;padding: 30px 20px" align="center">
+                            <div style="display:flex;background: url(http://gntqant.com/assets/img/mini/desktop15.jpg) no-repeat center center; background-size: cover;margin: 20px 10px;border-radius: 10px;padding: 20px 10px;box-shadow: 0 0 5px #b6b6b6;position: relative;width: 800px;height: 340px"
+                                 ng-repeat="team in ctrl.teamList track by $index" >
+                                <div id="55" name="Bg_55" align="center" style="height: 300px; z-index:55; width: 200px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 10px 10px 10px 10px; background:#DDE34F; ">
+                                    <div id="57" name="Image_57" style="margin-top:5px;height: 290px; z-index:57; width: 180px; background: url({{team['url']}}) no-repeat ; background-size: 180px 290px;"></div>
+                                </div>
+                                <div style="width: 500px;height: 300px;margin-left: 50px;display: inline-block">
+                                    <div align="left" style="display: inline-block;width:500px;border-radius: 5px;background-color: #DDE34F;padding: 5px">
+                                        <span style="font-size:22px;font-weight: bold;color: #3300aa;font-family: 华文彩云">姓名： </span>
+                                        <span style="font-size: 23px;font-weight: bold;color: #2b2b2b;font-family: 华文隶书">{{team['name']}}</span>
+                                    </div>
+                                    <div align="left" style="display: inline-block;margin-top:10px;width: 500px;height:245px;border-radius: 5px;background-color: #DDE34F;padding: 5px">
+                                        <p style="text-indent:2em;font-size: 18px;font-weight: bold;color: #2b2b2b;font-family: 华文楷体">{{team['content']}}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -135,20 +127,262 @@
 
 
     <!--尾部-->
-    <div style="width: 100%; height: 200px;background: #346889;" align="center">
+    <div style="width: 100%; height: 200px;background: #000000;" align="center">
         <div style="width: 1230px;; color: white; position: relative;text-align: left">
             <div style="padding-top: 40px">
-                <span>首页</span>
-                <span style="margin-left: 20px">关于我们</span>
-                <span style="margin-left: 20px">联系我们</span>
+                <span class="point" onclick="window.location='./index.html#main'" >首页</span>
+                <span class="point" onclick="window.location='./about.html'" style="margin-left: 20px">关于我们</span>
+                <span class="point" onclick="window.location='./contact.html'" style="margin-left: 20px">联系我们</span>
             </div>
             <div style="margin-top: 20px">
-ww2q                <span>广东期待师事务所 律师咨询热线:400-024-1868</span>
-                <span style="position: absolute; right: 20px">地址：广州市天河区珠江东路6号周大福金融中心1106房</span>
+                <span>广东期待师事务所 律师咨询热线:400-024-1868</span>
+                <span style="position: absolute; right: 20px">地址：广东省广州市盘区域富华东路518号桥力大厦三楼</span>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.factory('MyData',function () {
+        var serverHost = 'http://gntqant.com';
+        var frontSerPort = 80;
+        var backSerPort = 8085;
+
+        var maxNum = '2088-01-01 00:00:00';
+        var getTeamListToPh = serverHost+":"+backSerPort+"/getTeamListToPh";
+        var coverImgBaseUrl = serverHost+":"+frontSerPort+"/dynamicinfo/coverimg/";
+
+        var teamList = [];
+
+        var overallData = {
+            title: '专业团队',
+            param: [], //记录类型
+            loadData: false, //标识是否正在加载新闻数据
+            agentId: '',//新闻的应用号
+            search: '',//内容搜索功能
+            searchFlag: false, //判断是否搜索
+        };
+
+        return {
+            maxNum:maxNum,
+            overallData: overallData,
+            teamList:teamList,
+            getTeamListToPh:getTeamListToPh,
+            coverImgBaseUrl:coverImgBaseUrl,
+        }
+    });
+    app.factory('MyGeneralSer',function ($window, $document, $http, MyData) {
+        /** 工具类 **************************************************************************************/
+        /**
+         * 对数据进行判空处理
+         * @param data
+         */
+        var checkDataNotEmpty = function (data) {
+            var status = false;
+            if (data != null && data != undefined) {
+                //根据变量的不同类型进行判空处理
+                switch (Object.prototype.toString.call(data)) {
+                    /*String类型数据*/
+                    case '[object String]': {
+                        if (data.trim() != '') {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*Array类型*/
+                    case '[object Array]': {
+                        if (data.length > 0) {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*Object类型*/
+                    case '[object Object]': {
+                        if (Object.keys(data).length > 0) {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*其他类型状态默认设置为true，分别为Number和Boolean类型*/
+                    default: {
+                        status = true;
+                        break;
+                    }
+                }
+            }
+            return status;
+        };
+
+        /**
+         * http get获取资源数据
+         */
+        var httpGetFiles = function (url, callback) {
+            //设置loading状态
+            MyData.overallData['loadData'] = true;
+
+            $http({
+                method: 'GET',
+                url: url
+            }).then(function successCallback(response) {
+                if (response['status'] == 200) {
+                    //返回正确操作后执行回调函数
+                    callback(response['data'])
+
+                } else {
+                    alert(MyData.requestDataErrorMsg + ",.");
+                }
+            }, function errorCallback(err) {
+                alert(MyData.requestDataErrorMsg + ".,");
+
+            }).finally(function () {
+                //重置loading状态
+                MyData.overallData['loadData'] = false;
+            });
+        };
+
+
+        /**
+         * http post获取资源数据
+         */
+        var httpPostData = function (url, obj, callback) {
+            //设置loading状态
+            MyData.overallData['loadData'] = true;
+
+            var fd = new FormData();
+            //动态装载数据
+            for (var i in obj) {
+                fd.append(i, obj[i]);
+            }
+            $http.post(url, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined},
+
+            }).success(function (response) {
+                //返回正确操作后执行回调函数
+                // callback(response);
+                if (response['status_code'] == 200) {
+                    //返回正确操作后执行回调函数
+                    callback(response['data']);
+
+                } else {
+                    alert(MyData.requestDataErrorMsg + ".");
+                }
+            }).error(function (err) {
+                alert(MyData.requestDataErrorMsg + ",");
+
+            }).finally(function () {
+                //设置loading状态
+                MyData.overallData['loadData'] = false;
+            });
+        };
+
+
+        /**
+         * 组装生成新闻时间
+         * @param createTime
+         * @returns {string}
+         */
+        var generateShowTime = function (createTime) {
+            var today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+
+            var replaceTime = createTime.replace(/\-/g, "/");
+            var targetTime = new Date(replaceTime);
+            if (today - targetTime < 0) {
+                //当天发的新闻
+                var Hours=targetTime.getHours();
+                var Minutes=(targetTime.getMinutes()).toString();
+                if (Minutes.length<2) {
+                    Minutes="0"+Minutes;
+                }
+
+                return Hours + ":" + Minutes;
+
+            } else {
+                //之前发的新闻
+                return (targetTime.getMonth()+1) + "月" + targetTime.getDate() + "日";
+            }
+        };
+
+        return {
+            checkDataNotEmpty:checkDataNotEmpty,
+            httpGetFiles:httpGetFiles,
+            httpPostData:httpPostData,
+            generateShowTime:generateShowTime,
+
+        }
+    });
+    app.factory('MySer',function ($window, $document, $http, MyData, $location, MyGeneralSer) {
+        var initData = function () {
+            getTeamListToPh();
+        };
+
+        var getTeamListToPh = function () {
+            MyData.overallData['loadData'] = false;
+            var fd = new FormData();
+            fd.append('status_cd',1);
+            fd.append('create_time',MyData.maxNum);
+
+            $http.post(MyData.getTeamListToPh,fd , {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined},
+            }).success(function (response) {
+                if (response['status_code']==200) {
+
+                    //重置数据顺序：1、根据置顶标签排在前面，2、置顶的数据中根据置顶时间戳进行排序
+                    var teamListSortedData = response['data'].sort(sortStickNum);
+
+                    for (var i in teamListSortedData) {
+                        teamListSortedData[i]['url']= MyData.coverImgBaseUrl + teamListSortedData[i]['timestamp'] + ".png";
+                        MyData.teamList.push(teamListSortedData[i]);
+                    };
+
+                }
+            }).error(function (err) {
+                alert("尊敬的客户，服务器异常，请稍后重试..")
+            }).finally(function () {
+                //标识加载数据完成
+                MyData.overallData['loadData'] = false;
+            })
+
+
+        };
+
+        /**
+         * 重置数据顺序：
+         *  1、根据置顶标签排在前面，
+         *  2、置顶的数据中根据置顶时间戳进行排序
+         */
+        var sortStickNum = function (a,b) {
+            if (a['stick_cd'] == 1 && b['stick_cd'] == 1) {
+                //若两者均为置顶状态，则比较置顶时间
+                return b['stick_time'] - a['stick_time']
+
+            } else if (b['stick_cd'] != a['stick_cd']) {
+                //若两者置顶数据不一样，则置顶作为比较条件
+                return b['stick_cd'] - a['stick_cd'];
+
+            } else {
+                //无置顶要求数据根据创建时间进行排列
+                return new Date(a['create_time']) - new Date(b['create_time']);
+            }
+        };
+
+        return {
+            initData:initData,
+        }
+    });
+    app.controller('MyCtrl',function ($scope,MyData,MySer) {
+        var ctrl =this;
+        ctrl.teamList = MyData.teamList;
+        ctrl.overallData = MyData.overallData;
+
+        MySer.initData();
+    });
+</script>
 
 </body>
 </html>

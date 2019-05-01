@@ -35,14 +35,17 @@
     <div style="padding: 0 0 50px 0;border: 1px solid #d3d3d3;border-width: 0 0 1px 0;">
         <div style="padding: 5px 10px;width: 100%">
             <!--<div id="crop_result" style="text-align: right; width: 100%; height:auto;line-height: 110%;"></div>-->
-            <div>
-                <div class="ui-state-default" style="border: 1px solid #dadada;width: 255px;height: 120px;margin: 2px 5px 5px 5px;display: inline-block; ">
+            <div style="display:flex; flex-direction: row; justify-content:center; align-items: center">
+                <div class="ui-state-default" style="border: 1px solid #dadada;width: 255px;height: 120px;margin: 2px 5px 5px 5px">
                    <!--{{ctrl.overallData['images']['coverUrl']}}-->
                     <div id="crop_result"  style="width: 235px;height: 100px;position: relative;left: 10px; top: 10px; background: white url({{ctrl.overallData['images']['coverUrl']}}) no-repeat center center; background-size: cover;"></div>
                 </div>
                 <!--图片添加-->
-                <div ng-click="ctrl.getPhoneImg()" style="position: relative; border: 1px solid #dadada;display: inline-block; width: 50px;height: 50px;margin: 2px 5px 5px 5px;background: url(/assets/img/dynamicinfo/add_pic.png) no-repeat no-repeat center center; background-size: 35px 35px;">
-                    <!--<input file-proxy type="file" style="position: absolute;height: 0;width: 0; font-size: 0; opacity: 0">-->
+                <!--<div ng-click="ctrl.getPhoneImg()" style="position: relative; border: 1px solid #dadada;display: inline-block; width: 70px;height: 70px;margin: 2px 5px 5px 5px;background: url(/assets/img/dynamicinfo/add_pic.png) no-repeat no-repeat center center; background-size: 60px 60px;">-->
+                    <!--&lt;!&ndash;<input file-proxy type="file" style="position: absolute;height: 0;width: 0; font-size: 0; opacity: 0">&ndash;&gt;-->
+                <!--</div>-->
+                <div style="height: 50px;width: 50px;margin-left: 10px">
+                    <li ng-click="ctrl.getPhoneImg()" class="fa fa-crop fa-5x" ></li>
                 </div>
             </div>
             <!--<img src = {{ctrl.overallData['imgBase']}} style="width: 235px;height: 100px">-->
