@@ -34,20 +34,20 @@ function ServerSer() {
      * 服务器初始化
      */
     this.dataInit = function () {
-        getAccessTokenSer.getAccessToken(function () {
-            console.log("创建菜单");
-            wxApiGerSer.createWxMenu(function () {
-                console.log("完成创建菜单");
-            });
-        });
-
-        //配置每10分钟的定时任务
-        schedule.scheduleJob(serverSerData.schedule_time,function () {
-            console.log("检查access_token是否过时");
-            getAccessTokenSer.getAccessToken(function () {
-                console.log(serverSerData.wxCertData);
-            });
-        });
+        // getAccessTokenSer.getAccessToken(function () {
+        //     console.log("创建菜单");
+        //     wxApiGerSer.createWxMenu(function () {
+        //         console.log("完成创建菜单");
+        //     });
+        // });
+        //
+        // //配置每10分钟的定时任务
+        // schedule.scheduleJob(serverSerData.schedule_time,function () {
+        //     console.log("检查access_token是否过时");
+        //     getAccessTokenSer.getAccessToken(function () {
+        //         console.log(serverSerData.wxCertData);
+        //     });
+        // });
 
     }
 
