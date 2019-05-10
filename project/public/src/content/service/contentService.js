@@ -31,8 +31,10 @@ contentModule.factory('ContentSer',function ($http, $window, $routeParams, $time
         //检查url路径数据
         if (!OverallGeneralSer.checkDataNotEmpty(targetSubPage) || !OverallGeneralSer.checkDataNotEmpty(targetType)) {
             //若路径数据不全则默认打开内容栏目的新闻列表页面
-            $location.search({'subPage': 'interestList'});
-            $location.path(OverallDataSer.redirect['contentInterestArticle']);
+            // $location.search({'subPage': 'interestList'});
+            // $location.path(OverallDataSer.redirect['contentInterestArticle']);
+            $location.search({'subPage': 'lawfirmDynamicList'});
+            $location.path(OverallDataSer.redirect['contentLawfirmDynamic']);
             return;
 
         } else {

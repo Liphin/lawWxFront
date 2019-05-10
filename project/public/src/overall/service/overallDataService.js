@@ -130,7 +130,7 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
     //location页面重定向
     var redirect = {
         'loginHome': '/login/home',
-        'contentInterest': '/content/interestArticle',
+        'contentLawfirmDynamic': '/content/lawfirmDynamic',
     };
 
     //模态框消息提醒设置操作

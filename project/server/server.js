@@ -102,9 +102,9 @@ app.post('/copyTempResourceToLocal',function (req, res) {
 /**
  * 清除公众号的调用上限，每月只能10次
  */
-app.get('/clearQuato',function (req, res) {
-    resourceLocalize.clearQuato(req, res);
-});
+// app.get('/clearQuato',function (req, res) {
+//     resourceLocalize.clearQuato(req, res);
+// });
 
 
 /**

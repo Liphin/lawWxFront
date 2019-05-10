@@ -7,51 +7,51 @@ var contentModule = angular.module('Angular.content');
 /**
  * 设置见识闻趣页面
  */
-contentModule.directive('contentInterestArticle', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/content/tmpl/sub/news/interestArticle.html'
-    };
-}]);
-
-contentModule.directive('interestArticleEdit', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/content/tmpl/sub/news/opt/interestArticleEdit.html'
-    };
-}]);
-
-contentModule.directive('interestArticleList', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/content/tmpl/sub/news/opt/interestArticleList.html'
-    };
-}]);
+// contentModule.directive('contentInterestArticle', ['$document', function ($document) {
+//     return {
+//         restrict: 'E',
+//         templateUrl: 'src/content/tmpl/sub/news/interestArticle.html'
+//     };
+// }]);
+//
+// contentModule.directive('interestArticleEdit', ['$document', function ($document) {
+//     return {
+//         restrict: 'E',
+//         templateUrl: 'src/content/tmpl/sub/news/opt/interestArticleEdit.html'
+//     };
+// }]);
+//
+// contentModule.directive('interestArticleList', ['$document', function ($document) {
+//     return {
+//         restrict: 'E',
+//         templateUrl: 'src/content/tmpl/sub/news/opt/interestArticleList.html'
+//     };
+// }]);
 
 
 /**
  * 设置研究所页面
  */
-contentModule.directive('contentStudyArticle', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/content/tmpl/sub/news/studyArticle.html'
-    };
-}]);
-
-contentModule.directive('studyArticleEdit', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/content/tmpl/sub/news/opt/studyArticleEdit.html'
-    };
-}]);
-
-contentModule.directive('studyArticleList', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/content/tmpl/sub/news/opt/studyArticleList.html'
-    };
-}]);
+// contentModule.directive('contentStudyArticle', ['$document', function ($document) {
+//     return {
+//         restrict: 'E',
+//         templateUrl: 'src/content/tmpl/sub/news/studyArticle.html'
+//     };
+// }]);
+//
+// contentModule.directive('studyArticleEdit', ['$document', function ($document) {
+//     return {
+//         restrict: 'E',
+//         templateUrl: 'src/content/tmpl/sub/news/opt/studyArticleEdit.html'
+//     };
+// }]);
+//
+// contentModule.directive('studyArticleList', ['$document', function ($document) {
+//     return {
+//         restrict: 'E',
+//         templateUrl: 'src/content/tmpl/sub/news/opt/studyArticleList.html'
+//     };
+// }]);
 
 
 /**
@@ -129,26 +129,26 @@ contentModule.directive('msgList', ['$document', function ($document) {
 /**
  * 设置群发页面
  */
-contentModule.directive('contentMass', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/content/tmpl/sub/mass/mass.html'
-    };
-}]);
-
-contentModule.directive('massList', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/content/tmpl/sub/mass/opt/massList.html'
-    };
-}]);
-
-contentModule.directive('massEdit', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/content/tmpl/sub/mass/opt/massEdit.html'
-    };
-}]);
+// contentModule.directive('contentMass', ['$document', function ($document) {
+//     return {
+//         restrict: 'E',
+//         templateUrl: 'src/content/tmpl/sub/mass/mass.html'
+//     };
+// }]);
+//
+// contentModule.directive('massList', ['$document', function ($document) {
+//     return {
+//         restrict: 'E',
+//         templateUrl: 'src/content/tmpl/sub/mass/opt/massList.html'
+//     };
+// }]);
+//
+// contentModule.directive('massEdit', ['$document', function ($document) {
+//     return {
+//         restrict: 'E',
+//         templateUrl: 'src/content/tmpl/sub/mass/opt/massEdit.html'
+//     };
+// }]);
 
 /**
  * 设置手机预览页面

@@ -78,8 +78,8 @@ loginModule.factory('LoginSer', function ($http, $location,$cookies, LoginDataSe
             //     console.log("第三方权限");
             // }
 
-            $location.path(OverallDataSer.redirect['contentInterest']);
-            $location.search('subPage', 'interestList');
+            $location.path(OverallDataSer.redirect['contentLawfirmDynamic']);
+            $location.search('subPage', 'dynamicList');
 
 
         } else {
