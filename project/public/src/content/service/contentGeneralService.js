@@ -295,6 +295,7 @@ contentModule.factory('ContentGeneralSer', function ($location,$http, ContentDat
         var pStyle = "<p style=\"__PSTYLE__\">"
         data = data.replace(/<p>/g,pStyle);
         data = data.replace(/__PSTYLE__/g,ContentDataSer.overallData['PSTYLE']);
+        data = data.replace(/__IMGSTYLE__/g,ContentDataSer.overallData['IMGSTYLE']);
         return data;
     }
 
