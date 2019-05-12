@@ -37,11 +37,11 @@ contentModule.factory('DynamicEditSer',function ($http, $window, $timeout, Conte
             var html = $("#newsEditor").summernote('code');
             var viewHtmlHead = ContentGeneralSer.generalHtmlHead(ContentDataSer.dynamicData['editData']['data']['title'],
                 ContentDataSer.dynamicData['editData']['data']['wx_user_name'], ContentDataSer.dynamicData['editData']['data']['create_time'], false);
-            var viewHtmlHeadOk = ContentGeneralSer.replaceHtml(viewHtmlHead);
+            var htmlOk = ContentGeneralSer.replaceHtml(html);
             var viewHtmlEnd = '\n    </div>\n</div>\n</body>\n</html>';
 
             //拼装HTML文件
-            var phoneHtml = viewHtmlHeadOk + html + viewHtmlEnd;
+            var phoneHtml = viewHtmlHead + htmlOk + viewHtmlEnd;
 
             ContentDataSer.overallData['phoneView']['html'] = ContentGeneralSer.replaceSpecialCharacters(phoneHtml);
             //展开手机渲染面板
@@ -61,11 +61,11 @@ contentModule.factory('DynamicEditSer',function ($http, $window, $timeout, Conte
             //拼接保存的最终版数据
             var phoneHtmlHead = ContentGeneralSer.generalHtmlHead(ContentDataSer.dynamicData['editData']['data']['title'],
                 ContentDataSer.dynamicData['editData']['data']['wx_user_name'], ContentDataSer.dynamicData['editData']['data']['create_time'], true);
-            var phoneHtmlHeadOk = ContentGeneralSer.replaceHtml(viewHtmlHead);
+            var htmlOk = ContentGeneralSer.replaceHtml(html);
             var phoneHtmlEnd = ContentDataSer.overallData['phoneView']['phoneEndHtmlMini'];
 
             //拼装HTML文件
-            var phoneHtml = phoneHtmlHeadOk + html + phoneHtmlEnd;
+            var phoneHtml = phoneHtmlHead + htmlOk + phoneHtmlEnd;
             //var phoneHtml = phoneHtmlHead + html.replace(new RegExp(ContentDataSer.newsData['editData']['htmlStyle']), '') + phoneHtmlEnd;
 
             //特殊字符串转换并赋值

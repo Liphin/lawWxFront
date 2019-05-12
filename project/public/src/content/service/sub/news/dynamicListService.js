@@ -364,11 +364,11 @@ contentModule.factory('DynamicListSer', function ($http, $window, $timeout, Cont
 
             //拼凑头部和尾部生成最终展示数据
             var viewHtmlHead = ContentGeneralSer.generalHtmlHead(targetNews['title'], targetNews['wx_user_name'], targetNews['create_time']);
-            var viewHtmlHeadOk = ContentGeneralSer.replaceHtml(viewHtmlHead);
+            var keyCodeOk = ContentGeneralSer.replaceHtml(keyCode);
             var viewHtmlEnd = '\n    </div>\n</div>\n</body>\n</html>';
 
             //拼接HTML文件
-            var phoneHtml = viewHtmlHeadOk + keyCode + viewHtmlEnd;
+            var phoneHtml = viewHtmlHead + keyCodeOk + viewHtmlEnd;
 
             //装载文件数据到div展示区中
             ContentDataSer.overallData['phoneView']['html'] = phoneHtml;

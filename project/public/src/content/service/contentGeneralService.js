@@ -290,8 +290,8 @@ contentModule.factory('ContentGeneralSer', function ($location,$http, ContentDat
     /**
      * 替换掉html中样式
      */
-    var replaceHtml = function (viewHtmlHead) {
-        var data = viewHtmlHead;
+    var replaceHtml = function (html) {
+        var data = html;
         var pStyle = "<p style=\"__PSTYLE__\">"
         data = data.replace(/<p>/g,pStyle);
         data = data.replace(/__PSTYLE__/g,ContentDataSer.overallData['PSTYLE']);
