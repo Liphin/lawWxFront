@@ -6,8 +6,10 @@ var app = angular.module('myApp');
 
 app.factory('MyData',function () {
     //var serverHost = 'http://qidailaw.liphin.com';
-    var serverHost = 'http://gntqant.com';
-    var frontSerPort = 80;
+    // var serverHost = 'http://gntqant.com';
+    // var frontSerPort = 80;
+    var serverHost = 'http://qidailaw.liphin.com';
+    var frontSerPort = 3100;
     var backSerPort = 8085;
 
     var maxNum = '2088-01-01 00:00:00';

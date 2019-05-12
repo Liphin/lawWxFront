@@ -2,8 +2,10 @@ var app = angular.module('myApp');
 
 app.factory('MyData',function () {
     //var serverHost = 'http://qidailaw.liphin.com';
-    var serverHost = 'http://gntqant.com';
-    var frontSerPort = 80;
+    // var serverHost = 'http://gntqant.com';
+    // var frontSerPort = 80;
+    var serverHost = 'http://qidailaw.liphin.com';
+    var frontSerPort = 3100;
     var backSerPort = 8085;
 
     var saveMsgInfo = serverHost+":"+backSerPort+"/saveMsgInfo";
