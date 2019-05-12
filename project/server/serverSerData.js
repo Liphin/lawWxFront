@@ -19,8 +19,8 @@ if (global.env == 'dev') {
     basePath = "G:\\SoftwareOutSourcing\\qidailaw\\front\\lawWxFront"; //远程项目根文件目录
     port = 80;
 }else {
-    basePath = "/root/lawWxPublic/front/output/"; //远程项目根文件目录
-    port = 80;
+    basePath = "/root/qidailaw/front/output/"; //远程项目根文件目录
+    port = 3100;
 }
 projectPath = basePath + "/project"; //公共目录文件
 loadFilePath = basePath + "/dynamicinfo/";
