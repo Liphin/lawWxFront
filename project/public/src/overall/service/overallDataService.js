@@ -27,10 +27,10 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
 
     /* Url 系统各种文件获取的URL设置 */
     var baseUrlData = {
-        //'backEndHttp': "http://127.0.0.1:8085/",
-        //'frontEndHttp': "http://127.0.0.1:80/",
-        'backEndHttp': "http://gntqant.com:8085/",
-        'frontEndHttp': "http://gntqant.com:80/",
+        'backEndHttp': "http://127.0.0.1:8085/",
+        'frontEndHttp': "http://127.0.0.1:3100/",
+        // 'backEndHttp': "http://gntqant.com:8085/",
+        // 'frontEndHttp': "http://gntqant.com:80/",
         'ossHttp': "",
         'resource_http_request': '',
     };
