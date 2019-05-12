@@ -287,6 +287,17 @@ contentModule.factory('ContentGeneralSer', function ($location,$http, ContentDat
         return htmlHead
     };
 
+    /**
+     * 替换掉html中样式
+     */
+    var replaceHtml = function (viewHtmlHead) {
+        var data = viewHtmlHead;
+        var pStyle = "<p style=\"__PSTYLE__\">"
+        data = data.replace(/<p>/g,pStyle);
+        data = data.replace(/__PSTYLE__/g,ContentDataSer.overallData['PSTYLE']);
+        return data;
+    }
+
     /***
      * 把blob数据传到后台保存
      */
@@ -432,6 +443,7 @@ contentModule.factory('ContentGeneralSer', function ($location,$http, ContentDat
         uploadMedia:uploadMedia,
         uploadImageGetUrl:uploadImageGetUrl,
         generalHtmlHead: generalHtmlHead,
+        replaceHtml:replaceHtml,
         showTargetNumNewsList: showTargetNumNewsList,
         setPreNextLoadBatchData: setPreNextLoadBatchData,
         replaceSpecialCharacters: replaceSpecialCharacters,
