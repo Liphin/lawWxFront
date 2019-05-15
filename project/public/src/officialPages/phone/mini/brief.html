@@ -1,25 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <link rel="stylesheet" href="http://gntqant.com:80/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="http://gntqant.com:80/assets/css/font-awesome/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="http://127.0.0.1:80/assets/css/bootstrap/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="http://127.0.0.1:80/assets/css/font-awesome/font-awesome.min.css">-->
     <meta charset="UTF-8">
-    <title>简介</title>
+    <title>律所简介</title>
     <meta name="viewport" content="width=device-width">
+    <style>
+        /*img {*/
+        /*width: 100% !important;*/
+        /*height: auto !important;*/
+        /*display: inherit;*/
+        /*margin-top: 15px;*/
+        /*text-indent: 0;*/
+        /*}*/
+        iframe, embed {
+            width: 100%;
+            height: auto;
+        }
+
+        /*p {*/
+        /*text-align: left;*/
+        /*padding: 0 10px;*/
+        /*font-size: 17px;*/
+        /*width: 100%;*/
+        /*text-indent: 2em;*/
+        /*letter-spacing: 1px;*/
+        /*line-height: 150%;*/
+        /*color: #4b4b4b;*/
+        /*}*/
+    </style>
 </head>
 <body>
-    <div style="max-width: 640px;background: gainsboro; padding: 0 10px; font-family: 微软雅黑">
-        <div style="border-radius: 10px;box-shadow: 0 0 5px grey; padding: 0 10px 20px 10px; background: white">
-            <!--企业简介头部图片-->
-            <img style="width: 100%" src="/assets/img/mini/breief.png"/>
-            <!--企业简介描述-->
-            <div style="text-indent: 2em;color:#332B28;">
-                <p>广东期待律师事务所是司法厅核准的普通合伙制律师事务所；设立以来，一直秉承“慎思、明辩、期待、进取”原则，贯彻“法律公正至上”和“为当事人（客户）谋取最大法律利益”的执业理念，携手团结，求实创新，争创中国一流律师事务所。</p>
-                <p>广东期待律师所位于广州市番禺区的核心商务区，办公地点在广州市番禺区公证处楼上；拥有较多的资深注册执业律师。期待所的律师以扎实的法律功底、娴熟的法律技巧、丰富的实践经验、良好的职业道德、较强的社会协调能力为广大客户提供了优质而满意的法律服务，获得多项荣誉。</p>
-                <p>广东期待律师所要求每位律师都要有自己的专业方向和专业分工，在自己的专业领域作深作强，以更好地在知识结构、时间与效率等方面向客户提供全方位的优质法律服务。</p>
-                <p>期待律师团队每年提供法律顾问服务的企业超过数十家。其中不乏行业协会、民办非企业、文化协会、运输公司、银行等大型企业，也包含村委、居民委员会等单位，不仅解决服务企业的需求，而且为行业法律趋势和风险规避提供有效提示。特别是通过这几年与房地产、旅游等行业共同经历的市场风云，使我们与各行业之间建立了良好的沟通渠道。</p>
-                <p>期待律师团队每年承办数百件诉讼案件，包括房地产纠纷、物理管理纠纷、知识产权纠纷等类型，期待所律师的专业服务水平及全方位的服务得到了社会和司法机关普遍的认可与承认，形成了良好的口碑。</p>
-            </div>
-        </div>
 
+<div ng-if="ctrl.overallData['showPageInfo']" style="width: 100%; position: relative;display: inline-block">
+
+    <!--新闻数据展示-->
+    <div id="content"
+         style="padding: 0 0 55px 0;width: 100%;text-align: left;font: 15px/1.5 Microsoft YaHei,arial,SimSun,宋体;margin-top: 5px">
+        <mark style="background: white;border: none;">
+            <section
+                    style="font-size: 15px; line-height: 1.8; letter-spacing: 1.5px; color: rgb(101, 101, 101); background-color: rgb(225, 203, 186); font-family: Optima-Regular, PingFangTC-light; padding: 0px 10px; text-align: justify;">
+                <section powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section>
+                            <p style="margin-bottom: 0px; padding: 0px;"><br></p>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: center; position: static;">
+                        <section style="display: inline-block; width: 60%; vertical-align: top;">
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="font-size: 83px; line-height: 1; color: rgb(94, 150, 179);">
+                                        <p style="margin-bottom: -25px; padding: 0px;">
+                                            <strong>
+                                                <span style="text-shadow: rgb(230, 230, 230) 2px 0px 2px;">律<br></span>
+                                            </strong>
+                                        </p>
+                                    </section>
+                                </section>
+                            </section>
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="margin: -20px 0% 0px; position: static;">
+                                    <section
+                                            style="display: inline-block; width: 100%; vertical-align: top; background-color: rgb(212, 187, 167); border-top: 1px solid rgb(94, 150, 179); border-top-left-radius: 0px; border-bottom: 1px solid rgb(94, 150, 179); border-bottom-right-radius: 0px;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="letter-spacing: 10px; font-size: 17px; line-height: 2;">
+                                                    <p style="margin-bottom: 0px; padding: 0px;">LAW FIRM</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                            <section powered-by="xiumi.us">
+                                <section style="margin: 10px 0% 0px; position: static;">
+                                    <section
+                                            style="text-align: justify; font-size: 13px; color: rgb(94, 150, 179); line-height: 1.8;">
+                                        <p style="text-align: center; margin-bottom: 0px; padding: 0px;">
+                                            <strong>○</strong>
+                                        </p>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section
+                                style="display: inline-block; width: 100%; height:260px;vertical-align: top; background-position: 50% 50%; background-repeat: no-repeat; background-size: cover; background-attachment: scroll; background-image: url(/assets/img/mini/mini11.jpg);">
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="display: inline-block; vertical-align: top; width: 30%;">
+                                        <section style="position: static;" powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="display: inline-block; width: 100%; vertical-align: top; background-color: rgba(60, 19, 35, 0.2);">
+                                                    <section powered-by="xiumi.us">
+                                                        <section style="margin: 40px 0% 0px; position: static;">
+                                                            <section style="text-align: center; color: rgb(255, 255, 255); font-size: 36px;">
+                                                                <p style="margin-bottom: 0px; padding: 0px;"><strong>2019<br></strong>
+                                                                </p>
+                                                            </section>
+                                                        </section>
+                                                    </section>
+                                                    <section powered-by="xiumi.us">
+                                                        <section style="margin: 10px 0% 0px; position: static;">
+                                                            <section
+                                                                    style="text-align: center; color: rgb(255, 255, 255); font-size: 17px;">
+                                                                <p style="margin-bottom: 0px; padding: 0px;">律 所</p>
+                                                                <p style="margin-bottom: 0px; padding: 0px;">简 介</p>
+                                                            </section>
+                                                        </section>
+                                                    </section>
+                                                    <section powered-by="xiumi.us">
+                                                        <section style="position: static;">
+                                                            <section><p style="margin-bottom: 0px; padding: 0px;"><br>
+                                                            </p></section>
+                                                        </section>
+                                                    </section>
+                                                    <section powered-by="xiumi.us">
+                                                        <section style="position: static;">
+                                                            <section><p style="margin-bottom: 0px; padding: 0px;"><br>
+                                                            </p></section>
+                                                        </section>
+                                                    </section>
+                                                    <section powered-by="xiumi.us">
+                                                        <section style="position: static;">
+                                                            <section><p style="margin-bottom: 0px; padding: 0px;"><br>
+                                                            </p></section>
+                                                        </section>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section class="group-empty" style="display: inline-block; vertical-align: top; width: 70%; border-width: 0px; height: 1px;"></section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section style="display: inline-block; width: 100%; vertical-align: top;">
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="margin-top: -84px; margin-left:80px;position: static;">
+                                    <section class="group-empty" style="display: inline-block; vertical-align: middle; width: 20%; height: 1px;"></section>
+                                    <section style="display: inline-block; vertical-align: middle; width: 100%; background-color: rgb(94, 150, 179);">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: right; color: rgb(255, 255, 255); line-height: 3; font-size: 19px;">
+                                                    <p style="margin-bottom: 0px; padding: 0px;">Law Firm Recruitment&nbsp;&nbsp;</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                            <section powered-by="xiumi.us">
+                                <section style="margin: 20px 0%; position: static;">
+                                    <section style="color: rgb(63, 63, 63);"><p
+                                            style="margin-bottom: 0px; padding: 0px;"><span style="font-size: 18px;">【广东期待律师事务所】</span>是司法厅核准的普通合伙制律师事务所；设立以来，一直秉承“慎思、明辩、期待、进取”原则，贯彻“法律公正至上”和“为当事人（客户）谋取最大法律利益”的执业理念，携手团结，求实创新，争创中国一流律师事务所。
+                                    </p></section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="margin: 10px 0% 0px; text-align: left; font-size: 30px; position: static;">
+                        <section style="display: inline-block; vertical-align: middle;">
+                            <section style="width: 0px;">
+                                <section
+                                        style="border-bottom: 0.65em solid rgb(48, 88, 140); border-left: 1em solid transparent !important; border-right: 1em solid transparent !important;"></section>
+                            </section>
+                            <section
+                                    style="width: 2em; line-height: 1em; height: 1em; background-color: rgb(48, 88, 140); text-align: center; color: rgb(255, 255, 255);">
+                                <p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                            <section style="width: 0px;">
+                                <section
+                                        style="border-top: 0.65em solid rgb(48, 88, 140); border-left: 1em solid transparent !important; border-right: 1em solid transparent !important;"></section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: right; margin: -40px 0% 10px; position: static;">
+                        <section
+                                style="display: inline-block; width: 95%; vertical-align: top; background-color: rgb(94, 150, 179); border-style: solid; border-width: 3px; border-radius: 0px; border-color: rgb(255, 255, 255); padding: 5px 10px;">
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="text-align: left; font-size: 17px; color: rgb(255, 255, 255);"><p
+                                            style="margin-bottom: 0px; padding: 0px;">律所坐标</p></section>
+                                </section>
+                            </section>
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="text-align: left; position: static;">
+                                    <section
+                                            style="display: inline-block; min-width: 10%; max-width: 100%; vertical-align: top; box-shadow: rgb(94, 150, 179) 0px 0px 0px; border-top: 1px solid rgb(255, 255, 255); border-top-left-radius: 0px; padding: 0px;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section
+                                                        style="text-align: justify; font-size: 13px; color: rgb(255, 255, 255); letter-spacing: 0.5px;">
+                                                    <p style="margin-bottom: 0px; padding: 0px;">Law Firm Location&nbsp;&nbsp;</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: center; margin: 20px 0% 0px; position: static;">
+                        <section style="display: inline-block; width: 90%; vertical-align: top;">
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="text-align: justify; color: rgb(63, 63, 63);"><p
+                                            style="margin-bottom: 0px; padding: 0px;">
+                                        广东期待律师所位于广州市番禺区的核心商务区，办公地点在广州市番禺区公证处楼上；拥有较多的资深注册执业律师。期待所的律师以扎实的法律功底、娴熟的法律技巧、丰富的实践经验、良好的职业道德、较强的社会协调能力为广大客户提供了优质而满意的法律服务，获得多项荣誉。</p>
+                                    </section>
+                                </section>
+                            </section>
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="text-align: justify;"><p style="margin-bottom: 0px; padding: 0px;">
+                                        <br></p></section>
+                                </section>
+                            </section>
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="display: inline-block; vertical-align: top; width: 33.33%;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: justify;"><p
+                                                        style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section style="display: inline-block; vertical-align: top; width: 33.33%;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: justify;"><p
+                                                        style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section
+                                            style="display: inline-block; vertical-align: top; width: 33.33%; background-color: rgb(94, 150, 179);">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: justify; line-height: 0.3;"><p
+                                                        style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static;">
+                        <section
+                                style="max-width: 100%; vertical-align: middle; display: inline-block; line-height: 0; width: 90%; border-style: solid; border-width: 1px; border-radius: 0px; border-color: rgb(255, 255, 255);">
+                            <img class="raw-image"
+                                 src="http://qidailaw.liphin.com:3100/dynamicinfo/resource/11557914589609.jpg"
+                                 style="max-width: 100%; width: 100%;" data-ratio="0.4833333" data-w="1080"
+                                 _width="100%"></section>
+                    </section>
+                </section>
+                <section powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section><p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                    </section>
+                </section>
+                <section powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section><p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="margin: 10px 0% 0px; text-align: left; font-size: 30px; position: static;">
+                        <section style="display: inline-block; vertical-align: middle;">
+                            <section style="width: 0px;">
+                                <section
+                                        style="border-bottom: 0.65em solid rgb(48, 88, 140); border-left: 1em solid transparent !important; border-right: 1em solid transparent !important;"></section>
+                            </section>
+                            <section
+                                    style="width: 2em; line-height: 1em; height: 1em; background-color: rgb(48, 88, 140); text-align: center; color: rgb(255, 255, 255);">
+                                <p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                            <section style="width: 0px;">
+                                <section
+                                        style="border-top: 0.65em solid rgb(48, 88, 140); border-left: 1em solid transparent !important; border-right: 1em solid transparent !important;"></section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: right; margin: -40px 0% 10px; position: static;">
+                        <section
+                                style="display: inline-block; width: 95%; vertical-align: top; background-color: rgb(94, 150, 179); border-style: solid; border-width: 3px; border-radius: 0px; border-color: rgb(255, 255, 255); padding: 5px 10px;">
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="text-align: left; font-size: 17px; color: rgb(255, 255, 255);"><p
+                                            style="margin-bottom: 0px; padding: 0px;">律所文化</p></section>
+                                </section>
+                            </section>
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="text-align: left; position: static;">
+                                    <section
+                                            style="display: inline-block; min-width: 10%; max-width: 100%; vertical-align: top; box-shadow: rgb(94, 150, 179) 0px 0px 0px; border-top: 1px solid rgb(255, 255, 255); border-top-left-radius: 0px; padding: 0px;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section
+                                                        style="text-align: justify; font-size: 13px; color: rgb(255, 255, 255); letter-spacing: 0.5px;">
+                                                    <p style="margin-bottom: 0px; padding: 0px;">culture</p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: center; margin: 20px 0% 0px; position: static;">
+                        <section style="display: inline-block; width: 100%; vertical-align: top;">
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="text-align: justify; color: rgb(63, 63, 63);"><p
+                                            style="margin-bottom: 0px; padding: 15px;margin-top: -18px">
+                                        广东期待律师所要求每位律师都要有自己的专业方向和专业分工，在自己的专业领域作深作强，以更好地在知识结构、时间与效率等方面向客户提供全方位的优质法律服务。</p>
+                                    </section>
+                                </section>
+                            </section>
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="text-align: justify;"><p style="margin-bottom: 0px; padding: 0px;">
+                                        <br></p></section>
+                                </section>
+                            </section>
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="display: inline-block; vertical-align: top; width: 33.33%;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: justify;"><p
+                                                        style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section style="display: inline-block; vertical-align: top; width: 33.33%;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: justify;"><p
+                                                        style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section
+                                            style="display: inline-block; vertical-align: top; width: 33.33%; background-color: rgb(94, 150, 179);">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: justify; line-height: 0.3;"><p
+                                                        style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section><p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="margin: 10px 0% 0px; text-align: left; font-size: 30px; position: static;">
+                        <section style="display: inline-block; vertical-align: middle;">
+                            <section style="width: 0px;">
+                                <section
+                                        style="border-bottom: 0.65em solid rgb(48, 88, 140); border-left: 1em solid transparent !important; border-right: 1em solid transparent !important;"></section>
+                            </section>
+                            <section
+                                    style="width: 2em; line-height: 1em; height: 1em; background-color: rgb(48, 88, 140); text-align: center; color: rgb(255, 255, 255);">
+                                <p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                            <section style="width: 0px;">
+                                <section
+                                        style="border-top: 0.65em solid rgb(48, 88, 140); border-left: 1em solid transparent !important; border-right: 1em solid transparent !important;"></section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: right; margin: -40px 0% 10px; position: static;">
+                        <section
+                                style="display: inline-block; width: 95%; vertical-align: top; background-color: rgb(94, 150, 179); border-style: solid; border-width: 3px; border-radius: 0px; border-color: rgb(255, 255, 255); padding: 5px 10px;">
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="text-align: left; font-size: 17px; color: rgb(255, 255, 255);"><p
+                                            style="margin-bottom: 0px; padding: 0px;">团队实力</p></section>
+                                </section>
+                            </section>
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="text-align: left; position: static;">
+                                    <section
+                                            style="display: inline-block; min-width: 10%; max-width: 100%; vertical-align: top; box-shadow: rgb(94, 150, 179) 0px 0px 0px; border-top: 1px solid rgb(255, 255, 255); border-top-left-radius: 0px; padding: 0px;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section
+                                                        style="text-align: justify; font-size: 13px; color: rgb(255, 255, 255); letter-spacing: 0.5px;">
+                                                    <p style="margin-bottom: 0px; padding: 0px;">Ability&nbsp; of&nbsp;
+                                                        Team</p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: center; margin: 20px 0% 0px; position: static;">
+                        <section style="display: inline-block; width: 90%; vertical-align: top;">
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="text-align: justify; color: rgb(63, 63, 63);"><p
+                                            style="margin-bottom: 0px; padding: 0px;">
+                                        期待律师团队每年提供法律顾问服务的企业超过数十家。其中不乏行业协会、民办非企业、文化协会、运输公司、银行等大型企业，也包含村委、居民委员会等单位，不仅解决服务企业的需求，而且为行业法律趋势和风险规避提供有效提示。特别是通过这几年与房地产、旅游等行业共同经历的市场风云，使我们与各行业之间建立了良好的沟通渠道。</p>
+                                        <p style="margin-bottom: 0px; padding: 0px;"><br></p>
+                                        <p style="margin-bottom: 0px; padding: 0px;">
+                                            期待律师团队每年承办数百件诉讼案件，包括房地产纠纷、物理管理纠纷、知识产权纠纷等类型，期待所律师的专业服务水平及全方位的服务得到了社会和司法机关普遍的认可与承认，形成了良好的口碑。</p>
+                                        <p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                                </section>
+                            </section>
+                            <section powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="text-align: justify;">
+                                        <p style="margin-bottom: 0px; padding: 0px;"><br></p>
+                                    </section>
+                                </section>
+                            </section>
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="position: static;">
+                                    <section style="display: inline-block; vertical-align: top; width: 33.33%;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: justify;">
+                                                    <!--<p style="margin-bottom: 0px; padding: 0px;">期待与您相遇<br></p>-->
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section style="display: inline-block; vertical-align: top; width: 33.33%;">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: justify;"><p
+                                                        style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section
+                                            style="display: inline-block; vertical-align: top; width: 33.33%; background-color: rgb(94, 150, 179);">
+                                        <section powered-by="xiumi.us">
+                                            <section style="position: static;">
+                                                <section style="text-align: justify; line-height: 0.3;"><p
+                                                        style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section><p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section><p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: center; position: static;">
+                        <section
+                                style="display: inline-block; width: 70%; vertical-align: top; border-top: 1px solid rgb(255, 255, 245); border-top-left-radius: 0px; border-bottom: 1px solid rgb(255, 255, 245); border-bottom-right-radius: 0px;">
+                            <section style="position: static;" powered-by="xiumi.us">
+                                <section style="margin: 10px 0%; position: static;">
+                                    <section style="text-align: justify; font-size: 18px;"><p
+                                            style="text-align: center; margin-bottom: 0px; padding: 0px;">
+                                        慎思，明辨，期待，进取</p></section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section><p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="text-align: center; margin-top: 10px; margin-bottom: 10px; position: static;">
+                        <section
+                                style="max-width: 100%; vertical-align: middle; display: inline-block; line-height: 0; width: 40%;">
+                            <img class="raw-image"
+                                 src="http://qidailaw.liphin.com:3100/dynamicinfo/resource/21557914589609.jpeg"
+                                 style="max-width: 100%; width: 100%;" data-ratio="1" data-w="430" _width="100%">
+                        </section>
+                    </section>
+                </section>
+                <section style="position: static;" powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section style="text-align: center; font-size: 13px;"><p
+                                style="margin-bottom: 0px; padding: 0px;">长按二维码关注我们</p></section>
+                    </section>
+                </section>
+                <section powered-by="xiumi.us">
+                    <section style="position: static;">
+                        <section><p style="margin-bottom: 0px; padding: 0px;"><br></p></section>
+                    </section>
+                </section>
+            </section>
+        </mark>
     </div>
+
+
+</div>
 </body>
 </html>
