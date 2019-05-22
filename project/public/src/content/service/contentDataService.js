@@ -265,6 +265,18 @@ contentModule.factory('ContentDataSer', function (OverallDataSer) {
             'array': [],
             'status': false, //是否展开页面
         },
+        //尾html
+        'htmlTail':'<div>\n' +
+            '    <!--放置二维码地方及关注我们的描述-->\n' +
+            '    <div style="font-family: 微软雅黑;color: #7f559c; font-size: 18px;margin-left: 20px; font-weight: bold">长按识别下方二维吗，关注我们吧</div>\n' +
+            '    <div style="border: 1px solid gainsboro; border-width: 1px 0 1px 0; margin: 20px;display: flex; flex-direction: row;padding: 20px 0">\n' +
+            '        <img style="width: 100px; height: 100px;" src="http://qidailaw.liphin.com:3100/assets/img/mini/mini12.jpg">\n' +
+            '        <div style="flex: 1; text-align:center;display: inline-block;padding: 20px;font-size: 20px;font-color:#ff8d0d">\n' +
+            '            <p>慎思，明辨</p>\n' +
+            '            <p>期待，进取</p>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '</div>',
     };
 
     //内部页面跳转展示

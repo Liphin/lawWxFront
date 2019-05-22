@@ -38,7 +38,8 @@ contentModule.factory('DynamicEditSer',function ($http, $window, $timeout, Conte
             var viewHtmlHead = ContentGeneralSer.generalHtmlHead(ContentDataSer.dynamicData['editData']['data']['title'],
                 ContentDataSer.dynamicData['editData']['data']['wx_user_name'], ContentDataSer.dynamicData['editData']['data']['create_time'], false);
             var htmlOk = ContentGeneralSer.replaceHtml(html);
-            var viewHtmlEnd = '\n    </div>\n</div>\n</body>\n</html>';
+            var viewHtmlEnd = '\n    </div>\n</div>'+ContentDataSer.overallData['htmlTail']+'\n</body>\n</html>';
+            console.log(viewHtmlEnd);
 
             //拼装HTML文件
             var phoneHtml = viewHtmlHead + htmlOk + viewHtmlEnd;
