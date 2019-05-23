@@ -34,6 +34,7 @@ app.factory('MySer',function ($window, $document, $http, MyData, $location, MyGe
                     };
                     MyData.teamList.push(teamListSortedData[i]);
                 };
+                console.log(MyData.teamList);
 
             }
         }).error(function (err) {
@@ -62,7 +63,7 @@ app.factory('MySer',function ($window, $document, $http, MyData, $location, MyGe
 
         } else {
             //无置顶要求数据根据创建时间进行排列
-            return new Date(b['create_time']) - new Date(a['create_time']);
+            return new Date(a['create_time']) - new Date(b['create_time']);
         }
     };
 
