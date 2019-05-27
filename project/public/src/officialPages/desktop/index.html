@@ -8,6 +8,7 @@
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://viewcoder-bucket.oss-cn-shenzhen.aliyuncs.com/cdn/js/jquery/jquery-1.11.0.js"></script>
+    <script src="/assets/js/angularjs/angular.js"></script>
 </head>
 
 <style>
@@ -22,12 +23,12 @@
     }
 
     .region{
-        border: 2px solid #050b50;
-        color: #050b50;
+        border: 2px solid #0f1596;
+        color: #0f1596;
         cursor: pointer;
     }
     .region:hover{
-        background: #050b50;
+        background: #0f1596;
         color: white;
     }
     .point:hover{
@@ -36,30 +37,39 @@
 </style>
 <body  style="font-family: 微软雅黑">
 
-<div id="main" style="overflow-x: auto" align="center">
+<div id="main" style="overflow-x: auto" align="center" ng-app="myApp" ng-controller="MyCtrl as ctrl">
     <!--头部-->
-    <div style="width: 1230px; margin-top: 30px; position: relative" align="center">
-        <!--企业信息logo和铭牌-->
-        <img height="180" style="position: absolute; left: 20px;margin-top: -20px" src="http://qidailaw.liphin.com:3100/assets/img/mini/desktop05.jpg"/>
+    <div style="width: 1230px; margin-top: 10px; position: relative" align="center">
 
-        <img width="650" height="150" style="position: relative;margin-left: -30px" src="http://qidailaw.liphin.com:3100/assets/img/mini/desktop06.PNG"/>
-
-        <!--电话-->
-        <div style="display: inline-block;position: absolute;right: 20px;top:40px">
-            <i class="fa fa-volume-control-phone" style="color: #050b50; font-size: 30px;"></i>
-            <h2 style="color: #050b50; font-size: 30px; display: inline-block; margin-left: 20px">020-84772013</h2>
+        <div style="display: inline-block;vertical-align: middle;height: 80px;">
+            <!--企业信息logo和铭牌-->
+            <img style="height: 100%" src="http://qidailaw.liphin.com:3100/assets/img/mini/mini13.jpg">
         </div>
+
+        <div style="display: inline-block;vertical-align: middle;margin-left: 60%">
+            <span style="line-height: 29px;">
+                <p style="font-family: 宋体;">
+                    <span style="font-size: 24px; font-family: 微软雅黑;">020-84772013</span>
+                </p>
+                <p style="font-family: 宋体">
+                    <i class="fa fa-volume-control-phone" style="color: #C40000; font-size: 25px;"></i>
+                    <span style="font-family: 微软雅黑;font-size: 25px;margin-left: 15px">服务热线</span>
+                </p>
+            </span>
+        </div>
+
     </div>
 
     <!--导航及轮播-->
-    <div style="margin-top: 10px;background: #050b50;" align="center">
+    <div style="margin-top: 10px;background: #151515;" align="center">
         <!--导航栏-->
         <div style="width: 1230px; height: 46px;">
             <div class="navigation" style="margin-left: 30px;display: flex; flex-direction: row;color: white; font-size: 17px">
                 <div onclick="window.location='./index.html#main'">首页</div>
                 <div onclick="window.location='./about.html'">关于我们</div>
+                <div onclick="window.location='./index.html#direction'">服务方向</div>
                 <div onclick="window.location='./index.html#regions'">业务领域</div>
-                <div onclick="window.location='./contact.html'">联系我们</div>
+                <div onclick="window.location='./team.html'">专业团队</div>
             </div>
         </div>
 
@@ -75,13 +85,53 @@
                 <!-- 轮播（Carousel）项目 -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="http://qidailaw.liphin.com:3100/assets/img/mini/desktop80.jpg" alt="First slide">
+                        <!--<img src="http://qidailaw.liphin.com:3100/assets/img/mini/desktop80.jpg" alt="First slide">-->
+                        <div style="width: 1349px; height: 600px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; display: block; outline: none; margin: 0px auto; position: relative; z-index: 1; background-size: cover; background-image: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini21.jpg);">
+                            <div style="position: relative; width: 497px; height: 178px; margin-top: 200px;margin-left: 645px">
+                                <span style="line-height: 25px;">
+                                    <div style="float: left">
+                                        <span style="font-size: 45px; color: rgb(255, 255, 255);font-family: 黑体, SimHei;" color="rgba(255,255,255,1)">专注优质法律服务</span>
+                                    </div>
+                                    <div style="float: left;margin-top: 25px;margin-left: 10px">
+                                        <span style="font-size: 16px; color: rgb(255, 255, 255); font-family: 黑体, SimHei;">专业资深律师团队，为您提供无微不至的服务，</span>
+                                    </div>
+                                    <div style="float: left;margin-top: 10px;margin-left: 10px">
+                                        <span style="font-size: 16px; color: rgb(255, 255, 255); font-family: 黑体, SimHei;">为您的合法权益保驾护航</span>
+                                    </div>
+                                </span>
+                            </div>
+
+                        </div>
                     </div>
                     <div class="item">
-                        <img src="http://qidailaw.liphin.com:3100/assets/img/mini/desktop81.jpg" alt="Second slide">
+                        <!--<img src="http://qidailaw.liphin.com:3100/assets/img/mini/desktop81.jpg" alt="Second slide">-->
+                        <div style="width: 1349px; height: 600px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; display: block; outline: none; margin: 0px auto; position: relative; z-index: 1; background-size: cover; background-image: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini16.jpg);">
+                            <div style="position: relative; width: 497px; height: 178px; margin-top: 200px;margin-left: 645px">
+                                <span style="line-height: 25px;">
+                                    <div style="float: left">
+                                        <span style="font-size: 45px; color: #CEAF32;font-family: 黑体, SimHei;" color="rgba(255,255,255,1)">专业法律顾问服务</span>
+                                    </div>
+                                    <div style="float: left;margin-top: 25px;margin-left: 10px">
+                                        <span style="font-size: 25px; color: #CEAF32; font-family: 黑体, SimHei;">企业顾问  政府顾问  个人顾问</span>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                     <div class="item">
-                        <img src="http://qidailaw.liphin.com:3100/assets/img/mini/desktop82.jpg" alt="Third slide">
+                        <!--<img src="http://qidailaw.liphin.com:3100/assets/img/mini/desktop82.jpg" alt="Third slide">-->
+                        <div style="width: 1349px; height: 600px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; display: block; outline: none; margin: 0px auto; position: relative; z-index: 1; background-size: cover; background-image: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini22.jpg);">
+                            <div style="position: relative; width: 550px; height: 178px; margin-top: 200px;margin-left: -400px">
+                                <span style="line-height: 25px;">
+                                    <div style="float: left">
+                                        <span style="font-size: 80px; color: #FFFFFF;font-family: 华文行楷" color="rgba(255,255,255,1)">慎思  明辨</span>
+                                    </div>
+                                    <div style="float: left;margin-top: 80px;margin-left: 160px">
+                                        <span style="font-size: 80px; color: #FFFFFF; font-family: 华文行楷;">期待  进取</span>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- 轮播（Carousel）导航 -->
@@ -97,191 +147,369 @@
         </div>
     </div>
 
-    <div style="display: inline-block;text-align: center;margin-top: 40px;background: white">
-        <!--专业能力-->
-        <div align="center" style="font-size: 30px;font-weight: 600; color:#050b50;margin-bottom: 30px;">
-            <div>PROFESSIONAL ABILITY</div>
-            <div style="font-size: 35px">专业能力</div>
+    <div id="direction" style="display: inline-block;text-align: center;margin-top: 40px;background: white">
+        <!--服务方向-->
+        <div align="center" style="margin-bottom: 30px;">
+            <div style="color: #C40000;font-size: 30px;font-weight: 600;">服务方向</div>
+            <div style="font-size: 20px;color: #4a4a4a">为您提供放心专业的法律服务</div>
+            <hr style="width: 90%;color: #000000;">
         </div>
+        <div style="width: 1200px;min-width:1000px;text-align: center;">
+            <div style="width: 300px; height: 860px; display:inline-block;position: relative; overflow: hidden;">
+                <div style="width: 300px; height: 200px;background-color: #d6d6d6;text-align: center">
+                    <a onclick="return false;">
+                        <img iwidth="290" iheight="190" picsca="2" src="http://qidailaw.liphin.com:3100/assets/img/mini/mini17.jpg" alt="法律顾问" style="width: 290px; height: 190px;margin-top: 5px">
+                    </a>
+                </div>
+                <div style="width: 300px; height: 30px;">
+                    <section style="position: static;" powered-by="xiumi.us">
+                        <section style="position: static;">
+                            <section style="display: inline-block; width: 100%; vertical-align: top;">
+                                <section style="position: static;" powered-by="xiumi.us">
+                                    <section style="position: static;">
+                                        <section style="display: inline-block; vertical-align: middle; width: 20%;">
+                                            <section style="position: static;" powered-by="xiumi.us">
+                                                <section
+                                                        style="margin-top: 10px; margin-bottom: 10px; text-align: center; position: static;">
+                                                    <section style="display: inline-block;">
+                                                        <section style="float: left;">
+                                                            <section
+                                                                    style="border-left: 1px solid rgb(92, 83, 65); height: 10px; width: 0px; margin-left: auto; transform: rotate(45deg); transform-origin: right bottom; border-top-color: rgb(92, 83, 65); border-right-color: rgb(92, 83, 65); border-bottom-color: rgb(92, 83, 65);"></section>
+                                                            <section
+                                                                    style="transform: rotate(0deg); border: 1px solid rgb(92, 83, 65); width: 1.6em; height: 1.6em; line-height: 1.6em; font-size: 17px; margin-top: -1px; margin-bottom: -1px;background-color:white;">
+                                                                <p style="margin-bottom: 0px; padding: 0px;">01</p>
+                                                            </section>
+                                                            <section
+                                                                    style="border-right: 1px solid rgb(92, 83, 65); height: 10px; width: 0px; transform: rotate(45deg); transform-origin: left top; border-top-color: rgb(92, 83, 65); border-bottom-color: rgb(92, 83, 65); border-left-color: rgb(92, 83, 65);"></section>
+                                                        </section>
+                                                        <section
+                                                                style="margin-top: 14px; margin-left: 5px; font-size: 17px; width: 1.6em; height: 1.6em; background-color: rgb(160, 110, 45);"></section>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <section style="display: inline-block; vertical-align: middle; width: 70%;">
+                                            <section powered-by="xiumi.us">
+                                                <section style="position: static;">
+                                                    <section style="font-size: 17px;">
+                                                        <p style="margin-bottom: 0px; padding: 0px;margin-left: -100px">法律顾问</p>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                            <section style="position: static;" powered-by="xiumi.us">
+                                                <section style="text-align: left; margin: 0px 0% -10px; position: static;">
+                                                    <section
+                                                            style="display: inline-block; width: 50%; vertical-align: top;">
+                                                        <section style="position: static;" powered-by="xiumi.us">
+                                                            <section style="margin: 0.5em 0px; position: static;">
+                                                                <section
+                                                                        style="border-top: 1px dashed rgb(160, 110, 45);"></section>
+                                                            </section>
+                                                        </section>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <div style="border-radius:5px;padding:2px;margin-top:40px;width: 300px;height: 550px;font-size: 15px;font-family: 微软雅黑" align="left">
+                    <p>
+                        1、为顾问单位的生产、经营、管理方面重大决策的合法性、可行性、风险预测及对策提供法律依据和法律意见；
+                    </p>
+                    <p>
+                        2、为顾问单位深化企业改革、完善法人治理结构、加强生产经营管理、提高企业经济效益等有关问题提供法律意见；
+                    </p>
+                    <p>
+                        3、建立和完善顾问单位的相关规章制度，草拟、修改、审查合同和有关法律文书；
+                    </p>
+                    <p>
+                        4、受托参与经济合同及有关项目的磋商、谈判，进行法律分析、论证和签约；
+                    </p>
+                    <p>
+                        5、受托为顾问单位重大项目对外出具法律意见书；
+                    </p>
+                    <p>
+                        6、代理顾问单位发律师函向债务人或担保人追款；
+                    </p>
+                    <p>
+                        7、代理顾问单位办理有关股份制改造、股份公司设立以及股票发行上市等法律事务；
+                    </p>
+                    <p>
+                        8、协助顾问单位处理内部劳动关系；
+                    </p>
+                    <p>
+                        9、对顾问单位职工进行法制宣传、教育、培训；
+                    </p>
+                    <p>
+                        10、办理顾问单位其他必要的法律事务。
+                    </p>
+                </div>
+            </div>
+            <div style="margin-left:2%;width: 300px; height: 860px; display:inline-block;position: relative; overflow: hidden;">
+                <div style="width: 300px; height: 200px;background-color: #d6d6d6;text-align: center">
+                    <a onclick="return false;">
+                        <img iwidth="290" iheight="190" picsca="2" src="http://qidailaw.liphin.com:3100/assets/img/mini/mini18.jpg" alt="诉讼业务" style="width: 290px; height: 190px;margin-top: 5px">
+                    </a>
+                </div>
+                <div style="width: 300px; height: 30px;">
+                    <section style="position: static;" powered-by="xiumi.us">
+                        <section style="position: static;">
+                            <section style="display: inline-block; width: 100%; vertical-align: top;">
+                                <section style="position: static;" powered-by="xiumi.us">
+                                    <section style="position: static;">
+                                        <section style="display: inline-block; vertical-align: middle; width: 20%;">
+                                            <section style="position: static;" powered-by="xiumi.us">
+                                                <section
+                                                        style="margin-top: 10px; margin-bottom: 10px; text-align: center; position: static;">
+                                                    <section style="display: inline-block;">
+                                                        <section style="float: left;">
+                                                            <section
+                                                                    style="border-left: 1px solid rgb(92, 83, 65); height: 10px; width: 0px; margin-left: auto; transform: rotate(45deg); transform-origin: right bottom; border-top-color: rgb(92, 83, 65); border-right-color: rgb(92, 83, 65); border-bottom-color: rgb(92, 83, 65);"></section>
+                                                            <section
+                                                                    style="transform: rotate(0deg); border: 1px solid rgb(92, 83, 65); width: 1.6em; height: 1.6em; line-height: 1.6em; font-size: 17px; margin-top: -1px; margin-bottom: -1px;background-color:white;">
+                                                                <p style="margin-bottom: 0px; padding: 0px;">02</p>
+                                                            </section>
+                                                            <section
+                                                                    style="border-right: 1px solid rgb(92, 83, 65); height: 10px; width: 0px; transform: rotate(45deg); transform-origin: left top; border-top-color: rgb(92, 83, 65); border-bottom-color: rgb(92, 83, 65); border-left-color: rgb(92, 83, 65);"></section>
+                                                        </section>
+                                                        <section
+                                                                style="margin-top: 14px; margin-left: 5px; font-size: 17px; width: 1.6em; height: 1.6em; background-color: rgb(160, 110, 45);"></section>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <section style="display: inline-block; vertical-align: middle; width: 70%;">
+                                            <section powered-by="xiumi.us">
+                                                <section style="position: static;">
+                                                    <section style="font-size: 17px;">
+                                                        <p style="margin-bottom: 0px; padding: 0px;margin-left: -100px">诉讼业务</p>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                            <section style="position: static;" powered-by="xiumi.us">
+                                                <section style="text-align: left; margin: 0px 0% -10px; position: static;">
+                                                    <section
+                                                            style="display: inline-block; width: 50%; vertical-align: top;">
+                                                        <section style="position: static;" powered-by="xiumi.us">
+                                                            <section style="margin: 0.5em 0px; position: static;">
+                                                                <section
+                                                                        style="border-top: 1px dashed rgb(160, 110, 45);"></section>
+                                                            </section>
+                                                        </section>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <div style="border-radius:5px;padding:2px;margin-top:40px;width: 300px;height: 550px;font-size: 15px;font-family: 微软雅黑" align="left">
+                    <p>
+                        1、接受委托，为委托人进行企业设立、股权转让、增资减资、招标投标、合并分立、清算注销、资产重组、改制上市、改制、拍卖、清算等全面提供法律服务；
+                    </p>
+                    <p>
+                        2、接受委托，根据委托人提供的财务资料，对委托人的债权进行分析，对不良资产提出相应的处理方案，清理债权债务；
+                    </p>
+                    <p>
+                        3、接受委托，为委托人以房地产为载体的资产运作（转让、抵押、拍卖、股权转让等）提供房地产项目全过程法律服务；
+                    </p>
+                    <p>
+                        4、接受委托，为委托人的相关法律事务提供专项法律服务。
+                    </p>
+                </div>
+            </div>
+            <div style="margin-left:2%;width: 300px; height: 860px; display:inline-block;position: relative; overflow: hidden;">
+                <div style="width: 300px; height: 200px;background-color: #d6d6d6;text-align: center">
+                    <a onclick="return false;">
+                        <img iwidth="290" iheight="190" picsca="2" src="http://qidailaw.liphin.com:3100/assets/img/mini/mini19.jpg" alt="专项法律" style="width: 290px; height: 190px;margin-top: 5px">
+                    </a>
+                </div>
+                <div style="width: 300px; height: 30px;">
+                    <section style="position: static;" powered-by="xiumi.us">
+                        <section style="position: static;">
+                            <section style="display: inline-block; width: 100%; vertical-align: top;">
+                                <section style="position: static;" powered-by="xiumi.us">
+                                    <section style="position: static;">
+                                        <section style="display: inline-block; vertical-align: middle; width: 20%;">
+                                            <section style="position: static;" powered-by="xiumi.us">
+                                                <section
+                                                        style="margin-top: 10px; margin-bottom: 10px; text-align: center; position: static;">
+                                                    <section style="display: inline-block;">
+                                                        <section style="float: left;">
+                                                            <section
+                                                                    style="border-left: 1px solid rgb(92, 83, 65); height: 10px; width: 0px; margin-left: auto; transform: rotate(45deg); transform-origin: right bottom; border-top-color: rgb(92, 83, 65); border-right-color: rgb(92, 83, 65); border-bottom-color: rgb(92, 83, 65);"></section>
+                                                            <section
+                                                                    style="transform: rotate(0deg); border: 1px solid rgb(92, 83, 65); width: 1.6em; height: 1.6em; line-height: 1.6em; font-size: 17px; margin-top: -1px; margin-bottom: -1px;background-color:white;">
+                                                                <p style="margin-bottom: 0px; padding: 0px;">03</p>
+                                                            </section>
+                                                            <section
+                                                                    style="border-right: 1px solid rgb(92, 83, 65); height: 10px; width: 0px; transform: rotate(45deg); transform-origin: left top; border-top-color: rgb(92, 83, 65); border-bottom-color: rgb(92, 83, 65); border-left-color: rgb(92, 83, 65);"></section>
+                                                        </section>
+                                                        <section
+                                                                style="margin-top: 14px; margin-left: 5px; font-size: 17px; width: 1.6em; height: 1.6em; background-color: rgb(160, 110, 45);"></section>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <section style="display: inline-block; vertical-align: middle; width: 70%;">
+                                            <section powered-by="xiumi.us">
+                                                <section style="position: static;">
+                                                    <section style="font-size: 17px;">
+                                                        <p style="margin-bottom: 0px; padding: 0px;margin-left: -100px">专项法律</p>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                            <section style="position: static;" powered-by="xiumi.us">
+                                                <section style="text-align: left; margin: 0px 0% -10px; position: static;">
+                                                    <section
+                                                            style="display: inline-block; width: 50%; vertical-align: top;">
+                                                        <section style="position: static;" powered-by="xiumi.us">
+                                                            <section style="margin: 0.5em 0px; position: static;">
+                                                                <section
+                                                                        style="border-top: 1px dashed rgb(160, 110, 45);"></section>
+                                                            </section>
+                                                        </section>
+                                                    </section>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <div style="border-radius:5px;padding:2px;margin-top:40px;width: 300px;height: 550px;font-size: 15px;font-family: 微软雅黑" align="left">
+                    <p>
+                        1、接受当事人委托，设立、优化诉讼或仲裁方案，起草各类诉讼、仲裁文书，担任经济、民事、行政案件当事人的委托代理人参加诉讼、仲裁活动；
+                    </p>
+                    <p>
+                        2、接受委托参与案件的听证、复议、申诉等活动；
+                    </p>
+                    <p>
+                        3、接受委托代为申请财产保全、申请及协助强制执行各类生效的法律文书（包括裁决书、判决书、处罚决定书、赋于强制执行效力的公证法律文书等）。
+                    </p>
+                    <p>
+                        4、接受委托，为侦查阶段、审查起诉阶段、提起公诉阶段（一、二审）犯罪嫌疑人（被告人）的辩护人，为嫌疑人（被告人）提供法律帮助、进行辩护。
+                    </p>
+                    <p>
+                        5、接受委托，担任刑事案件被害人的诉讼代理人或担任刑事附带民事诉讼案件的代理人，代为查阅、搜集资料，代为参与庭审。
+                    </p>
+                </div>
+            </div>
 
-        <div class="flipDiv"
-             style="cursor: pointer;margin: 20px;display: inline-block; width: 400px; height: 580px;position: relative; border: 1px solid gainsboro; box-shadow: 0 0  5px grey;border-radius: 10px">
-            <div class="frontContent" style="background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop85.jpg) no-repeat center center;background-size:cover;position: absolute; top: 0; left: 0;right: 0; bottom: 0;border-radius: 10px">
-            </div>
-            <div class="backContent" style="visibility: hidden;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop88.jpg) no-repeat center center;background-size:cover; position: absolute; top: 0; left: 0; right: 0; bottom: 0;transform: rotateY(180deg);border-radius: 10px">
-                <p style="margin-top: 10px"></p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    1、为顾问单位的生产、经营、管理方面重大决策的合法性、可行性、风险预测及对策提供法律依据和法律意见；
-                </p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    2、为顾问单位深化企业改革、完善法人治理结构、加强生产经营管理、提高企业经济效益等有关问题提供法律意见；
-                </p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    3、建立和完善顾问单位的相关规章制度，草拟、修改、审查合同和有关法律文书；
-                </p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    4、受托参与经济合同及有关项目的磋商、谈判，进行法律分析、论证和签约；
-                </p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    5、受托为顾问单位重大项目对外出具法律意见书；
-                </p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    6、代理顾问单位发律师函向债务人或担保人追款；
-                </p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    7、代理顾问单位办理有关股份制改造、股份公司设立以及股票发行上市等法律事务；
-                </p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    8、协助顾问单位处理内部劳动关系；
-                </p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    9、对顾问单位职工进行法制宣传、教育、培训；
-                </p>
-                <p style="margin:5px;text-align: left;font-size: 18px;font-family: 华文楷体;font-weight: bold">
-                    10、办理顾问单位其他必要的法律事务。
-                </p>
-            </div>
-        </div>
-
-        <div class="flipDiv2"
-             style="cursor: pointer;margin: 20px;display: inline-block; width: 400px; height: 580px;position: relative; border: 1px solid gainsboro; box-shadow: 0 0  5px grey;border-radius: 10px">
-            <div class="frontContent2" style="background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop86.jpg) no-repeat center center;background-size:cover; position: absolute; top: 0; left: 0;right: 0; bottom: 0;border-radius: 10px">
-            </div>
-            <div class="backContent2" style="visibility: hidden;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop88.jpg) no-repeat center center;background-size:cover; position: absolute; top: 0; left: 0; right: 0; bottom: 0;transform: rotateY(180deg);border-radius: 10px">
-                <p style="margin:20px;text-align: left;font-size: 23px;font-family: 华文楷体;font-weight: bold">
-                    1、接受委托，为委托人进行企业设立、股权转让、增资减资、招标投标、合并分立、清算注销、资产重组、改制上市、改制、拍卖、清算等全面提供法律服务；
-                </p>
-                <p style="margin:20px;text-align: left;font-size: 23px;font-family: 华文楷体;font-weight: bold">
-                    2、接受委托，根据委托人提供的财务资料，对委托人的债权进行分析，对不良资产提出相应的处理方案，清理债权债务；
-                </p>
-                <p style="margin:20px;text-align: left;font-size: 23px;font-family: 华文楷体;font-weight: bold">
-                    3、接受委托，为委托人以房地产为载体的资产运作（转让、抵押、拍卖、股权转让等）提供房地产项目全过程法律服务；
-                </p>
-                <p style="margin:20px;text-align: left;font-size: 23px;font-family: 华文楷体;font-weight: bold">
-                    4、接受委托，为委托人的相关法律事务提供专项法律服务。
-                </p>
-            </div>
-        </div>
-
-        <div class="flipDiv3"
-             style="cursor: pointer;margin: 20px;display: inline-block; width: 400px; height: 580px;position: relative; border: 1px solid gainsboro; box-shadow: 0 0  5px grey;border-radius: 10px">
-            <div class="frontContent3" style="background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop87.jpg) no-repeat center center;background-size:cover;position: absolute; top: 0; left: 0;right: 0; bottom: 0;border-radius: 10px">
-            </div>
-            <div class="backContent3" style="visibility: hidden;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop88.jpg) no-repeat center center;background-size:cover; position: absolute; top: 0; left: 0; right: 0; bottom: 0;transform: rotateY(180deg);border-radius: 10px">
-                <p style="margin:15px;text-align: left;font-size: 20px;font-family: 华文楷体;font-weight: bold">
-                    1、接受当事人委托，设立、优化诉讼或仲裁方案，起草各类诉讼、仲裁文书，担任经济、民事、行政案件当事人的委托代理人参加诉讼、仲裁活动；
-                </p>
-                <p style="margin:15px;text-align: left;font-size: 20px;font-family: 华文楷体;font-weight: bold">
-                    2、接受委托参与案件的听证、复议、申诉等活动；
-                </p>
-                <p style="margin:15px;text-align: left;font-size: 20px;font-family: 华文楷体;font-weight: bold">
-                    3、接受委托代为申请财产保全、申请及协助强制执行各类生效的法律文书（包括裁决书、判决书、处罚决定书、赋于强制执行效力的公证法律文书等）。
-                </p>
-                <p style="margin:15px;text-align: left;font-size: 20px;font-family: 华文楷体;font-weight: bold">
-                    4、接受委托，为侦查阶段、审查起诉阶段、提起公诉阶段（一、二审）犯罪嫌疑人（被告人）的辩护人，为嫌疑人（被告人）提供法律帮助、进行辩护。
-                </p>
-                <p style="margin:15px;text-align: left;font-size: 20px;font-family: 华文楷体;font-weight: bold">
-                    5、接受委托，担任刑事案件被害人的诉讼代理人或担任刑事附带民事诉讼案件的代理人，代为查阅、搜集资料，代为参与庭审。
-                </p>
-            </div>
         </div>
     </div>
 
     <!--业务领域-->
     <div id="regions" style="margin-top: 40px;background: white">
         <!--业务领域-->
-        <div align="center" style="font-size: 30px;font-weight: 600; color:#050b50;">
-            <div>SERVICES AVAILABLE</div>
-            <div style="font-size: 35px">业务领域</div>
+        <div align="center" style="margin-bottom: 30px;">
+            <div style="color: #0f16b4;font-size: 30px;font-weight: 600;">业务领域</div>
+            <div style="font-size: 20px;color: #4a4a4a">为您提供各领域专业的法律服务</div>
+            <hr style="width: 90%;color: #000000;">
         </div>
+
+        <!--&lt;!&ndash;业务领域&ndash;&gt;-->
+        <!--<div align="center" style="font-size: 30px;font-weight: 600; color:#050b50;">-->
+            <!--<div>SERVICES AVAILABLE</div>-->
+            <!--<div style="font-size: 35px">业务领域</div>-->
+        <!--</div>-->
 
         <!--业务领域分类-->
         <div style="width: 1230px;margin-top: 40px; display: flex; flex-direction: row; flex-wrap: wrap;justify-content: center;">
-            <div onclick="window.location='./regions/re_1.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">
+            <div onclick="window.location='./regions/re_1.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">
                 <i class="fa fa-gratipay" style="font-size: 50px; margin:30px"></i>
                 <div style="font-size: 20px; margin-bottom: 20px;">婚姻继承</div>
                 <div>--------------------------------</div>
                 <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">提供专业的婚姻纠纷、遗产纠纷法律服务，为客户解决婚姻继承的各种烦恼</div>
             </div>
-            <div onclick="window.location='./regions/re_2.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">
+            <div onclick="window.location='./regions/re_2.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">
                 <i class="fa fa-balance-scale" style="font-size: 50px; margin:30px"></i>
                 <div style="font-size: 20px; margin-bottom: 20px;">刑事辩护</div>
                 <div>--------------------------------</div>
                 <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">以客户为本，针对被指控的罪行进行无罪、罪轻，减轻或者免除处罚的辩解和辩论</div>
             </div>
-            <div onclick="window.location='./regions/re_3.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">
+            <div onclick="window.location='./regions/re_3.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">
                 <i class="fa fa-newspaper-o" style="font-size: 50px; margin:30px"></i>
                 <div style="font-size: 20px; margin-bottom: 20px;">债权债务</div>
                 <div>--------------------------------</div>
                 <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">整合复杂的债权债务关系，为当事人提供优质的法律服务</div>
             </div>
-            <div onclick="window.location='./regions/re_4.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">
+            <div onclick="window.location='./regions/re_4.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">
                 <i class="fa fa-car" style="font-size: 50px; margin:30px"></i>
                 <div style="font-size: 20px; margin-bottom: 20px;">交通事故</div>
                 <div>--------------------------------</div>
                 <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">从各方面分析交通事故案情，捍卫客户的合法权益，尽可能争取案件处理的最好的结果</div>
             </div>
-            <!--<div onclick="window.location='./regions/re_5.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
-                <!--<i class="fa fa-odnoklassniki" style="font-size: 50px; margin:30px"></i>-->
-                <!--<div style="font-size: 20px; margin-bottom: 20px;">劳动法</div>-->
-                <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
-                <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">擅长处理各种劳工纠纷问题，以捍卫广大的劳动者合法权益为己任</div>-->
-            <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_6.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
-                <!--<i class="fa fa-font-awesome" style="font-size: 50px; margin:30px"></i>-->
-                <!--<div style="font-size: 20px; margin-bottom: 20px;">行政诉讼</div>-->
-                <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
-                <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">切实了解客户的需求，本着维护公民、法人合法权益的最终目的，不畏强权、勇往直前</div>-->
-            <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_7.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
+            <div onclick="window.location='./regions/re_5.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-odnoklassniki" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">劳动法</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">擅长处理各种劳工纠纷问题，以捍卫广大的劳动者合法权益为己任</div>
+            </div>
+            <div onclick="window.location='./regions/re_6.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">
+                <i class="fa fa-font-awesome" style="font-size: 50px; margin:30px"></i>
+                <div style="font-size: 20px; margin-bottom: 20px;">行政诉讼</div>
+                <div>--------------------------------</div>
+                <div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">切实了解客户的需求，本着维护公民、法人合法权益的最终目的，不畏强权、勇往直前</div>
+            </div>
+            <!--<div onclick="window.location='./regions/re_7.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">-->
                 <!--<i class="fa fa-envira" style="font-size: 50px; margin:30px"></i>-->
                 <!--<div style="font-size: 20px; margin-bottom: 20px;">知识产权</div>-->
                 <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
                 <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">切实分析客户的案情，深入调查收集证据，维护客户合法权益</div>-->
             <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_8.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
+            <!--<div onclick="window.location='./regions/re_8.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">-->
                 <!--<i class="fa fa-building" style="font-size: 50px; margin:30px"></i>-->
                 <!--<div style="font-size: 20px; margin-bottom: 20px;">房产业务</div>-->
                 <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
                 <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">结合当下最新政策，尽最大努力为客户争取应得的安置与补偿，保卫客户的合法权益</div>-->
             <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_9.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
+            <!--<div onclick="window.location='./regions/re_9.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">-->
                 <!--<i class="fa fa-university" style="font-size: 50px; margin:30px"></i>-->
                 <!--<div style="font-size: 20px; margin-bottom: 20px;">建筑工程</div>-->
                 <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
                 <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">运用专业的知识和能力，解决客户建筑工程的各种纠纷问题</div>-->
             <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_10.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
+            <!--<div onclick="window.location='./regions/re_10.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">-->
                 <!--<i class="fa fa-external-link" style="font-size: 50px; margin:30px"></i>-->
                 <!--<div style="font-size: 20px; margin-bottom: 20px;">医疗纠纷</div>-->
                 <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
                 <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">准确分析案件各种情况，解决医疗事故各种纠纷问题，为客户提供有效的解决方案</div>-->
             <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_11.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
+            <!--<div onclick="window.location='./regions/re_11.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">-->
                 <!--<i class="fa fa-registered" style="font-size: 50px; margin:30px"></i>-->
                 <!--<div style="font-size: 20px; margin-bottom: 20px;">破产重组</div>-->
                 <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
                 <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">调查取证，保证清理破产财产工作的真实可靠，控制风险，保障破产程序依法进行。</div>-->
             <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_12.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
+            <!--<div onclick="window.location='./regions/re_12.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">-->
                 <!--<i class="fa fa-money" style="font-size: 50px; margin:30px"></i>-->
                 <!--<div style="font-size: 20px; margin-bottom: 20px;">财务金融</div>-->
                 <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
                 <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">熟悉商业经营活动，为客户提供风险管理策略，协助公司制定税收筹划方案</div>-->
             <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_13.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
+            <!--<div onclick="window.location='./regions/re_13.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">-->
                 <!--<i class="fa fa-plane" style="font-size: 50px; margin:30px"></i>-->
                 <!--<div style="font-size: 20px; margin-bottom: 20px;">海事海商</div>-->
                 <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
                 <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">熟知中外法律，协调利益均衡，规避外贸法律风险，依规依法保护客户权益。</div>-->
             <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_14.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
+            <!--<div onclick="window.location='./regions/re_14.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">-->
                 <!--<i class="fa fa-tree" style="font-size: 50px; margin:30px"></i>-->
                 <!--<div style="font-size: 20px; margin-bottom: 20px;">农民权益</div>-->
                 <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
                 <!--<div style="font-size: 15px; line-height: 27px;text-align: left; margin: 20px;">熟知国家三农政策法规，分析当地政策，结合客户需求，争取农民更多权益。</div>-->
             <!--</div>-->
-            <!--<div onclick="window.location='./regions/re_15.html'" class="region" style="border: 2px solid #050b50;border-radius: 20px;width: 216px; height: 373px; margin: 10px;">-->
+            <!--<div onclick="window.location='./regions/re_15.html'" class="region" style="border: 2px solid #0f1596;border-radius: 10px;width: 216px; height: 373px; margin: 10px;">-->
                 <!--<i class="fa fa-male" style="font-size: 50px; margin:30px"></i>-->
                 <!--<div style="font-size: 20px; margin-bottom: 20px;">法律顾问</div>-->
                 <!--<div>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</div>-->
@@ -291,214 +519,353 @@
     </div>
 
     <!--尾部-->
-    <div style="width: 100%; height: 200px;background: #000000;" align="center">
-        <div style="width: 1230px;margin-top: 30px; color: white; position: relative;text-align: left">
-            <div style="padding-top: 40px">
-                <span class="point" onclick="window.location='./index.html#main'" >首页</span>
-                <span class="point" onclick="window.location='./about.html'" style="margin-left: 20px">关于我们</span>
-                <span class="point" onclick="window.location='./contact.html'" style="margin-left: 20px">联系我们</span>
+    <div style="width: 100%; height: 600px;background-image: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini20.jpg);background-size: cover">
+        <div style="width: 1230px;margin-top: 30px; position: relative;text-align: center">
+            <div style="display: inline-block;position:relative;margin-top:60px;height: 500px;width: 500px;overflow: hidden;" align="left">
+                <p style="font-size: 30px;font-weight: bold;color: white">联系我们</p>
+                <p style="font-size: 13px;color: #e9e9e9">我们将与您携手共进，为公平正义而奋斗</p>
+                <p style="font-size: 16px;color: white;margin-top: 30px">电话：020-84772013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编：511400</p>
+                <p style="font-size: 16px;color: white;">邮箱：3166862528@qq.com</p>
+                <p style="font-size: 16px;color: white;">地址：广东省广州番禺区富华东路518号桥力大厦三楼</p>
+                <p style="font-size: 16px;color: white;">（即番禺区公证处所在大楼三楼）</p>
             </div>
-            <div style="margin-top: 20px">
-                <span>广东期待师事务所 律师咨询热线:020-84772013</span>
-                <span style="position: absolute; right: 20px">地址：广东省广州市盘区域富华东路518号桥力大厦三楼</span>
+            <div style="display: inline-block;position:relative;margin-top:60px;height: 500px;width: 500px;margin-left: 70px;overflow: hidden;" align="left">
+                <p style="font-size: 30px;font-weight: bold;color: white">法律咨询</p>
+                <p style="font-size: 13px;color: #e9e9e9">免费法律咨询，请留言提交，我们将以最快的速度回复</p>
+                <p style="margin-top: 30px">
+                    <span style="font-size: 16px;color: white;">姓名：</span>
+                    <span><input class="inputStyle" style="padding:5px;height:35px;width: 170px;" type="text" ng-model="ctrl.msgInfo['name']" maxlength="50"
+                                 placeholder=""></span>
+                    <span style="font-size: 16px;color: white;margin-left: 20px;">电话：</span>
+                    <span><input class="inputStyle" style="padding:5px;height:35px;width: 170px;" type="text" ng-model="ctrl.msgInfo['phone']" maxlength="50"
+                                 placeholder="">
+                    </span>
+                </p>
+                <p style="margin-top: 15px">
+                    <span style="font-size: 16px;color: white;">邮箱：</span>
+                    <span><input class="inputStyle" style="padding:5px;height:35px;width: 220px;" type="text" ng-model="ctrl.msgInfo['mail']" maxlength="50"
+                                 placeholder="">
+                    </span>
+                    <span style="font-size: 16px;color: #fff424">（*电话和邮箱任填一个*）</span>
+                </p>
+                <p style="margin-top: 15px;">
+                    <span style="font-size: 16px;color: white;">内容：</span>
+                </p>
+                <p style="margin-top: 15px;">
+                    <span>
+                        <textarea class="textAreaStyle" style="padding:5px;width: 500px; height: 150px" ng-model="ctrl.msgInfo['content']"
+                                    placeholder="">
+                        </textarea>
+                    </span>
+                </p>
+                <div style="width: 500px; height: 50px;text-align: center;padding-top: 17px; border: 1px solid lightgrey; border-width: 1px 0 0 0; margin-top: 20px">
+                    <button ng-click="ctrl.cancleInfo()" class="btn btn-default"
+                            style="display:inline;width: 120px;height: 40px">重置
+                    </button>
+                    <button ng-click="ctrl.saveMsgInfo()" class="btn btn-success"
+                            style="margin-left:80px;display:inline;width: 120px;height: 40px">提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; height: 200px;background: #151515;" align="center">
+        <div style="width: 1230px; color: white; position: relative;text-align: center">
+            <div>
+                <li class="fa fa-handshake-o" style="margin-top: 20px;font-size: 50px"></li>
+            </div>
+            <div style="margin-top: 10px">
+                <span style="font-size: 40px;color: white;font-family: 华文隶书">慎思，明辨，期待，进取</span>
+            </div>
+            <div style="margin-top: 10px">
+                <span style="font-size: 15px;color: whitesmoke">选择我们，我们将为您提供专业优质的法律服务</span>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+    var app = angular.module('myApp', []);
+    // app.config(function ($locationProvider) {
+    //     $locationProvider.html5Mode({
+    //         enabled: true,
+    //         rewriteLinks: false,
+    //         requireBase: false
+    //     });
+    // });
+    app.factory('MyData',function () {
+        var serverHost = 'http://qidailaw.liphin.com';
+        var frontSerPort = 3100;
+        var backSerPort = 8085;
 
-    var flipCount = 0; //总的翻转次数
-    var beginDeg = 0; //开始角度
-    var endDeg = 180; //结束角度
-    var num = 0; //还剩多少次翻转，用户快速点击多次后，翻转多次
-    var time = 1000; //设置时间，1000毫秒
-
-    //HTML页面元素
-    var flipBtn = $("#flipBtn");
-    var flipDiv = $(".flipDiv");
-    var frontContent = $(".flipDiv .frontContent");
-    var backContent = $(".flipDiv .backContent");
+        var saveMsgInfo = serverHost+":"+backSerPort+"/saveMsgInfo";
+        var miniMainHtml = serverHost+":"+frontSerPort+"/src/officialPages/phone/mini/index.html";
 
 
-    /**
-     * 点击进行翻转操作
-     */
-    flipDiv.click(function () {
-        //当前待翻转的次数为0时，触发翻转操作，否则进增加待翻转次数即可
-        if(num==0){
-            num++;
-            flipAnimate(flipDiv, beginDeg, endDeg, time);
+        var requestDataErrorMsg = "尊敬的客户，服务异常，请稍后重试";
 
-        }else {
-            num++;
+        var overallData = {
+            loadData: false, //标识是否正在加载新闻数据
+        };
+
+        //留言信息管理
+        var msgInfo = {
+            'name':'',
+            'phone':'',
+            'mail':'',
+            'content':'',
+            'status_cd':0,
+            'timestamp':'',
+        };
+        var zIndexHelper = {
+            'loadData': 500000,
+        };
+
+        return {
+            overallData:overallData,
+            zIndexHelper:zIndexHelper,
+            msgInfo:msgInfo,
+            saveMsgInfo:saveMsgInfo,
+            miniMainHtml:miniMainHtml,
+            requestDataErrorMsg:requestDataErrorMsg,
         }
     });
-
-
-    /**
-     * 组件3D翻转
-     */
-    function flipAnimate(ele, bDeg, eDeg, duration) {
-        //总的翻转次数
-        flipCount++;
-        //翻转角度
-        $({deg: bDeg}).animate({deg: eDeg}, {
-            duration: duration,
-            step: function (now) {
-                //当旋转到达90度时，展示后面内容
-                if (endDeg - now <= 90) {
-                    //当计数计数时后面面板展示，当偶数展示时后面页面不展示
-                    if (flipCount % 2 == 0) {
-                        backContent.css("visibility", "hidden");
-
-                    } else {
-                        backContent.css("visibility", "show");
+    app.factory('MyGeneralSer',function ($window, $document, $http, MyData) {
+        /** 工具类 **************************************************************************************/
+        /**
+         * 对数据进行判空处理
+         * @param data
+         */
+        var checkDataNotEmpty = function (data) {
+            var status = false;
+            if (data != null && data != undefined) {
+                //根据变量的不同类型进行判空处理
+                switch (Object.prototype.toString.call(data)) {
+                    /*String类型数据*/
+                    case '[object String]': {
+                        if (data.trim() != '') {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*Array类型*/
+                    case '[object Array]': {
+                        if (data.length > 0) {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*Object类型*/
+                    case '[object Object]': {
+                        if (Object.keys(data).length > 0) {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*其他类型状态默认设置为true，分别为Number和Boolean类型*/
+                    default: {
+                        status = true;
+                        break;
                     }
                 }
-                //进行以Y轴为垂心线进行翻转
-                ele.css({
-                    transform: 'rotateY(' + now + 'deg)'
-                });
-            },
-            complete: function () {
-                //翻转结束后，下次翻转开始角度和最终停止角度叠加180度
-                beginDeg += 180;
-                endDeg += 180;
-                //当待翻转个数大于零时，继续进行翻转操作，用于用户快速点击后进行多次翻转
-                if (--num > 0) flipAnimate(flipDiv, beginDeg, endDeg, time);
             }
-        });
-    }
+            return status;
+        };
+
+        /**
+         * http get获取资源数据
+         */
+        var httpGetFiles = function (url, callback) {
+            //设置loading状态
+            MyData.overallData['loadData'] = true;
+
+            $http({
+                method: 'GET',
+                url: url
+            }).then(function successCallback(response) {
+                if (response['status'] == 200) {
+                    //返回正确操作后执行回调函数
+                    callback(response['data'])
+
+                } else {
+                    alert(MyData.requestDataErrorMsg + ",.");
+                }
+            }, function errorCallback(err) {
+                alert(MyData.requestDataErrorMsg + ".,");
+
+            }).finally(function () {
+                //重置loading状态
+                MyData.overallData['loadData'] = false;
+            });
+        };
 
 
-    var flipCount2 = 0; //总的翻转次数
-    var beginDeg2 = 0; //开始角度
-    var endDeg2 = 180; //结束角度
-    var num2 = 0; //还剩多少次翻转，用户快速点击多次后，翻转多次
-    var time2 = 1000; //设置时间，1000毫秒
+        /**
+         * http post获取资源数据
+         */
+        var httpPostData = function (url, obj, callback) {
+            //设置loading状态
+            MyData.overallData['loadData'] = true;
 
-    //HTML页面元素
-    var flipBtn2 = $("#flipBtn2");
-    var flipDiv2 = $(".flipDiv2");
-    var frontContent2 = $(".flipDiv2 .frontContent2");
-    var backContent2 = $(".flipDiv2 .backContent2");
+            var fd = new FormData();
+            //动态装载数据
+            for (var i in obj) {
+                fd.append(i, obj[i]);
+            }
+            $http.post(url, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined},
+
+            }).success(function (response) {
+                //返回正确操作后执行回调函数
+                // callback(response);
+                if (response['status_code'] == 200) {
+                    //返回正确操作后执行回调函数
+                    callback(response['data']);
+
+                } else {
+                    alert(MyData.requestDataErrorMsg + ".");
+                }
+            }).error(function (err) {
+                alert(MyData.requestDataErrorMsg + ",");
+
+            }).finally(function () {
+                //设置loading状态
+                MyData.overallData['loadData'] = false;
+            });
+        };
 
 
-    /**
-     * 点击进行翻转操作
-     */
-    flipDiv2.click(function () {
-        //当前待翻转的次数为0时，触发翻转操作，否则进增加待翻转次数即可
-        if(num2==0){
-            num2++;
-            flipAnimate2(flipDiv2, beginDeg2, endDeg2, time2);
+        /**
+         * 组装生成新闻时间
+         * @param createTime
+         * @returns {string}
+         */
+        var generateShowTime = function (createTime) {
+            var today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
 
-        }else {
-            num2++;
+            var replaceTime = createTime.replace(/\-/g, "/");
+            var targetTime = new Date(replaceTime);
+            if (today - targetTime < 0) {
+                //当天发的新闻
+                var Hours=targetTime.getHours();
+                var Minutes=(targetTime.getMinutes()).toString();
+                if (Minutes.length<2) {
+                    Minutes="0"+Minutes;
+                }
+
+                return Hours + ":" + Minutes;
+
+            } else {
+                //之前发的新闻
+                return (targetTime.getMonth()+1) + "月" + targetTime.getDate() + "日";
+            }
+        };
+
+        return {
+            checkDataNotEmpty:checkDataNotEmpty,
+            httpGetFiles:httpGetFiles,
+            httpPostData:httpPostData,
+            generateShowTime:generateShowTime,
+
         }
     });
+    app.factory('MySer',function ($window, $document, $http, MyData, $location, $anchorScroll,MyGeneralSer) {
 
+        var dataInit = function () {
+            var url = $location.absUrl();
+            console.log(url);
+            var startIndex = url.lastIndexOf('#/');
+            var endIndex = url.lastIndexOf('#');
+            var hash = '';
 
-    /**
-     * 组件3D翻转
-     */
-    function flipAnimate2(ele, bDeg, eDeg, duration) {
-        //总的翻转次数
-        flipCount2++;
-        //翻转角度
-        $({deg: bDeg}).animate({deg: eDeg}, {
-            duration: duration,
-            step: function (now) {
-                //当旋转到达90度时，展示后面内容
-                if (endDeg2 - now <= 90) {
-                    //当计数计数时后面面板展示，当偶数展示时后面页面不展示
-                    if (flipCount2 % 2 == 0) {
-                        backContent2.css("visibility", "hidden");
-
-                    } else {
-                        backContent2.css("visibility", "show");
-                    }
-                }
-                //进行以Y轴为垂心线进行翻转
-                ele.css({
-                    transform: 'rotateY(' + now + 'deg)'
-                });
-            },
-            complete: function () {
-                //翻转结束后，下次翻转开始角度和最终停止角度叠加180度
-                beginDeg2 += 180;
-                endDeg2 += 180;
-                //当待翻转个数大于零时，继续进行翻转操作，用于用户快速点击后进行多次翻转
-                if (--num2 > 0) flipAnimate2(flipDiv2, beginDeg2, endDeg2, time2);
+            if (endIndex==startIndex) {
+                hash= url.substring(startIndex+2);
+                console.log(hash);
             }
-        });
-    }
+            else if (endIndex>startIndex) {
+                hash= url.substring(startIndex+2,endIndex);
+                console.log(hash);
+            }
+            if (hash == 'regions') {
+                $location.hash('regions');
+                $anchorScroll();
+            }
+            else if(hash == 'direction') {
+                $location.hash('direction');
+                $anchorScroll();
+            }
+            //使用angularjs的方法跳转到指定的锚点
+            // $location.hash('regions');
+            // $anchorScroll();
+        }
+
+        var saveMsgInfo = function () {
+            if(!MyGeneralSer.checkDataNotEmpty(MyData.msgInfo['name'])) {
+                alert("请输入您的称呼");
+                return;
+            }
+            else if(!MyGeneralSer.checkDataNotEmpty(MyData.msgInfo['phone'])&&!MyGeneralSer.checkDataNotEmpty(MyData.msgInfo['mail'])) {
+                alert("请输入您的联系电话或邮箱");
+                return;
+            }
+            else if(!MyGeneralSer.checkDataNotEmpty(MyData.msgInfo['content'])) {
+                alert("请输入您需要咨询的问题");
+                return;
+            }
+
+            var timestamp = (new Date()).valueOf();
+            MyData.overallData['loadData'] = true;
+            MyData.msgInfo['timestamp'] = timestamp;
+
+            MyGeneralSer.httpPostData(MyData.saveMsgInfo,MyData.msgInfo,function (response) {
+                MyData.overallData['loadData'] = false;
+                alert("感谢您的信任，我们会尽快安排专业的律师与您联系");
+                cancleInfo();
+            });
+        }
+
+        var cancleInfo = function () {
+            MyData.msgInfo['name']='';
+            MyData.msgInfo['phone']='';
+            MyData.msgInfo['mail']='';
+            MyData.msgInfo['content']='';
+            //$rootScope.$apply();
+        }
 
 
-    var flipCount3 = 0; //总的翻转次数
-    var beginDeg3 = 0; //开始角度
-    var endDeg3 = 180; //结束角度
-    var num3 = 0; //还剩多少次翻转，用户快速点击多次后，翻转多次
-    var time3 = 1000; //设置时间，1000毫秒
 
-    //HTML页面元素
-    var flipBtn3 = $("#flipBtn3");
-    var flipDiv3 = $(".flipDiv3");
-    var frontContent3 = $(".flipDiv3 .frontContent3");
-    var backContent3 = $(".flipDiv3 .backContent3");
-
-
-    /**
-     * 点击进行翻转操作
-     */
-    flipDiv3.click(function () {
-        //当前待翻转的次数为0时，触发翻转操作，否则进增加待翻转次数即可
-        if(num3==0){
-            num3++;
-            flipAnimate3(flipDiv3, beginDeg3, endDeg3, time3);
-
-        }else {
-            num3++;
+        return {
+            saveMsgInfo:saveMsgInfo,
+            cancleInfo:cancleInfo,
+            dataInit:dataInit,
         }
     });
+    app.controller('MyCtrl',function ($scope,MyData,MySer) {
+        var ctrl = this;
+        ctrl.msgInfo = MyData.msgInfo;
+        ctrl.overallData = MyData.overallData;
 
+        MySer.dataInit();
 
-    /**
-     * 组件3D翻转
-     */
-    function flipAnimate3(ele, bDeg, eDeg, duration) {
-        //总的翻转次数
-        flipCount3++;
-        //翻转角度
-        $({deg: bDeg}).animate({deg: eDeg}, {
-            duration: duration,
-            step: function (now) {
-                //当旋转到达90度时，展示后面内容
-                if (endDeg3 - now <= 90) {
-                    //当计数计数时后面面板展示，当偶数展示时后面页面不展示
-                    if (flipCount3 % 2 == 0) {
-                        backContent3.css("visibility", "hidden");
-
-                    } else {
-                        backContent3.css("visibility", "show");
-                    }
-                }
-                //进行以Y轴为垂心线进行翻转
-                ele.css({
-                    transform: 'rotateY(' + now + 'deg)'
-                });
-            },
-            complete: function () {
-                //翻转结束后，下次翻转开始角度和最终停止角度叠加180度
-                beginDeg3 += 180;
-                endDeg3 += 180;
-                //当待翻转个数大于零时，继续进行翻转操作，用于用户快速点击后进行多次翻转
-                if (--num3 > 0) flipAnimate3(flipDiv3, beginDeg3, endDeg3, time3);
-            }
-        });
-    }
-
+        /**
+         * 保存留言
+         * @see MySer.saveMsgInfo
+         */
+        ctrl.saveMsgInfo = function () {
+            MySer.saveMsgInfo();
+        }
+        /**
+         * 重置面板
+         * @see MySer.cancleInfo
+         */
+        ctrl.cancleInfo = function () {
+            MySer.cancleInfo();
+        }
+    });
 </script>
 
 </body>

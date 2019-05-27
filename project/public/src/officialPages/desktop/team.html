@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于我们</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" media="none" onload="if(media!='all')media='all'">
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/assets/js/angularjs/angular.js"></script>
+</head>
+
+<style>
+    .navigation div{
+        width: 100px;
+        height: 46px;
+        padding-top: 10px;
+        cursor: pointer;
+    }
+    .navigation div:hover{
+        background: #e52f22;
+    }
+
+    .region{
+        border: 2px solid #050b50;
+        color: #050b50;
+        cursor: pointer;
+    }
+    .region:hover{
+        background: #050b50;
+        color: white;
+    }
+    .point:hover{
+        cursor: pointer;
+    }
+</style>
+<body  style="font-family: 微软雅黑">
+
+<div id="team" style="overflow-x: auto" align="center" ng-app="myApp" ng-controller="MyCtrl as ctrl">
+    <!--头部-->
+    <div style="width: 1230px; margin-top: 10px; position: relative" align="center">
+
+        <div style="display: inline-block;vertical-align: middle;height: 80px;">
+            <!--企业信息logo和铭牌-->
+            <img style="height: 100%" src="http://qidailaw.liphin.com:3100/assets/img/mini/mini13.jpg">
+        </div>
+        <!--<div style="width: 650px;vertical-align: middle;display: inline-block;">-->
+        <!--<span style="font-size: 55px;font-family: 微软雅黑">明辨，慎思，期待，进取</span>-->
+        <!--</div>-->
+
+        <!--电话-->
+        <!--<div style="display: inline-block;vertical-align: middle;margin-left:20px;">-->
+        <!--<i class="fa fa-volume-control-phone" style="color: #050b50; font-size: 30px;"></i>-->
+        <!--<h2 style="color: #050b50; font-size: 30px; display: inline-block; margin-left: 20px">020-84772013</h2>-->
+        <!--</div>-->
+
+        <div style="display: inline-block;vertical-align: middle;margin-left: 60%">
+            <span style="line-height: 29px;">
+                <p style="font-family: 宋体;">
+                    <span style="font-size: 24px; font-family: 微软雅黑;">020-84772013</span>
+                </p>
+                <p style="font-family: 宋体">
+                    <i class="fa fa-volume-control-phone" style="color: #C40000; font-size: 25px;"></i>
+                    <span style="font-family: 微软雅黑;font-size: 25px;margin-left: 15px">服务热线</span>
+                </p>
+            </span>
+        </div>
+
+    </div>
+
+    <!--导航及轮播-->
+    <div style="margin-top: 10px;background: #151515;" align="center">
+        <!--导航栏-->
+        <div style="width: 1230px; height: 46px;">
+            <div class="navigation" style="margin-left: 30px;display: flex; flex-direction: row;color: white; font-size: 17px">
+                <div onclick="window.location='./index.html#main'">首页</div>
+                <div onclick="window.location='./about.html'">关于我们</div>
+                <div onclick="window.location='./index.html#direction'">服务方向</div>
+                <div onclick="window.location='./index.html#regions'">业务领域</div>
+                <div onclick="window.location='./team.html'">专业团队</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="width: 100%; height: 300px; cursor: default; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; display: block; outline: none; margin: 0px auto; position: relative; z-index: 1; background-size: cover; background-image: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini15.jpg);">
+
+    </div>
+
+    <div id="aboutUs" style="width:100%;text-align: center;margin-top: 40px;background: white">
+        <!--关于我们-->
+        <div align="center" style="margin-bottom: 30px;">
+            <div style="color: #C40000;font-size: 30px;font-weight: 600;">专业团队</div>
+            <div style="font-size: 20px;color: #4a4a4a">由资深专业的律师和法学教授组成的强大的团队</div>
+            <hr style="width: 1230px;color: #000000;">
+        </div>
+    </div>
+
+    <!--团队-->
+    <div style="width: 100%;" align="center">
+        <div style="display:flex;background-color: white; background-size: cover;margin: 20px 10px;box-shadow: 0 0 5px #b6b6b6;position: relative;width: 1000px;height: 300px"
+             ng-repeat="team in ctrl.teamList track by $index">
+            <div id="55" name="Bg_55" align="center"
+                 style="height: 300px; z-index:55; width: 200px; border-width: 1px 1px 1px 1px;">
+                <div id="57" name="Image_57"
+                     style="height: 290px; z-index:57; width: 180px; background: url({{team['url']}}) no-repeat ; background-size: 180px 290px;"></div>
+            </div>
+            <div style="width: 700px;height: 300px;margin-left: 50px;display: inline-block;">
+                <div align="left"
+                     style="display: inline-block;width:600px;border-radius: 5px;padding: 5px;margin-top: 30px">
+                    <span style="font-size:23px;font-weight: bold;color: #3300aa;font-family: 微软雅黑">姓名： </span>
+                    <span style="font-size: 23px;font-weight: bold;color: #2b2b2b;font-family: 微软雅黑">{{team['name']}}</span>
+                </div>
+                <div align="left"
+                     style="display: inline-block;margin-top:10px;width: 600px;height:245px;border-radius: 5px;padding: 5px">
+                    <p style="text-indent:2em;font-size: 18px;color: #2b2b2b;font-family: 微软雅黑">
+                        {{team['content']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="width: 100%; height: 200px;background: #151515;" align="center">
+        <div style="width: 1230px; color: white; position: relative;text-align: center">
+            <div>
+                <li class="fa fa-handshake-o" style="margin-top: 20px;font-size: 50px"></li>
+            </div>
+            <div style="margin-top: 10px">
+                <span style="font-size: 40px;color: white;font-family: 华文隶书">慎思，明辨，期待，进取</span>
+            </div>
+            <div style="margin-top: 10px">
+                <span style="font-size: 15px;color: whitesmoke">选择我们，我们将为您提供专业优质的法律服务</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.factory('MyData',function () {
+        var serverHost = 'http://qidailaw.liphin.com';
+        var frontSerPort = 3100;
+        var backSerPort = 8085;
+
+        var maxNum = '2088-01-01 00:00:00';
+        var getTeamListToPh = serverHost+":"+backSerPort+"/getTeamListToPh";
+        var coverImgBaseUrl = serverHost+":"+frontSerPort+"/dynamicinfo/coverimg/";
+
+        var teamList = [];
+
+        var overallData = {
+            title: '专业团队',
+            param: [], //记录类型
+            loadData: false, //标识是否正在加载新闻数据
+            agentId: '',//新闻的应用号
+            search: '',//内容搜索功能
+            searchFlag: false, //判断是否搜索
+        };
+
+        return {
+            maxNum:maxNum,
+            overallData: overallData,
+            teamList:teamList,
+            getTeamListToPh:getTeamListToPh,
+            coverImgBaseUrl:coverImgBaseUrl,
+        }
+    });
+    app.factory('MyGeneralSer',function ($window, $document, $http, MyData) {
+        /** 工具类 **************************************************************************************/
+        /**
+         * 对数据进行判空处理
+         * @param data
+         */
+        var checkDataNotEmpty = function (data) {
+            var status = false;
+            if (data != null && data != undefined) {
+                //根据变量的不同类型进行判空处理
+                switch (Object.prototype.toString.call(data)) {
+                    /*String类型数据*/
+                    case '[object String]': {
+                        if (data.trim() != '') {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*Array类型*/
+                    case '[object Array]': {
+                        if (data.length > 0) {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*Object类型*/
+                    case '[object Object]': {
+                        if (Object.keys(data).length > 0) {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*其他类型状态默认设置为true，分别为Number和Boolean类型*/
+                    default: {
+                        status = true;
+                        break;
+                    }
+                }
+            }
+            return status;
+        };
+
+        /**
+         * http get获取资源数据
+         */
+        var httpGetFiles = function (url, callback) {
+            //设置loading状态
+            MyData.overallData['loadData'] = true;
+
+            $http({
+                method: 'GET',
+                url: url
+            }).then(function successCallback(response) {
+                if (response['status'] == 200) {
+                    //返回正确操作后执行回调函数
+                    callback(response['data'])
+
+                } else {
+                    alert(MyData.requestDataErrorMsg + ",.");
+                }
+            }, function errorCallback(err) {
+                alert(MyData.requestDataErrorMsg + ".,");
+
+            }).finally(function () {
+                //重置loading状态
+                MyData.overallData['loadData'] = false;
+            });
+        };
+
+
+        /**
+         * http post获取资源数据
+         */
+        var httpPostData = function (url, obj, callback) {
+            //设置loading状态
+            MyData.overallData['loadData'] = true;
+
+            var fd = new FormData();
+            //动态装载数据
+            for (var i in obj) {
+                fd.append(i, obj[i]);
+            }
+            $http.post(url, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined},
+
+            }).success(function (response) {
+                //返回正确操作后执行回调函数
+                // callback(response);
+                if (response['status_code'] == 200) {
+                    //返回正确操作后执行回调函数
+                    callback(response['data']);
+
+                } else {
+                    alert(MyData.requestDataErrorMsg + ".");
+                }
+            }).error(function (err) {
+                alert(MyData.requestDataErrorMsg + ",");
+
+            }).finally(function () {
+                //设置loading状态
+                MyData.overallData['loadData'] = false;
+            });
+        };
+
+
+        /**
+         * 组装生成新闻时间
+         * @param createTime
+         * @returns {string}
+         */
+        var generateShowTime = function (createTime) {
+            var today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+
+            var replaceTime = createTime.replace(/\-/g, "/");
+            var targetTime = new Date(replaceTime);
+            if (today - targetTime < 0) {
+                //当天发的新闻
+                var Hours=targetTime.getHours();
+                var Minutes=(targetTime.getMinutes()).toString();
+                if (Minutes.length<2) {
+                    Minutes="0"+Minutes;
+                }
+
+                return Hours + ":" + Minutes;
+
+            } else {
+                //之前发的新闻
+                return (targetTime.getMonth()+1) + "月" + targetTime.getDate() + "日";
+            }
+        };
+
+        return {
+            checkDataNotEmpty:checkDataNotEmpty,
+            httpGetFiles:httpGetFiles,
+            httpPostData:httpPostData,
+            generateShowTime:generateShowTime,
+
+        }
+    });
+    app.factory('MySer',function ($window, $document, $http, MyData, $location, MyGeneralSer) {
+        var initData = function () {
+            getTeamListToPh();
+        };
+
+        var getTeamListToPh = function () {
+            MyData.overallData['loadData'] = false;
+            var fd = new FormData();
+            fd.append('status_cd',1);
+            fd.append('create_time',MyData.maxNum);
+            console.log(MyData.getTeamListToPh);
+            $http.post(MyData.getTeamListToPh,fd , {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined},
+            }).success(function (response) {
+                if (response['status_code']==200) {
+
+                    //重置数据顺序：1、根据置顶标签排在前面，2、置顶的数据中根据置顶时间戳进行排序
+                    var teamListSortedData = response['data'].sort(sortStickNum);
+
+                    for (var i in teamListSortedData) {
+                        teamListSortedData[i]['url']= MyData.coverImgBaseUrl + teamListSortedData[i]['timestamp'] + ".png";
+                        MyData.teamList.push(teamListSortedData[i]);
+                    };
+
+                }
+            }).error(function (err) {
+                alert("尊敬的客户，服务器异常，请稍后重试..")
+            }).finally(function () {
+                //标识加载数据完成
+                MyData.overallData['loadData'] = false;
+            })
+
+
+        };
+
+        /**
+         * 重置数据顺序：
+         *  1、根据置顶标签排在前面，
+         *  2、置顶的数据中根据置顶时间戳进行排序
+         */
+        var sortStickNum = function (a,b) {
+            if (a['stick_cd'] == 1 && b['stick_cd'] == 1) {
+                //若两者均为置顶状态，则比较置顶时间
+                return b['stick_time'] - a['stick_time']
+
+            } else if (b['stick_cd'] != a['stick_cd']) {
+                //若两者置顶数据不一样，则置顶作为比较条件
+                return b['stick_cd'] - a['stick_cd'];
+
+            } else {
+                //无置顶要求数据根据创建时间进行排列
+                return new Date(a['create_time']) - new Date(b['create_time']);
+            }
+        };
+
+        return {
+            initData:initData,
+        }
+    });
+    app.controller('MyCtrl',function ($scope,MyData,MySer) {
+        var ctrl =this;
+        ctrl.teamList = MyData.teamList;
+        ctrl.overallData = MyData.overallData;
+
+        MySer.initData();
+    });
+</script>
+
+</body>
+</html>
