@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://viewcoder-bucket.oss-cn-shenzhen.aliyuncs.com/cdn/js/jquery/jquery-1.11.0.js"></script>
+    <script src="/assets/js/angularjs/angular.js"></script>
 </head>
 
 <style>
@@ -35,77 +37,80 @@
 </style>
 <body  style="font-family: 微软雅黑">
 
-<div style="overflow-x: auto" align="center">
+<div style="overflow-x: auto" align="center" ng-app="myApp" ng-controller="MyCtrl as ctrl">
     <!--头部-->
     <div style="width: 1230px; margin-top: 10px; position: relative" align="center">
 
-        <div style="display: inline-block;vertical-align: middle;height: 180px;">
+        <div style="display: inline-block;vertical-align: middle;height: 80px;">
             <!--企业信息logo和铭牌-->
-            <img style="height: 100%" src="http://qidailaw.liphin.com:3100/assets/img/mini/desktop05.jpg">
-        </div>
-        <div style="width: 650px;vertical-align: middle;display: inline-block;">
-            <span style="font-size: 55px;font-family: 微软雅黑">明辨，慎思，期待，进取</span>
+            <img style="height: 100%" src="http://qidailaw.liphin.com:3100/assets/img/mini/mini13.jpg">
         </div>
 
-        <!--电话-->
-        <div style="display: inline-block;vertical-align: middle;margin-left:20px;">
-            <i class="fa fa-volume-control-phone" style="color: #050b50; font-size: 30px;"></i>
-            <h2 style="color: #050b50; font-size: 30px; display: inline-block; margin-left: 20px">020-84772013</h2>
+        <div style="display: inline-block;vertical-align: middle;margin-left: 60%">
+            <span style="line-height: 29px;">
+                <p style="font-family: 宋体;">
+                    <span style="font-size: 24px; font-family: 微软雅黑;">020-84772013</span>
+                </p>
+                <p style="font-family: 宋体">
+                    <i class="fa fa-volume-control-phone" style="color: #C40000; font-size: 25px;"></i>
+                    <span style="font-family: 微软雅黑;font-size: 25px;margin-left: 15px">服务热线</span>
+                </p>
+            </span>
         </div>
+
     </div>
 
     <!--导航及轮播-->
-    <div style="margin-top: 10px;background: #050b50;" align="center">
+    <div style="margin-top: 10px;background: #151515;width: 100%;" align="center">
         <!--导航栏-->
-        <div style="width: 1230px; height: 46px;">
+        <div style="min-width: 1230px; height: 46px;">
             <div class="navigation" style="margin-left: 30px;display: flex; flex-direction: row;color: white; font-size: 17px">
                 <div onclick="window.location='../index.html#main'">首页</div>
                 <div onclick="window.location='../about.html'">关于我们</div>
+                <div onclick="window.location='../index.html#direction'">服务方向</div>
                 <div onclick="window.location='../index.html#regions'">业务领域</div>
-                <div onclick="window.location='../contact.html'">联系我们</div>
-            </div>
-        </div>
-
-        <!--图片展示-->
-        <div>
-            <div style="width: 100%;min-width: 1230px; min-height: 180px; background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop07.jpg) no-repeat center center; background-size: cover">
-                <div style="font-size: 40px;font-weight: bold;color: white; padding: 50px 0 10px 20px;">
-                    <span style="">法律顾问</span>
-                </div>
+                <div onclick="window.location='../team.html'">专业团队</div>
             </div>
         </div>
     </div>
+
+    <!--图片展示-->
+    <div style="width: 100%;min-width: 1200px; min-height: 150px; background: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini21.jpg) no-repeat center center; background-size: cover">
+        <div style="font-size: 40px;font-weight: bold;color: white; text-align: center;padding-top: 35px">
+            <span style="padding: 30px">法律顾问</span>
+        </div>
+    </div>
+
 
     <!--业务细节-->
-    <div style="width: 100%;min-width: 1230px;margin-top: 40px;height: 600px;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop01.jpg) no-repeat center center;">
+    <div style="width: 100%;min-width: 1230px;margin-top: 40px;height: 700px;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini24.jpg) no-repeat center center;background-size: cover">
 
         <!--您遇到的刑事辩护，是否与他们相似-->
-        <div style="padding: 10px 0 100px 0;color: white;margin-top: -16px;/*background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop01.jpg) no-repeat center center;background-size: cover;*/" align="center">
-            <div style="width: 1200px; display: flex; flex-direction: row; margin-top: 30px; justify-content: center">
-                <!--偷窃面临起诉-->
-                <div style="position: relative;">
-                    <!--标题党-->
-                    <div style="width:1100px;height:120px;background-size: cover;border-radius:20px 20px 0px 0px;padding: 30px 0 20px 0;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop08.jpg) no-repeat center center">
-                        <div style="font-size: 22px; font-weight: bold">法律顾问业务</div>
-                        <div style="margin: 15px 0 0 10px;font-size: 17px">——— 提供个人、企业、政府法律专业顾问服务 ———</div>
+        <div style="width: 1200px; margin-top: 30px;">
+            <div style="width:1200px;height:120px;padding: 20px 0 20px 0;text-align: center;color: #FFFFFF">
+                <div style="font-size: 22px; font-weight: bold">法律顾问 案例分析</div>
+                <div style="margin: 10px;font-size: 17px">——— 解决法律顾问的各种问题 ———</div>
+            </div>
+            <div style="width: 1200px;height: 600px;text-align: center;">
+                <div style="width: 1200px;height: 150px;text-align: center">
+                    <div style="display:inline-block;width: 260px;height: 150px;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini25.jpg) no-repeat center center;background-size: 260px 150px;overflow: hidden;"></div>
+                    <div style="display:inline-block;margin-left:50px;width: 700px;height: 150px;text-align: left;overflow: hidden;">
+                        <span style="color: white;font-size: 18px;font-weight: bold;">案例：</span>
+                        <p style="text-indent:2em;margin-top:10px;color: white;font-size: 16px;font-family: 微软雅黑">
+                            广东期待律师事务所常年法律顾问公司A公司，有1股东想要退股，同时公司想要吸收新股东3人。</p>
                     </div>
-                    <!--文本描述-->
-                    <div style="width:1100px;height:400px;border-radius:0px 0px 20px 20px;background: white; color: grey; font-size: 15px; text-align: left; padding: 20px 20px 50px 20px; line-height: 170%">
-                        <div style="color: #292929">专业能力</div>
-                        <div style="margin-top: 20px">
-                            <span style="color: #292929">案情描述：</span>
-                            <span>杨某与林某系通过相亲认识并登记结婚的， 婚后一年暂无子女。双方由于相识的时间不长，相互了解也不深，结婚比较仓促，感情基础薄弱。杨某婚后才得知林某酗酒，对杨某也有家庭暴力，经常因为一点琐碎的事拳脚相加。2016年，杨某在被家暴后离家出走，并提起离婚诉讼。</span>
-                        </div>
-                        <div style="margin-top: 20px">
-                            <span style="color: #292929">裁判结果：</span>
-                            <span>杨某找到律师，通过法律诉讼，法院判决杨某与林某解除婚姻关系，赔偿精神损失费5万元，诉讼费用并由林某承担。杨某在恩慈律师事务所的律师的帮助下结束了婚姻并得到相应的赔偿。</span>
-                        </div>
+                </div>
+                <div style="width: 1200px;height: 200px;text-align: center;margin-top: 50px">
+                    <div style="display:inline-block;width: 260px;height: 200px;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini26.jpg) no-repeat center center;background-size: 260px 180px;overflow: hidden;"></div>
+                    <div style="display:inline-block;margin-left:50px;width: 700px;height: 200px;text-align: left;overflow: hidden;">
+                        <span style="color: #FFFFFF;font-size: 18px;font-weight: bold">结果：</span>
+                        <p style="text-indent:2em;margin-top:10px;color: #FFFFFF;font-size: 16px;font-family: 微软雅黑">
+                            广东期待律师事务所律师团队为A公司起草了相关的股权转让、股东变更的法律文书，例如股权转让协议，股东会决议，等，同时协助新旧股东在工商局办理了变更登记。</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!--团队展示、模式展示等-->
     <div style="width: 100%">
@@ -149,7 +154,7 @@
 
 
     <!--形式辩护法律，服务范围-->
-    <div align="center" style="width: 100%; height: 600px;padding: 70px 0 0 0;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop09.jpg) no-repeat center center;background-size: cover">
+    <div align="center" style="width: 100%; height: 450px;font-family:微软雅黑;padding: 25px 0 0 0;background: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini27.jpg) no-repeat center center;background-size: cover">
         <!--标题-->
         <div style="font-size: 35px;">
             <span style="font-weight: bold; color: white">法律顾问</span>
@@ -157,38 +162,336 @@
         </div>
 
         <!--中间流程图-->
-        <div align="center" style="display: inline-block;width: 1300px;height: 350px;margin-top: 30px">
-            <div style="display: inline-block;margin:15px;height: 300px; z-index:55; width: 200px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 10px 10px 10px 10px; background:#4F0B69; ">
-                <div style="margin-top:3px;border-radius:10px;height: 290px; z-index:57; width: 180px; background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop72.jpg) no-repeat center center;background-size: cover"></div>
+        <div align="center" style="position:relative;width: 1300px;height: 350px;margin-top: 30px;color: #FFFFFF">
+            <div style="width: 1300px;height: 60px;text-align: center;">
+                <div style="display: inline-block;width: 200px;height: 60px;background-color: #ac9246">
+                    <span style="vertical-align: middle;font-size: 23px;line-height: 60px">个人顾问</span>
+                </div>
             </div>
-            <div style="display: inline-block;margin:15px;height: 300px; z-index:55; width: 200px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 10px 10px 10px 10px; background:#4F0B69; ">
-                <div style="margin-top:3px;border-radius:10px;height: 290px; z-index:57; width: 180px; background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop73.jpg) no-repeat center center;background-size: cover"></div>
+            <div style="width: 1300px;height: 60px;text-align: center;margin-top: 25px">
+                <div style="display: inline-block;width: 200px;height: 60px;background-color: #ac9246">
+                    <span style="vertical-align: middle;font-size: 23px;line-height: 60px;">企业顾问</span>
+                </div>
             </div>
-            <div style="display: inline-block;margin:15px;height: 300px; z-index:55; width: 200px; border-width: 1px 1px 1px 1px; border-style: solid; border-color: rgba(100,100,100,0.4); border-radius: 10px 10px 10px 10px; background:#4F0B69; ">
-                <div style="margin-top:3px;border-radius:10px;height: 290px; z-index:57; width: 180px; background: url(http://qidailaw.liphin.com:3100/assets/img/mini/desktop74.jpg) no-repeat center center;background-size: cover"></div>
+            <div style="width: 1300px;height: 60px;text-align: center;margin-top: 25px">
+                <div style="display: inline-block;width: 200px;height: 60px;background-color: #ac9246">
+                    <span style="vertical-align: middle;font-size: 23px;line-height: 60px;">政府顾问</span>
+                </div>
             </div>
         </div>
-
-        <!--立即免费在线咨询-->
-        <div style="border-radius:10px;background: #54C19E; color: white; width: 300px; height: 50px; font-size: 20px;padding: 12px 0 0 0 ">免费在线咨询   020-84772013</div>
     </div>
 
 
     <!--尾部-->
-    <div style="width: 100%; height: 200px;background: #000000;" align="center">
-        <div style="width: 1230px;margin-top: 30px; color: white; position: relative;text-align: left">
-            <div style="padding-top: 40px">
-                <span class="point" onclick="window.location='../index.html#main'" >首页</span>
-                <span class="point" onclick="window.location='../about.html'" style="margin-left: 20px">关于我们</span>
-                <span class="point" onclick="window.location='../contact.html'" style="margin-left: 20px">联系我们</span>
+    <div style="width: 100%; height: 600px;background-image: url(http://qidailaw.liphin.com:3100/assets/img/mini/mini20.jpg);background-size: cover">
+        <div style="width: 1230px;margin-top: 30px; position: relative;text-align: center">
+            <div style="display: inline-block;position:relative;margin-top:60px;height: 500px;width: 500px;overflow: hidden;" align="left">
+                <p style="font-size: 30px;font-weight: bold;color: white">联系我们</p>
+                <p style="font-size: 13px;color: #e9e9e9">我们将与您携手共进，为公平正义而奋斗</p>
+                <p style="font-size: 16px;color: white;margin-top: 30px">电话：020-84772013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编：511400</p>
+                <p style="font-size: 16px;color: white;">邮箱：3166862528@qq.com</p>
+                <p style="font-size: 16px;color: white;">地址：广东省广州番禺区富华东路518号桥力大厦三楼</p>
+                <p style="font-size: 16px;color: white;">（即番禺区公证处所在大楼三楼）</p>
             </div>
-            <div style="margin-top: 20px">
-                <span>广东期待师事务所 律师咨询热线:020-84772013</span>
-                <span style="position: absolute; right: 20px">地址：广东省广州市盘区域富华东路518号桥力大厦三楼</span>
+            <div style="display: inline-block;position:relative;margin-top:60px;height: 500px;width: 500px;margin-left: 70px;overflow: hidden;" align="left">
+                <p style="font-size: 30px;font-weight: bold;color: white">法律咨询</p>
+                <p style="font-size: 13px;color: #e9e9e9">免费法律咨询，请留言提交，我们将以最快的速度回复</p>
+                <p style="margin-top: 30px">
+                    <span style="font-size: 16px;color: white;">姓名：</span>
+                    <span><input class="inputStyle" style="padding:5px;height:35px;width: 170px;" type="text" ng-model="ctrl.msgInfo['name']" maxlength="50"
+                                 placeholder=""></span>
+                    <span style="font-size: 16px;color: white;margin-left: 20px;">电话：</span>
+                    <span><input class="inputStyle" style="padding:5px;height:35px;width: 170px;" type="text" ng-model="ctrl.msgInfo['phone']" maxlength="50"
+                                 placeholder="">
+                    </span>
+                </p>
+                <p style="margin-top: 15px">
+                    <span style="font-size: 16px;color: white;">邮箱：</span>
+                    <span><input class="inputStyle" style="padding:5px;height:35px;width: 220px;" type="text" ng-model="ctrl.msgInfo['mail']" maxlength="50"
+                                 placeholder="">
+                    </span>
+                    <span style="font-size: 16px;color: #fff424">（*电话和邮箱任填一个*）</span>
+                </p>
+                <p style="margin-top: 15px;">
+                    <span style="font-size: 16px;color: white;">内容：</span>
+                </p>
+                <p style="margin-top: 15px;">
+                    <span>
+                        <textarea class="textAreaStyle" style="padding:5px;width: 500px; height: 150px" ng-model="ctrl.msgInfo['content']"
+                                  placeholder="">
+                        </textarea>
+                    </span>
+                </p>
+                <div style="width: 500px; height: 50px;text-align: center;padding-top: 17px; border: 1px solid lightgrey; border-width: 1px 0 0 0; margin-top: 20px">
+                    <button ng-click="ctrl.cancleInfo()" class="btn btn-default"
+                            style="display:inline;width: 120px;height: 40px">重置
+                    </button>
+                    <button ng-click="ctrl.saveMsgInfo()" class="btn btn-success"
+                            style="margin-left:80px;display:inline;width: 120px;height: 40px">提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; height: 200px;background: #151515;" align="center">
+        <div style="width: 1230px; color: white; position: relative;text-align: center">
+            <div>
+                <li class="fa fa-handshake-o" style="margin-top: 20px;font-size: 50px"></li>
+            </div>
+            <div style="margin-top: 10px">
+                <span style="font-size: 40px;color: white;font-family: 华文隶书">慎思，明辩，期待，进取</span>
+            </div>
+            <div style="margin-top: 10px">
+                <span style="font-size: 15px;color: whitesmoke">选择我们，我们将为您提供专业优质的法律服务</span>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.factory('MyData',function () {
+        var serverHost = 'http://qidailaw.liphin.com';
+        var frontSerPort = 3100;
+        var backSerPort = 8085;
+
+        var saveMsgInfo = serverHost+":"+backSerPort+"/saveMsgInfo";
+        var miniMainHtml = serverHost+":"+frontSerPort+"/src/officialPages/phone/mini/index.html";
+
+
+        var requestDataErrorMsg = "尊敬的客户，服务异常，请稍后重试";
+
+        var overallData = {
+            loadData: false, //标识是否正在加载新闻数据
+        };
+
+        //留言信息管理
+        var msgInfo = {
+            'name':'',
+            'phone':'',
+            'mail':'',
+            'content':'',
+            'status_cd':0,
+            'timestamp':'',
+        };
+        var zIndexHelper = {
+            'loadData': 500000,
+        };
+
+        return {
+            overallData:overallData,
+            zIndexHelper:zIndexHelper,
+            msgInfo:msgInfo,
+            saveMsgInfo:saveMsgInfo,
+            miniMainHtml:miniMainHtml,
+            requestDataErrorMsg:requestDataErrorMsg,
+        }
+    });
+    app.factory('MyGeneralSer',function ($window, $document, $http, MyData) {
+        /** 工具类 **************************************************************************************/
+        /**
+         * 对数据进行判空处理
+         * @param data
+         */
+        var checkDataNotEmpty = function (data) {
+            var status = false;
+            if (data != null && data != undefined) {
+                //根据变量的不同类型进行判空处理
+                switch (Object.prototype.toString.call(data)) {
+                    /*String类型数据*/
+                    case '[object String]': {
+                        if (data.trim() != '') {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*Array类型*/
+                    case '[object Array]': {
+                        if (data.length > 0) {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*Object类型*/
+                    case '[object Object]': {
+                        if (Object.keys(data).length > 0) {
+                            status = true;
+                        }
+                        break;
+                    }
+                    /*其他类型状态默认设置为true，分别为Number和Boolean类型*/
+                    default: {
+                        status = true;
+                        break;
+                    }
+                }
+            }
+            return status;
+        };
+
+        /**
+         * http get获取资源数据
+         */
+        var httpGetFiles = function (url, callback) {
+            //设置loading状态
+            MyData.overallData['loadData'] = true;
+
+            $http({
+                method: 'GET',
+                url: url
+            }).then(function successCallback(response) {
+                if (response['status'] == 200) {
+                    //返回正确操作后执行回调函数
+                    callback(response['data'])
+
+                } else {
+                    alert(MyData.requestDataErrorMsg + ",.");
+                }
+            }, function errorCallback(err) {
+                alert(MyData.requestDataErrorMsg + ".,");
+
+            }).finally(function () {
+                //重置loading状态
+                MyData.overallData['loadData'] = false;
+            });
+        };
+
+
+        /**
+         * http post获取资源数据
+         */
+        var httpPostData = function (url, obj, callback) {
+            //设置loading状态
+            MyData.overallData['loadData'] = true;
+
+            var fd = new FormData();
+            //动态装载数据
+            for (var i in obj) {
+                fd.append(i, obj[i]);
+            }
+            $http.post(url, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined},
+
+            }).success(function (response) {
+                //返回正确操作后执行回调函数
+                // callback(response);
+                if (response['status_code'] == 200) {
+                    //返回正确操作后执行回调函数
+                    callback(response['data']);
+
+                } else {
+                    alert(MyData.requestDataErrorMsg + ".");
+                }
+            }).error(function (err) {
+                alert(MyData.requestDataErrorMsg + ",");
+
+            }).finally(function () {
+                //设置loading状态
+                MyData.overallData['loadData'] = false;
+            });
+        };
+
+
+        /**
+         * 组装生成新闻时间
+         * @param createTime
+         * @returns {string}
+         */
+        var generateShowTime = function (createTime) {
+            var today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+
+            var replaceTime = createTime.replace(/\-/g, "/");
+            var targetTime = new Date(replaceTime);
+            if (today - targetTime < 0) {
+                //当天发的新闻
+                var Hours=targetTime.getHours();
+                var Minutes=(targetTime.getMinutes()).toString();
+                if (Minutes.length<2) {
+                    Minutes="0"+Minutes;
+                }
+
+                return Hours + ":" + Minutes;
+
+            } else {
+                //之前发的新闻
+                return (targetTime.getMonth()+1) + "月" + targetTime.getDate() + "日";
+            }
+        };
+
+        return {
+            checkDataNotEmpty:checkDataNotEmpty,
+            httpGetFiles:httpGetFiles,
+            httpPostData:httpPostData,
+            generateShowTime:generateShowTime,
+
+        }
+    });
+    app.factory('MySer',function ($window, $document, $http, MyData, $location, MyGeneralSer) {
+        var saveMsgInfo = function () {
+            if(!MyGeneralSer.checkDataNotEmpty(MyData.msgInfo['name'])) {
+                alert("请输入您的称呼");
+                return;
+            }
+            else if(!MyGeneralSer.checkDataNotEmpty(MyData.msgInfo['phone'])&&!MyGeneralSer.checkDataNotEmpty(MyData.msgInfo['mail'])) {
+                alert("请输入您的联系电话或邮箱");
+                return;
+            }
+            else if(!MyGeneralSer.checkDataNotEmpty(MyData.msgInfo['content'])) {
+                alert("请输入您需要咨询的问题");
+                return;
+            }
+
+            var timestamp = (new Date()).valueOf();
+            MyData.overallData['loadData'] = true;
+            MyData.msgInfo['timestamp'] = timestamp;
+
+            MyGeneralSer.httpPostData(MyData.saveMsgInfo,MyData.msgInfo,function (response) {
+                MyData.overallData['loadData'] = false;
+                alert("感谢您的信任，我们会尽快安排专业的律师与您联系");
+                cancleInfo();
+            });
+        }
+
+        var cancleInfo = function () {
+            MyData.msgInfo['name']='';
+            MyData.msgInfo['phone']='';
+            MyData.msgInfo['mail']='';
+            MyData.msgInfo['content']='';
+            //$rootScope.$apply();
+        }
+
+
+
+        return {
+            saveMsgInfo:saveMsgInfo,
+            cancleInfo:cancleInfo,
+        }
+    });
+    app.controller('MyCtrl',function ($scope,MyData,MySer) {
+        var ctrl = this;
+        ctrl.msgInfo = MyData.msgInfo;
+        ctrl.overallData = MyData.overallData;
+
+        /**
+         * 保存留言
+         * @see MySer.saveMsgInfo
+         */
+        ctrl.saveMsgInfo = function () {
+            MySer.saveMsgInfo();
+        }
+        /**
+         * 重置面板
+         * @see MySer.cancleInfo
+         */
+        ctrl.cancleInfo = function () {
+            MySer.cancleInfo();
+        }
+    });
+</script>
 
 </body>
 </html>
